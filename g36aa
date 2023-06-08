@@ -4648,7 +4648,7 @@ function RobJewel()
 
     pathMove(Vector3.new(107, 22, 1343))
     pathMove(Vector3.new(96, 38, 1285))
-    pathMove(Vector3.new(129, 38, 1306))
+    pathMove(Vector3.new(129, 42, 1306))
 
     if (string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 6) ~= string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 10, 15) and Bot.PlayerGui.RobberyMoneyGui.Enabled) or Bot.PlayerGui.RobberyMoneyGui.Enabled == false then
         for k, v in pairs(jewelPositions1) do
