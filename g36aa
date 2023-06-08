@@ -4368,7 +4368,9 @@ function RobBank()
     bankMoney = string.gsub(bankMoney, "kg", "")
     LogMessage("robbed bank for $"..bankMoney)
     bankMoney = string.gsub(bankMoney, ",", "")
-    TotalMoneyEarned += tonumber(bankMoney)
+    if tonumber(bankMoney) ~= nil then
+        TotalMoneyEarned += tonumber(bankMoney)
+    end
 end
 
 function GetBoxPos()
@@ -4870,7 +4872,9 @@ function RobJewel()
     jewelMoney = string.gsub(jewelMoney, "kg", "")
     LogMessage("robbed jewelry store for $"..jewelMoney)
     jewelMoney = string.gsub(jewelMoney, ",", "")
-    TotalMoneyEarned += tonumber(jewelMoney)
+    if tonumber(jewelMoney) ~= nil then
+        TotalMoneyEarned += tonumber(jewelMoney)
+    end
 end
 
 function RobMansion()
@@ -5667,7 +5671,9 @@ function RobCasino()
     casinoMoney = string.gsub(casinoMoney, "kg", "")
     LogMessage("robbed casino for $"..casinoMoney)
     casinoMoney = string.gsub(casinoMoney, ",", "")
-    TotalMoneyEarned += tonumber(casinoMoney)
+    if tonumber(casinoMoney) ~= nil then
+        TotalMoneyEarned += tonumber(casinoMoney)
+    end
 end
 
 function RobMuseum()
@@ -6019,7 +6025,9 @@ function RobTrain()
     trainMoney = string.gsub(trainMoney, "kg", "")
     LogMessage("robbed cargo train for $"..trainMoney)
     trainMoney = string.gsub(trainMoney, ",", "")
-    TotalMoneyEarned += tonumber(trainMoney)
+    if tonumber(trainMoney) ~= nil then
+        TotalMoneyEarned += tonumber(trainMoney)
+    end
 end
 
 function RobTomb()
