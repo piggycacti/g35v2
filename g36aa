@@ -2716,6 +2716,7 @@ function BotMove(location, LocationName, teleporting)
                 while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                     if reset then return end
                     Car.Engine:PivotTo(CFrame.new(1121, 116, 1296))
+                    wait()
                 end
                 position = Vector3.new(1121, 116, 1296)
                 distance = 500
@@ -2724,6 +2725,7 @@ function BotMove(location, LocationName, teleporting)
                 while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                     if reset then return end
                     Car.Engine:PivotTo(CFrame.new(37, 25, 864))
+                    wait()
                 end
                 position = Vector3.new(37, 25, 864)
             end
@@ -2731,6 +2733,7 @@ function BotMove(location, LocationName, teleporting)
                 while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                     if reset then return end
                     Car.Engine:PivotTo(CFrame.new(3197, 63, -4655))
+                    wait()
                 end
                 position = Vector3.new(3197, 63, -4655)
             end
@@ -2738,6 +2741,7 @@ function BotMove(location, LocationName, teleporting)
                 while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                     if reset then return end
                     Car.Engine:PivotTo(CFrame.new(131, 19, 1304))
+                    wait()
                 end
                 position = Vector3.new(131, 19, 1304)
             end
@@ -2745,6 +2749,7 @@ function BotMove(location, LocationName, teleporting)
                 while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                     if reset then return end
                     Car.Engine:PivotTo(CFrame.new(544, 27, -501))
+                    wait()
                 end 
                 position = Vector3.new(544, 26, -522)
             end
@@ -2752,6 +2757,7 @@ function BotMove(location, LocationName, teleporting)
                 while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                     if reset then return end
                     Car.Engine:PivotTo(CFrame.new(250, -74, -4527))
+                    wait()
                 end
                 position = Vector3.new(250, -74, -4527)
             end
@@ -2759,9 +2765,11 @@ function BotMove(location, LocationName, teleporting)
                 while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                     if reset then return end
                     Car.Engine:PivotTo(CFrame.new(-99, 71, -4707))
+                    wait()
                 end
                 position = Vector3.new(-99, 71, -4707)
             end
+            wait()
             if reset then return end
         end
         return
@@ -3472,7 +3480,7 @@ function RobBank()
         wait(0.5)
         if reset then return end
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-
+        wait(0.1)
         pathMove(Vector3.new(1, -7, 959))
         if reset then return end
 
@@ -3572,7 +3580,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-
+        wait(0.1)
         pathMove(Vector3.new(202, -7, 897))
         if reset then return end
 
@@ -3672,7 +3680,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-
+        wait(0.1)
         pathMove(Vector3.new(83, 61, 920))
         if reset then return end
 
@@ -3774,6 +3782,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        wait(0.1)
         
         pathMove(Vector3.new(47, 5, 800))
         if reset then return end
@@ -3876,6 +3885,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        wait(0.1)
 
         pathMove(Vector3.new(39, 3, 964))
         if reset then return end
@@ -3980,6 +3990,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        wait(0.1)
 
         pathMove(Vector3.new(159, -7, 843))
         if reset then return end
@@ -4082,6 +4093,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        wait(0.1)
 
         pathMove(Vector3.new(19, 2, 888))
         if reset then return end
@@ -4176,6 +4188,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        wait(0.1)
 
         pathMove(Vector3.new(-49, 1, 941))
         if reset then return end
@@ -4274,6 +4287,7 @@ function RobBank()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
         wait(0.5)
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        wait(0.1)
 
         pathMove(Vector3.new(49, -7, 956))
         if reset then return end
