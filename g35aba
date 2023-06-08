@@ -5052,7 +5052,7 @@ function RobMansion()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
     end
     if reset then return end
-    wait(0.1)
+    wait(0.5)
     pathMove(Vector3.new(3104, 57, -4384))
     if reset then return end
 
