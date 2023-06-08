@@ -6014,8 +6014,12 @@ function RobTrain()
 
     robbedTrain = true
     RobbingLocation = false
-    LogMessage("robbed cargo train for "..string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 6))
-    TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 2, 2)..string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 4, 6))
+    local trainMoney = string.gsub(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 2, 6), " ", "")
+    trainMoney = string.gsub(trainMoney, "/", "")
+    trainMoney = string.gsub(trainMoney, "kg", "")
+    LogMessage("robbed cargo train for $"..trainMoney)
+    trainMoney = string.gsub(trainMoney, ",", "")
+    TotalMoneyEarned += tonumber(trainMoney)
 end
 
 function RobTomb()
