@@ -1677,10 +1677,9 @@ local Bot = game.Players.localPlayer
 local TotalMoneyEarned = 0
 local platform = nil
 local RobbingLocation = false
-local toggled = false -- TRUE = ON  | FALSE = OFF
+local toggled = true -- TRUE = ON  | FALSE = OFF
 local reset = false
 local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
-
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
 local punchHash = "vjolnz9h" -- Y
 local hash = 'rcbiixfj'  -- Y
@@ -6587,6 +6586,10 @@ game.Workspace.DescendantAdded:Connect(function(part)
     end
 end)
 
+require(game:GetService("ReplicatedStorage").Game.Paraglide).IsFlying = function()
+	return tostring(getfenv(2).script) == "Falling"
+end
+
 for i = 1, 10, 1 do
     Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-220, 500, -4575))
     wait(0.01)
@@ -6692,79 +6695,82 @@ require(plrUtils).hasKey = function()
     return true
 end
 
-local ScriptTime = {
-    seconds = 0,
-    minutes = 0,
-    hours = 0,
-    secondsStr = "00",
-    minutesStr = "00",
-    hoursStr = "00",
-    TotalMoneyEarnedStr = "00,000,000",
-}
+if not _G.ScriptTime then
+    _G.ScriptTime = {
+        seconds = 0,
+        minutes = 0,
+        hours = 0,
+        secondsStr = "00",
+        minutesStr = "00",
+        hoursStr = "00",
+        TotalMoneyEarnedStr = "00,000,000",
+    }
+end
+
 coroutine.wrap(function()
     while true do
-        ScriptTime.seconds += 1
+        _G.ScriptTime.seconds += 1
 
-        if ScriptTime.seconds == 60 then
-            ScriptTime.minutes += 1
-            ScriptTime.seconds = 0
+        if _G.ScriptTime.seconds == 60 then
+            _G.ScriptTime.minutes += 1
+            _G.ScriptTime.seconds = 0
         end
-        if ScriptTime.minutes == 60 then
-            ScriptTime.hours += 1
-            ScriptTime.minutes = 0
+        if _G.ScriptTime.minutes == 60 then
+            _G.ScriptTime.hours += 1
+            _G.ScriptTime.minutes = 0
         end
 
-        if ScriptTime.seconds < 10 then
-            ScriptTime.secondsStr = "0"..tostring(ScriptTime.seconds)
+        if _G.ScriptTime.seconds < 10 then
+            _G.ScriptTime.secondsStr = "0"..tostring(_G.ScriptTime.seconds)
         else
-            ScriptTime.secondsStr = tostring(ScriptTime.seconds)
+            _G.ScriptTime.secondsStr = tostring(_G.ScriptTime.seconds)
         end
 
-        if ScriptTime.minutes < 10 then
-            ScriptTime.minutesStr = "0"..tostring(ScriptTime.minutes)
+        if _G.ScriptTime.minutes < 10 then
+            _G.ScriptTime.minutesStr = "0"..tostring(_G.ScriptTime.minutes)
         else
-            ScriptTime.minutesStr = tostring(ScriptTime.minutes)
+            _G.ScriptTime.minutesStr = tostring(_G.ScriptTime.minutes)
         end
 
-        if ScriptTime.hours < 10 then
-            ScriptTime.hoursStr = "0"..tostring(ScriptTime.hours)
+        if _G.ScriptTime.hours < 10 then
+            _G.ScriptTime.hoursStr = "0"..tostring(_G.ScriptTime.hours)
         else
-            ScriptTime.hoursStr = tostring(ScriptTime.hours)
+            _G.ScriptTime.hoursStr = tostring(_G.ScriptTime.hours)
         end
-        ScriptTime.TotalMoneyEarnedStr = TotalMoneyEarned
-        if string.len(ScriptTime.TotalMoneyEarnedStr) > 8 then
-            ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
+        _G.ScriptTime.TotalMoneyEarnedStr = TotalMoneyEarned
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) > 8 then
+            _G.ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 8 then
-            ScriptTime.TotalMoneyEarnedStr = string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 3, 5)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 6, 8)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 8 then
+            _G.ScriptTime.TotalMoneyEarnedStr = string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 3, 5)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 6, 8)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 7 then
-            ScriptTime.TotalMoneyEarnedStr = "0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 2, 4)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 5, 7)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 7 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "0"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 2, 4)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 5, 7)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 6 then
-            ScriptTime.TotalMoneyEarnedStr = "00,"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 3)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 4, 6)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 6 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "00,"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 3)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 4, 6)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 5 then
-            ScriptTime.TotalMoneyEarnedStr = "00,0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 3, 5)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 5 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "00,0"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 3, 5)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 4 then
-            ScriptTime.TotalMoneyEarnedStr = "00,00"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 2, 4)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 4 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "00,00"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 2, 4)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 3 then
-            ScriptTime.TotalMoneyEarnedStr = "00,000,"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 3)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 3 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 3)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 2 then
-            ScriptTime.TotalMoneyEarnedStr = "00,000,0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 2 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,0"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 2)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 1 then
-            ScriptTime.TotalMoneyEarnedStr = "00,000,00"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 1 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,00"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 1)
         end
-        if string.len(ScriptTime.TotalMoneyEarnedStr) == 0 then
-            ScriptTime.TotalMoneyEarnedStr = "00,000,000"
+        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 0 then
+            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,000"
         end
 
-        Time.Text = "Time Elapsed: "..ScriptTime.hoursStr..":"..ScriptTime.minutesStr..":"..ScriptTime.secondsStr
-        Money.Text = "Money Earned: $"..ScriptTime.TotalMoneyEarnedStr
+        Time.Text = "Time Elapsed: ".._G.ScriptTime.hoursStr..":".._G.ScriptTime.minutesStr..":".._G.ScriptTime.secondsStr
+        Money.Text = "Money Earned: $".._G.ScriptTime.TotalMoneyEarnedStr
         wait(1)
     end
 end)()
@@ -6827,10 +6833,6 @@ if true then
     end
 else
     require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList = old
-end
-
-require(game:GetService("ReplicatedStorage").Game.Paraglide).IsFlying = function()
-	return tostring(getfenv(2).script) == "Falling"
 end
 
 config.ServerHop = true
