@@ -1487,8 +1487,9 @@ if readfile and isfile then
         KEY = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
     end
 end
-local VerifyString = KEY.." "..tostring(hwid)
 
+local VerifyString = KEY.." "..tostring(hwid)
+print(KEY)
 local data = {['VERIFY'] = VerifyString}
 
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
@@ -1677,10 +1678,9 @@ local Bot = game.Players.localPlayer
 local TotalMoneyEarned = 0
 local platform = nil
 local RobbingLocation = false
-local toggled = false -- TRUE = ON  | FALSE = OFF
+local toggled = true -- TRUE = ON  | FALSE = OFF
 local reset = false
 local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
-
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
 local punchHash = "vjolnz9h" -- Y
 local hash = 'rcbiixfj'  -- Y
@@ -1705,7 +1705,8 @@ local config = {
     TombToggled = true,
     PowerToggled = true,
     BoatToggled = true,
-    PlaneToggled = true
+    PlaneToggled = true,
+    ServerHop = true
 }
 
 ----------------------------------------------------------------
@@ -2412,6 +2413,68 @@ function respawn(prisoner)
     require(plrUtils).hasKey = function() 
         return true
     end
+end
+
+local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+function TPReturner()
+   local Site;
+   if foundAnything == "" then
+       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+   else
+       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+   end
+   local ID = ""
+   if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+       foundAnything = Site.nextPageCursor
+   end
+   local num = 0;
+   for i,v in pairs(Site.data) do
+       local Possible = true
+       ID = tostring(v.id)
+       if tonumber(v.maxPlayers) > tonumber(v.playing) then
+           for _,Existing in pairs(AllIDs) do
+               if num ~= 0 then
+                   if ID == tostring(Existing) then
+                       Possible = false
+                   end
+               else
+                   if tonumber(actualHour) ~= tonumber(Existing) then
+                       local delFile = pcall(function()
+                           delfile("NotSameServers.json")
+                           AllIDs = {}
+                           table.insert(AllIDs, actualHour)
+                       end)
+                   end
+               end
+               num = num + 1
+           end
+           if Possible == true then
+               table.insert(AllIDs, ID)
+               wait()
+               pcall(function()
+                   writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                   wait()
+                   game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+               end)
+               wait(4)
+           end
+       end
+   end
+end
+ 
+function Teleport()
+   while wait() do
+       pcall(function()
+           TPReturner()
+           if foundAnything ~= "" then
+               TPReturner()
+           end
+       end)
+   end
 end
 
 function GetPos(location)
@@ -3193,16 +3256,8 @@ coroutine.wrap(function()
         end
 
         local robPlane = false
-        if game.Workspace:FindFirstChild("Plane") and not config.safe then
-            if game.Workspace.Plane:FindFirstChild("CargoPlane") then
-                if game.Workspace.Plane.CargoPlane.Position.X > -1150 then
-                    for k, v in pairs(game.Workspace.Plane.Crates:GetChildren()) do
-                        if v:GetChildren()[1].Transparency < 1 then
-                            robPlane = true
-                        end
-                    end
-                end
-            end
+        if game.Workspace:FindFirstChild("Plane") then
+            robPlane = true
         end
 
         if robPlane then
@@ -3258,6 +3313,10 @@ function robLocation()
                         end
                     end
                 end
+            end
+        elseif game.Workspace:FindFirstChild("Plane") and config.safe then
+            if game.Workspace.Plane.CargoPlane.Position.X < -1150 then
+                robPlane = true
             end
         end
     end
@@ -3416,6 +3475,10 @@ function robLocation()
     end
 
     UpdateLog("waiting for locations to open")
+
+    if config.ServerHop then
+        Teleport()
+    end
 end
 
 function RobBank()
@@ -6226,33 +6289,44 @@ function RobDrop(Drop, pos)
     end
     Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Drop.Root.Position)
     wait(0.5)
-    game:GetService('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
 
     UpdateLog("opening airdrop")
 
-    while Drop:FindFirstChild("Root") do
-        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
-        if not Drop:FindFirstChild("Root") then 
-            RobbingLocation = false
-            return 
+    local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
+
+    workspace.Drop.BriefcasePress:FireServer(ohBoolean1)
+
+    for i,v in pairs (UI.CircleAction.Specs) do
+        if v.Name == "Open Crate" then
+            v.Pressed = true
+            v.PressedAt = os.time()
         end
-        game:GetService('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
-        for k, v in pairs(Drop:GetDescendants()) do
-            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") then
-                v:Destroy()
-            end
-        end
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Drop.Root.Position + Vector3.new(0, 5, 0))
-        if reset then return end
-        wait(0.01)
     end
+
+    local ohBoolean1 = true
+
+    wait(25)
+
+    local ohBoolean1 = false
+
+    workspace.Drop.BriefcaseRelease:FireServer(ohBoolean1)
+
+    workspace.Drop.BriefcaseCollect:FireServer()
+
+    for i,v in pairs (UI.CircleAction.Specs) do
+        if v.Name == "Open Crate" then
+            v:Callback(v, true)
+        end
+    end
+
+    wait(0.5)
 
     UpdateLog("collecting cash")
 
     game:GetService('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
     
     wait(1)
-    local MoneyCollected = 4000
+    local MoneyCollected = 0
     wait(0.1)
     local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
     for i,v in pairs (UI.CircleAction.Specs) do
@@ -6277,31 +6351,109 @@ function RobDrop(Drop, pos)
     TotalMoneyEarned += tonumber(MoneyCollected)
 end
 
-function RobPlane()
-    exitCar.OnJump()
-    wait(0.5)
-    UpdateLog("collecting crate")
-    local oldPos = Bot.Character.HumanoidRootPart.Position
-    while not Bot.PlayerGui.RobberyMoneyGui.Enabled do
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Plane.Crates:GetChildren()[1]:GetChildren()[1].Position)
-        local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
-        for i,v in pairs (UI.CircleAction.Specs) do
-            if v.Name == "Inspect Crate" then
-                v.Duration = 0
-                v.Timed = true
-                v:Callback(v, true)
-                break
+function RobBoat()
+
+    local Heli
+    for i,v in pairs(workspace.Vehicles:GetChildren()) do
+        if pcall(function() return v.Seat.PlayerName end) then
+            if v.Seat.PlayerName.Value == Bot.Name then
+                Heli = v
             end
         end
-        if reset then return end
-        wait(0.01)
     end
-    Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
 
-    wait(1)
+    for k, v in pairs(game.Workspace.CargoShip.Crates:GetChildren()) do
+        Heli.Preset.RopePull.AttachedTo.Value = v
+        wait(0.1)
+        v.IsAttached.Value = true
+    end
 
-    if Bot.PlayerGui.RobberyMoneyGui.Enabled then
-        if reset then return end
+    --game:GetService("Workspace").CargoShip.Crates.Crate.MeshPart.PickupWeld
+end
+
+function RobPlane()
+    if not config.safe then
+        exitCar.OnJump()
+        wait(0.5)
+        UpdateLog("collecting crate")
+        local oldPos = Bot.Character.HumanoidRootPart.Position
+        while not Bot.PlayerGui.RobberyMoneyGui.Enabled do
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Plane.Crates:GetChildren()[1]:GetChildren()[1].Position)
+            local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
+            for i,v in pairs (UI.CircleAction.Specs) do
+                if v.Name == "Inspect Crate" then
+                    v.Duration = 0
+                    v.Timed = true
+                    v:Callback(v, true)
+                    break
+                end
+            end
+            if reset then return end
+            wait(0.01)
+        end
+        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+
+        wait(1)
+
+        if Bot.PlayerGui.RobberyMoneyGui.Enabled then
+            if reset then return end
+            UpdateLog("going to cargo port")
+            BotMove(Vector3.new(-342, 500, 2055), "cargo port", false)
+
+            wait(2)
+            robbedPlane = true
+            LogMessage("robbed cargo plane for $7,000")
+            TotalMoneyEarned += 7000
+        end
+        
+        robbedPlane = true
+        RobbingLocation = false
+    else
+        UpdateLog("going to air port")
+        BotMove(Vector3.new(-1298, 500, 2903), "airport", false)
+        wait(1)
+        exitCar.OnJump()
+        wait(0.5)
+
+        UpdateLog("waiting for plane to land")
+
+        repeat
+            wait()
+            if reset then return end
+            if game.Workspace.Plane.CargoPlane.Position.X > -1180 then
+                RobbingLocation = false
+                return
+            end
+        until math.floor(game.Workspace.Plane.CargoPlane.Position.X == -1185)
+
+        UpdateLog("entering plane")
+        pathMove(Vector3.new(-1158, 47, 2904))
+
+        UpdateLog("waiting")
+        wait(15)
+
+        UpdateLog("grabbing crate")
+        while not Bot.PlayerGui.RobberyMoneyGui.Enabled do
+            local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
+            for i,v in pairs (UI.CircleAction.Specs) do
+                if v.Name == "Inspect Crate" then
+                    v.Duration = 0
+                    v.Timed = true
+                    v:Callback(v, true)
+                    break
+                end
+            end
+            if reset then return end
+            wait(0.01)
+        end
+
+        UpdateLog("exiting plane")
+        
+        for i = 1, 3, 1 do
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(Bot.Character.HumanoidRootPart.Position.X, Bot.Character.HumanoidRootPart.Position.Y - 50, Bot.Character.HumanoidRootPart.Position.Z))
+            wait(0.1)
+        end
+
         UpdateLog("going to cargo port")
         BotMove(Vector3.new(-342, 500, 2055), "cargo port", false)
 
@@ -6310,9 +6462,6 @@ function RobPlane()
         LogMessage("robbed cargo plane for $7,000")
         TotalMoneyEarned += 7000
     end
-    
-    robbedPlane = true
-    RobbingLocation = false
 end
 
 
@@ -6403,7 +6552,7 @@ for k, v in pairs(game.Workspace:GetDescendants()) do
             end
         end
     end
-    if v.Name == "DartFire" or v.Name == "DartDamage" then
+    if v.Name == "DartFire" or v.Name == "DartDamage" or v.Name == "NPCDestObj" or v.Name == "TurretFront" or v.Name == "TurretBack" then
         v:Destroy()
     end
 end
@@ -6433,10 +6582,14 @@ game.Workspace.DescendantAdded:Connect(function(part)
             end
         end
     end
-    if part.Name == "DartFire" or part.Name == "DartDamage" or part.Name == "NPCDestObj" then
+    if part.Name == "DartFire" or part.Name == "DartDamage" or part.Name == "NPCDestObj" or part.Name == "TurretFront" or part.Name == "TurretBack" then
         part:Destroy()
     end
 end)
+
+require(game:GetService("ReplicatedStorage").Game.Paraglide).IsFlying = function()
+	return tostring(getfenv(2).script) == "Falling"
+end
 
 for i = 1, 10, 1 do
     Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-220, 500, -4575))
@@ -6543,84 +6696,86 @@ require(plrUtils).hasKey = function()
     return true
 end
 
-local seconds = 0
-local minutes = 0
-local hours = 0
 
-local secondsStr = "00"
-local minutesStr = "00"
-local hoursStr = "00"
-local TotalMoneyEarnedStr = "00,000,000"
+local ScriptTime = {
+    seconds = 0,
+    minutes = 0,
+    hours = 0,
+    secondsStr = "00",
+    minutesStr = "00",
+    hoursStr = "00",
+    TotalMoneyEarnedStr = "00,000,000",
+}
 
 coroutine.wrap(function()
     while true do
-        seconds += 1
+        ScriptTime.seconds += 1
 
-        if seconds == 60 then
-            minutes += 1
-            seconds = 0
+        if ScriptTime.seconds == 60 then
+            ScriptTime.minutes += 1
+            ScriptTime.seconds = 0
         end
-        if minutes == 60 then
-            hours += 1
-            minutes = 0
+        if ScriptTime.minutes == 60 then
+            ScriptTime.hours += 1
+            ScriptTime.minutes = 0
         end
 
-        if seconds < 10 then
-            secondsStr = "0"..tostring(seconds)
+        if ScriptTime.seconds < 10 then
+            ScriptTime.secondsStr = "0"..tostring(ScriptTime.seconds)
         else
-            secondsStr = tostring(seconds)
+            ScriptTime.secondsStr = tostring(ScriptTime.seconds)
         end
 
-        if minutes < 10 then
-            minutesStr = "0"..tostring(minutes)
+        if ScriptTime.minutes < 10 then
+            ScriptTime.minutesStr = "0"..tostring(ScriptTime.minutes)
         else
-            minutesStr = tostring(minutes)
+            ScriptTime.minutesStr = tostring(ScriptTime.minutes)
         end
 
-        if hours < 10 then
-            hoursStr = "0"..tostring(hours)
+        if ScriptTime.hours < 10 then
+            ScriptTime.hoursStr = "0"..tostring(ScriptTime.hours)
         else
-            hoursStr = tostring(hours)
+            ScriptTime.hoursStr = tostring(ScriptTime.hours)
         end
-        TotalMoneyEarnedStr = TotalMoneyEarned
-        if string.len(TotalMoneyEarnedStr) > 8 then
-            TotalMoneyEarnedStr = ">99,999,999"
+        ScriptTime.TotalMoneyEarnedStr = TotalMoneyEarned
+        if string.len(ScriptTime.TotalMoneyEarnedStr) > 8 then
+            ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
         end
-        if string.len(TotalMoneyEarnedStr) == 8 then
-            TotalMoneyEarnedStr = string.sub(TotalMoneyEarnedStr, 1, 2)..","..string.sub(TotalMoneyEarnedStr, 3, 5)..","..string.sub(TotalMoneyEarnedStr, 6, 8)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 8 then
+            ScriptTime.TotalMoneyEarnedStr = string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 3, 5)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 6, 8)
         end
-        if string.len(TotalMoneyEarnedStr) == 7 then
-            TotalMoneyEarnedStr = "0"..string.sub(TotalMoneyEarnedStr, 1, 1)..","..string.sub(TotalMoneyEarnedStr, 2, 4)..","..string.sub(TotalMoneyEarnedStr, 5, 7)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 7 then
+            ScriptTime.TotalMoneyEarnedStr = "0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 2, 4)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 5, 7)
         end
-        if string.len(TotalMoneyEarnedStr) == 6 then
-            TotalMoneyEarnedStr = "00,"..string.sub(TotalMoneyEarnedStr, 1, 3)..","..string.sub(TotalMoneyEarnedStr, 4, 6)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 6 then
+            ScriptTime.TotalMoneyEarnedStr = "00,"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 3)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 4, 6)
         end
-        if string.len(TotalMoneyEarnedStr) == 5 then
-            TotalMoneyEarnedStr = "00,0"..string.sub(TotalMoneyEarnedStr, 1, 2)..","..string.sub(TotalMoneyEarnedStr, 3, 5)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 5 then
+            ScriptTime.TotalMoneyEarnedStr = "00,0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 3, 5)
         end
-        if string.len(TotalMoneyEarnedStr) == 4 then
-            TotalMoneyEarnedStr = "00,00"..string.sub(TotalMoneyEarnedStr, 1, 1)..","..string.sub(TotalMoneyEarnedStr, 2, 4)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 4 then
+            ScriptTime.TotalMoneyEarnedStr = "00,00"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 2, 4)
         end
-        if string.len(TotalMoneyEarnedStr) == 3 then
-            TotalMoneyEarnedStr = "00,000,"..string.sub(TotalMoneyEarnedStr, 1, 3)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 3 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 3)
         end
-        if string.len(TotalMoneyEarnedStr) == 2 then
-            TotalMoneyEarnedStr = "00,000,0"..string.sub(TotalMoneyEarnedStr, 1, 2)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 2 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)
         end
-        if string.len(TotalMoneyEarnedStr) == 1 then
-            TotalMoneyEarnedStr = "00,000,00"..string.sub(TotalMoneyEarnedStr, 1, 1)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 1 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,00"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)
         end
-        if string.len(TotalMoneyEarnedStr) == 0 then
-            TotalMoneyEarnedStr = "00,000,000"
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 0 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,000"
         end
 
-        Time.Text = "Time Elapsed: "..hoursStr..":"..minutesStr..":"..secondsStr
-        Money.Text = "Money Earned: $"..TotalMoneyEarnedStr
+        Time.Text = "Time Elapsed: "..ScriptTime.hoursStr..":"..ScriptTime.minutesStr..":"..ScriptTime.secondsStr
+        Money.Text = "Money Earned: $"..ScriptTime.TotalMoneyEarnedStr
         wait(1)
     end
 end)()
 
-local old = old or require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList
+old = old or require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList
 
 if true then
     require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList = function(...)
@@ -6680,6 +6835,4 @@ else
     require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList = old
 end
 
-require(game:GetService("ReplicatedStorage").Game.Paraglide).IsFlying = function()
-	return tostring(getfenv(2).script) == "Falling"
-end
+config.ServerHop = false
