@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- BETTER
+
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -3525,6 +3525,7 @@ function robLocation()
     UpdateLog("waiting for locations to open")
 
     if config.ServerHop then
+        UpdateLog("changing servers")
         saveStats()
         wait(0.1)
         if syn then
@@ -6528,7 +6529,7 @@ function RobPlane()
                 RobbingLocation = false
                 return
             end
-        until math.floor(game.Workspace.Plane.CargoPlane.Position.X == -1185)
+        until math.floor(game.Workspace.Plane.CargoPlane.Position.X) == -1185
 
         UpdateLog("entering plane")
         pathMove(Vector3.new(-1158, 47, 2904))
@@ -6931,6 +6932,6 @@ else
     require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList = old
 end
 
-config.ServerHop = true
+config.ServerHop = false
 config.MinPlayers = 10
 config.MaxPing = 100
