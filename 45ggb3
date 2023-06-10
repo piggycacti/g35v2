@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
-
+-- UPDATED
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
