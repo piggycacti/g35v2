@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- VERY LOADED
+-- UPDATED
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -1674,7 +1674,6 @@ end
 ----------------------------------------------------------------
 
 local Bot = game.Players.localPlayer
-local TotalMoneyEarned = 0
 local platform = nil
 local RobbingLocation = false
 local toggled = true -- TRUE = ON  | FALSE = OFF
@@ -1683,12 +1682,52 @@ local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
 local punchHash = "vrnj128w" -- Y
 local hash = 'icsfdqe3'  -- Y
+local teamHash = 'tomm5a8a'
 
 local session
 if _G.CurrentSession == nil then
     local session = math.random(1, 1000)
 else
     session = _G.CurrentSession
+end
+
+local ScriptTime = {
+    TotalMoneyEarned = 0
+    seconds = 0,
+    minutes = 0,
+    hours = 0,
+    secondsStr = "00",
+    minutesStr = "00",
+    hoursStr = "00",
+    TotalMoneyEarnedStr = "00,000,000",
+}
+
+local LastSession
+if readfile and isfile then 
+    if isfile("ProjectBotSession.txt") then
+        LastSession = HttpService:JSONDecode(readfile("ProjectBotSession.txt"))
+    end
+end
+
+if _G.CurrentSession == LastSession then
+    if readfile and isfile then 
+        if isfile("ProjectBotSessionStats.txt") then
+            ScriptTime = HttpService:JSONDecode(readfile("ProjectBotSessionStats.txt"))
+        end
+    end
+end
+
+local json
+if writefile then 
+    json = HttpService:JSONEncode(CurrentSession)
+    writefile("ProjectBotSession.txt", json)
+end
+
+function saveStats()
+    if writefile then 
+        json = HttpService:JSONEncode(ScriptTime)
+        writefile("ProjectBotSessionStats.txt", json)
+    end
 end
 
 local config = {
@@ -2265,44 +2304,6 @@ function GetCasinoStatus()
         return true
     else
         return false
-    end
-end
-
-local ScriptTime = {
-    seconds = 0,
-    minutes = 0,
-    hours = 0,
-    secondsStr = "00",
-    minutesStr = "00",
-    hoursStr = "00",
-    TotalMoneyEarnedStr = "00,000,000",
-}
-
-local LastSession
-if readfile and isfile then 
-    if isfile("ProjectBotSession.txt") then
-        LastSession = HttpService:JSONDecode(readfile("ProjectBotSession.txt"))
-    end
-end
-
-if _G.CurrentSession == LastSession then
-    if readfile and isfile then 
-        if isfile("ProjectBotSessionStats.txt") then
-            ScriptTime = HttpService:JSONDecode(readfile("ProjectBotSessionStats.txt"))
-        end
-    end
-end
-
-local json
-if writefile then 
-    json = HttpService:JSONEncode(CurrentSession)
-    writefile("ProjectBotSession.txt", json)
-end
-
-function saveStats()
-    if writefile then 
-        json = HttpService:JSONEncode(ScriptTime)
-        writefile("ProjectBotSessionStats.txt", json)
     end
 end
 
@@ -3528,8 +3529,6 @@ function robLocation()
                 repeat wait() until game:IsLoaded()
                 _G.CurrentSession = session
                 repeat
-                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                    local teamHash = 'qq9wukcs' -- Y
                     network:FireServer(teamHash, "Prisoner")
                     wait(3)
                 until game.Players.localPlayer.Character
@@ -3542,8 +3541,6 @@ function robLocation()
                 _G.CurrentSession = session
                 wait(3)
                 repeat
-                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                    local teamHash = 'qq9wukcs' -- Y
                     network:FireServer(teamHash, "Prisoner")
                     wait(3)
                 until game.Players.localPlayer.Character
@@ -3555,8 +3552,6 @@ function robLocation()
                 repeat wait() until game:IsLoaded()
                 wait(3)
                 repeat
-                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                    local teamHash = 'qq9wukcs' -- Y
                     network:FireServer(teamHash, "Prisoner")
                     wait(3)
                 until game.Players.localPlayer.Character
@@ -4533,7 +4528,7 @@ function RobBank()
     LogMessage("robbed bank for $"..bankMoney)
     bankMoney = string.gsub(bankMoney, ",", "")
     if tonumber(bankMoney) ~= nil then
-        TotalMoneyEarned += tonumber(bankMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(bankMoney)
     end
 end
 
@@ -5037,7 +5032,7 @@ function RobJewel()
     LogMessage("robbed jewelry store for $"..jewelMoney)
     jewelMoney = string.gsub(jewelMoney, ",", "")
     if tonumber(jewelMoney) ~= nil then
-        TotalMoneyEarned += tonumber(jewelMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(jewelMoney)
     end
 end
 
@@ -5219,7 +5214,7 @@ function RobMansion()
     wait(1)
     RobbingLocation = false
     LogMessage("robbed mansion for $16,000")
-    TotalMoneyEarned += 16000
+    ScriptTime.TotalMoneyEarned += 16000
 end
 
 function RobCasino()
@@ -5836,7 +5831,7 @@ function RobCasino()
     LogMessage("robbed casino for $"..casinoMoney)
     casinoMoney = string.gsub(casinoMoney, ",", "")
     if tonumber(casinoMoney) ~= nil then
-        TotalMoneyEarned += tonumber(casinoMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(casinoMoney)
     end
 end
 
@@ -5981,12 +5976,12 @@ function RobMuseum()
     if string.len(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text) == 9 then
         LogMessage("robbed museum for "..string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 3))
         if tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 1)) ~= nil then
-            TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 1)) * 700
+            ScriptTime.TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 1)) * 700
         end
     else
         LogMessage("robbed museum for "..string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 4))
         if tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 2)) ~= nil then
-            TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 2)) * 700
+            ScriptTime.TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 2)) * 700
         end
     end
 end
@@ -6190,7 +6185,7 @@ function RobTrain()
     LogMessage("robbed cargo train for $"..trainMoney)
     trainMoney = string.gsub(trainMoney, ",", "")
     if tonumber(trainMoney) ~= nil then
-        TotalMoneyEarned += tonumber(trainMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(trainMoney)
     end
 end
 
@@ -6359,7 +6354,7 @@ function RobTomb()
     RobbingLocation = false
     robbedTomb = true
     LogMessage("robbed tomb for $7,000")
-    TotalMoneyEarned += 7000
+    ScriptTime.TotalMoneyEarned += 7000
 end
 
 function RobDrop(Drop, pos)
@@ -6435,7 +6430,7 @@ function RobDrop(Drop, pos)
     MoneyCollected = tostring(MoneyCollected)
     RobbingLocation = false
     LogMessage("robbed air drop for $"..string.sub(MoneyCollected, 1, 1)..","..string.sub(MoneyCollected, 2, 4))
-    TotalMoneyEarned += tonumber(MoneyCollected)
+    ScriptTime.TotalMoneyEarned += tonumber(MoneyCollected)
 end
 
 function RobBoat()
@@ -6490,7 +6485,7 @@ function RobPlane()
             wait(2)
             robbedPlane = true
             LogMessage("robbed cargo plane for $7,000")
-            TotalMoneyEarned += 7000
+            ScriptTime.TotalMoneyEarned += 7000
         end
         
         robbedPlane = true
@@ -6547,7 +6542,7 @@ function RobPlane()
         wait(2)
         robbedPlane = true
         LogMessage("robbed cargo plane for $7,000")
-        TotalMoneyEarned += 7000
+        ScriptTime.TotalMoneyEarned += 7000
     end
 end
 
@@ -6813,7 +6808,7 @@ coroutine.wrap(function()
         else
             ScriptTime.hoursStr = tostring(ScriptTime.hours)
         end
-        ScriptTime.TotalMoneyEarnedStr = TotalMoneyEarned
+        ScriptTime.TotalMoneyEarnedStr = ScriptTime.TotalMoneyEarned
         if string.len(ScriptTime.TotalMoneyEarnedStr) > 8 then
             ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
         end
