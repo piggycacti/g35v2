@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
------ LOADED
+-- VERY LOADED
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -1688,7 +1688,7 @@ local session
 if _G.CurrentSession == nil then
     local session = math.random(1, 1000)
 else
-    session == _G.CurrentSession
+    session = _G.CurrentSession
 end
 
 local config = {
