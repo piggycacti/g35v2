@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
-
+----- LOADED
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -1683,6 +1683,13 @@ local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
 local punchHash = "vrnj128w" -- Y
 local hash = 'icsfdqe3'  -- Y
+
+local session
+if _G.CurrentSession == nil then
+    local session = math.random(1, 1000)
+else
+    session == _G.CurrentSession
+end
 
 local config = {
     safe = true,
@@ -3516,6 +3523,47 @@ function robLocation()
     if config.ServerHop then
         saveStats()
         wait(0.1)
+        if syn then
+            syn.queue_on_teleport([[
+                repeat wait() until game:IsLoaded()
+                _G.CurrentSession = session
+                repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                    local teamHash = 'qq9wukcs' -- Y
+                    network:FireServer(teamHash, "Prisoner")
+                    wait(3)
+                until game.Players.localPlayer.Character
+                wait(0.5)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+            ]])
+        elseif queue_on_teleport then
+            queue_on_teleport([[
+                repeat wait() until game:IsLoaded()
+                _G.CurrentSession = session
+                wait(3)
+                repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                    local teamHash = 'qq9wukcs' -- Y
+                    network:FireServer(teamHash, "Prisoner")
+                    wait(3)
+                until game.Players.localPlayer.Character
+                wait(0.5)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+            ]])
+        elseif fluxus then
+            fluxus.queue_on_teleport([[
+                repeat wait() until game:IsLoaded()
+                wait(3)
+                repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                    local teamHash = 'qq9wukcs' -- Y
+                    network:FireServer(teamHash, "Prisoner")
+                    wait(3)
+                until game.Players.localPlayer.Character
+                wait(0.5)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+            ]])
+        end
         Teleport()
     end
 end
@@ -6863,4 +6911,4 @@ else
     require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList = old
 end
 
-config.ServerHop = true -- done
+config.ServerHop = true
