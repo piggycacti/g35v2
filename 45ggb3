@@ -33,7 +33,6 @@ if hwid == nil then
     end
 
     local json
-    local HttpService = game:GetService("HttpService")
     if writefile then 
         json = HttpService:JSONEncode(hwid)
         writefile("HWID.txt", json)
@@ -1487,6 +1486,7 @@ if readfile and isfile then
         KEY = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
     end
 end
+
 local VerifyString = KEY.." "..tostring(hwid)
 
 local data = {['VERIFY'] = VerifyString}
@@ -1681,8 +1681,8 @@ local toggled = true -- TRUE = ON  | FALSE = OFF
 local reset = false
 local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-local punchHash = "vjolnz9h" -- Y
-local hash = 'rcbiixfj'  -- Y
+local punchHash = "vrnj128w" -- Y
+local hash = 'icsfdqe3'  -- Y
 
 local config = {
     safe = true,
@@ -3476,6 +3476,8 @@ function robLocation()
     UpdateLog("waiting for locations to open")
 
     if config.ServerHop then
+        saveStats()
+        wait(0.1)
         Teleport()
     end
 end
@@ -6695,82 +6697,109 @@ require(plrUtils).hasKey = function()
     return true
 end
 
-if not _G.ScriptTime then
-    _G.ScriptTime = {
-        seconds = 0,
-        minutes = 0,
-        hours = 0,
-        secondsStr = "00",
-        minutesStr = "00",
-        hoursStr = "00",
-        TotalMoneyEarnedStr = "00,000,000",
-    }
+
+local ScriptTime = {
+    seconds = 0,
+    minutes = 0,
+    hours = 0,
+    secondsStr = "00",
+    minutesStr = "00",
+    hoursStr = "00",
+    TotalMoneyEarnedStr = "00,000,000",
+}
+
+local LastSession
+if readfile and isfile then 
+    if isfile("ProjectBotSession.txt") then
+        LastSession = HttpService:JSONDecode(readfile("ProjectBotSession.txt"))
+    end
+end
+
+if _G.CurrentSession == LastSession then
+    if readfile and isfile then 
+        if isfile("ProjectBotSessionStats.txt") then
+            ScriptTime = HttpService:JSONDecode(readfile("ProjectBotSessionStats.txt"))
+        end
+    end
+end
+
+local json
+if writefile then 
+    json = HttpService:JSONEncode(CurrentSession)
+    writefile("ProjectBotSession.txt", json)
+end
+
+function saveStats()
+    if writefile then 
+        json = HttpService:JSONEncode(ScriptTime)
+        writefile("ProjectBotSessionStats.txt", json)
+    end
 end
 
 coroutine.wrap(function()
     while true do
-        _G.ScriptTime.seconds += 1
+        ScriptTime.seconds += 1
 
-        if _G.ScriptTime.seconds == 60 then
-            _G.ScriptTime.minutes += 1
-            _G.ScriptTime.seconds = 0
+        if ScriptTime.seconds == 60 then
+            ScriptTime.minutes += 1
+            ScriptTime.seconds = 0
         end
-        if _G.ScriptTime.minutes == 60 then
-            _G.ScriptTime.hours += 1
-            _G.ScriptTime.minutes = 0
+        if ScriptTime.minutes == 60 then
+            ScriptTime.hours += 1
+            ScriptTime.minutes = 0
         end
 
-        if _G.ScriptTime.seconds < 10 then
-            _G.ScriptTime.secondsStr = "0"..tostring(_G.ScriptTime.seconds)
+        if ScriptTime.seconds < 10 then
+            ScriptTime.secondsStr = "0"..tostring(ScriptTime.seconds)
         else
-            _G.ScriptTime.secondsStr = tostring(_G.ScriptTime.seconds)
+            ScriptTime.secondsStr = tostring(ScriptTime.seconds)
         end
 
-        if _G.ScriptTime.minutes < 10 then
-            _G.ScriptTime.minutesStr = "0"..tostring(_G.ScriptTime.minutes)
+        if ScriptTime.minutes < 10 then
+            ScriptTime.minutesStr = "0"..tostring(ScriptTime.minutes)
         else
-            _G.ScriptTime.minutesStr = tostring(_G.ScriptTime.minutes)
+            ScriptTime.minutesStr = tostring(ScriptTime.minutes)
         end
 
-        if _G.ScriptTime.hours < 10 then
-            _G.ScriptTime.hoursStr = "0"..tostring(_G.ScriptTime.hours)
+        if ScriptTime.hours < 10 then
+            ScriptTime.hoursStr = "0"..tostring(ScriptTime.hours)
         else
-            _G.ScriptTime.hoursStr = tostring(_G.ScriptTime.hours)
+            ScriptTime.hoursStr = tostring(ScriptTime.hours)
         end
-        _G.ScriptTime.TotalMoneyEarnedStr = TotalMoneyEarned
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) > 8 then
-            _G.ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
+        ScriptTime.TotalMoneyEarnedStr = TotalMoneyEarned
+        if string.len(ScriptTime.TotalMoneyEarnedStr) > 8 then
+            ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 8 then
-            _G.ScriptTime.TotalMoneyEarnedStr = string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 3, 5)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 6, 8)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 8 then
+            ScriptTime.TotalMoneyEarnedStr = string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 3, 5)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 6, 8)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 7 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "0"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 2, 4)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 5, 7)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 7 then
+            ScriptTime.TotalMoneyEarnedStr = "0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 2, 4)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 5, 7)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 6 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "00,"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 3)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 4, 6)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 6 then
+            ScriptTime.TotalMoneyEarnedStr = "00,"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 3)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 4, 6)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 5 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "00,0"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 3, 5)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 5 then
+            ScriptTime.TotalMoneyEarnedStr = "00,0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 3, 5)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 4 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "00,00"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 2, 4)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 4 then
+            ScriptTime.TotalMoneyEarnedStr = "00,00"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)..","..string.sub(ScriptTime.TotalMoneyEarnedStr, 2, 4)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 3 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 3)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 3 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 3)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 2 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,0"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 2)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 2 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,0"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 2)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 1 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,00"..string.sub(_G.ScriptTime.TotalMoneyEarnedStr, 1, 1)
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 1 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,00"..string.sub(ScriptTime.TotalMoneyEarnedStr, 1, 1)
         end
-        if string.len(_G.ScriptTime.TotalMoneyEarnedStr) == 0 then
-            _G.ScriptTime.TotalMoneyEarnedStr = "00,000,000"
+        if string.len(ScriptTime.TotalMoneyEarnedStr) == 0 then
+            ScriptTime.TotalMoneyEarnedStr = "00,000,000"
         end
 
-        Time.Text = "Time Elapsed: ".._G.ScriptTime.hoursStr..":".._G.ScriptTime.minutesStr..":".._G.ScriptTime.secondsStr
-        Money.Text = "Money Earned: $".._G.ScriptTime.TotalMoneyEarnedStr
+        Time.Text = "Time Elapsed: "..ScriptTime.hoursStr..":"..ScriptTime.minutesStr..":"..ScriptTime.secondsStr
+        Money.Text = "Money Earned: $"..ScriptTime.TotalMoneyEarnedStr
         wait(1)
     end
 end)()
@@ -6835,4 +6864,4 @@ else
     require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList = old
 end
 
-config.ServerHop = true
+config.ServerHop = false
