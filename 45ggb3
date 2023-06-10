@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- VERY COOL
+
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -3529,6 +3529,7 @@ function robLocation()
                 repeat wait() until game:IsLoaded()
                 _G.CurrentSession = session
                 repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
                     network:FireServer(teamHash, "Prisoner")
                     wait(3)
                 until game.Players.localPlayer.Character
@@ -3541,6 +3542,7 @@ function robLocation()
                 _G.CurrentSession = session
                 wait(3)
                 repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
                     network:FireServer(teamHash, "Prisoner")
                     wait(3)
                 until game.Players.localPlayer.Character
@@ -3552,6 +3554,7 @@ function robLocation()
                 repeat wait() until game:IsLoaded()
                 wait(3)
                 repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
                     network:FireServer(teamHash, "Prisoner")
                     wait(3)
                 until game.Players.localPlayer.Character
