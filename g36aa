@@ -33,7 +33,6 @@ if hwid == nil then
     end
 
     local json
-    local HttpService = game:GetService("HttpService")
     if writefile then 
         json = HttpService:JSONEncode(hwid)
         writefile("HWID.txt", json)
@@ -1489,7 +1488,7 @@ if readfile and isfile then
 end
 
 local VerifyString = KEY.." "..tostring(hwid)
-print(KEY)
+
 local data = {['VERIFY'] = VerifyString}
 
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
@@ -1675,15 +1674,60 @@ end
 ----------------------------------------------------------------
 
 local Bot = game.Players.localPlayer
-local TotalMoneyEarned = 0
 local platform = nil
 local RobbingLocation = false
 local toggled = true -- TRUE = ON  | FALSE = OFF
 local reset = false
 local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-local punchHash = "vjolnz9h" -- Y
-local hash = 'rcbiixfj'  -- Y
+local punchHash = "vrnj128w" -- Y
+local hash = 'icsfdqe3'  -- Y
+
+local session
+if _G.CurrentSession == nil then
+    local session = math.random(1, 1000)
+else
+    session = _G.CurrentSession
+end
+
+local ScriptTime = {
+    TotalMoneyEarned = 0,
+    seconds = 0,
+    minutes = 0,
+    hours = 0,
+    secondsStr = "00",
+    minutesStr = "00",
+    hoursStr = "00",
+    TotalMoneyEarnedStr = "00,000,000",
+}
+
+local LastSession
+if readfile and isfile then 
+    if isfile("ProjectAutoSession.txt") then
+        LastSession = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
+    end
+end
+
+if _G.CurrentSession == LastSession then
+    if readfile and isfile then 
+        if isfile("ProjectAutoSessionStats.txt") then
+            ScriptTime = HttpService:JSONDecode(readfile("ProjectAutoSessionStats.txt"))
+        end
+    end
+end
+
+local json
+if writefile then 
+    json = HttpService:JSONEncode(CurrentSession)
+    writefile("ProjectAutoSession.txt", json)
+end
+
+function saveStats()
+    if writefile then 
+        json = HttpService:JSONEncode(ScriptTime)
+        writefile("ProjectAutoSessionStats.txt", json)
+    end
+end
 
 local config = {
     safe = true,
@@ -1706,7 +1750,9 @@ local config = {
     PowerToggled = true,
     BoatToggled = true,
     PlaneToggled = true,
-    ServerHop = true
+    ServerHop = true,
+    MinPlayers = 10,
+    MaxPing = 100
 }
 
 ----------------------------------------------------------------
@@ -2421,49 +2467,49 @@ local foundAnything = ""
 local actualHour = os.date("!*t").hour
 local Deleted = false
 function TPReturner()
-   local Site;
-   if foundAnything == "" then
-       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-   else
-       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-   end
-   local ID = ""
-   if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-       foundAnything = Site.nextPageCursor
-   end
-   local num = 0;
-   for i,v in pairs(Site.data) do
-       local Possible = true
-       ID = tostring(v.id)
-       if tonumber(v.maxPlayers) > tonumber(v.playing) then
-           for _,Existing in pairs(AllIDs) do
-               if num ~= 0 then
-                   if ID == tostring(Existing) then
-                       Possible = false
-                   end
-               else
-                   if tonumber(actualHour) ~= tonumber(Existing) then
-                       local delFile = pcall(function()
-                           delfile("NotSameServers.json")
-                           AllIDs = {}
-                           table.insert(AllIDs, actualHour)
-                       end)
-                   end
-               end
-               num = num + 1
-           end
-           if Possible == true then
-               table.insert(AllIDs, ID)
-               wait()
-               pcall(function()
-                   writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-                   wait()
-                   game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-               end)
-               wait(4)
-           end
-       end
-   end
+    local Site;
+    if foundAnything == "" then
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+    else
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+    local ID = ""
+    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+        foundAnything = Site.nextPageCursor
+    end
+    local num = 0;
+    for i,v in pairs(Site.data) do
+        local Possible = true
+        ID = tostring(v.id)
+        if tonumber(v.maxPlayers) > tonumber(v.playing) and tonumber(v.playing) > config.MinPlayers and tonumber(v.ping) < config.MaxPing then
+            for _,Existing in pairs(AllIDs) do
+                if num ~= 0 then
+                    if ID == tostring(Existing) then
+                        Possible = false
+                    end
+                else
+                    if tonumber(actualHour) ~= tonumber(Existing) then
+                        local delFile = pcall(function()
+                            delfile("NotSameServers.json")
+                            AllIDs = {}
+                            table.insert(AllIDs, actualHour)
+                        end)
+                    end
+                end
+                num = num + 1
+            end
+            if Possible == true then
+                table.insert(AllIDs, ID)
+                wait()
+                pcall(function()
+                    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                    wait()
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                end)
+                wait(4)
+            end
+        end
+    end
 end
  
 function Teleport()
@@ -2756,7 +2802,7 @@ function BotMove(location, LocationName, teleporting)
             end
         end
 
-        wait(0.5)
+        wait(1)
         if reset then return end
         
         for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
@@ -3315,8 +3361,10 @@ function robLocation()
                 end
             end
         elseif game.Workspace:FindFirstChild("Plane") and config.safe then
-            if game.Workspace.Plane.CargoPlane.Position.X < -1150 then
-                robPlane = true
+            if game.Workspace.Plane:FindFirstChild("CargoPlane") then
+                if game.Workspace.Plane.CargoPlane.Position.X < -1150 then
+                    robPlane = true
+                end
             end
         end
     end
@@ -3477,6 +3525,50 @@ function robLocation()
     UpdateLog("waiting for locations to open")
 
     if config.ServerHop then
+        UpdateLog("changing servers")
+        saveStats()
+        wait(0.1)
+        if syn then
+            syn.queue_on_teleport([[
+                repeat wait() until game:IsLoaded()
+                _G.CurrentSession = session
+                repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                    local teamHash = 'tomm5a8a'
+                    network:FireServer(teamHash, "Prisoner")
+                    wait(3)
+                until game.Players.localPlayer.Character
+                wait(0.5)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+            ]])
+        elseif queue_on_teleport then
+            queue_on_teleport([[
+                repeat wait() until game:IsLoaded()
+                _G.CurrentSession = session
+                wait(3)
+                repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                    local teamHash = 'tomm5a8a'
+                    network:FireServer(teamHash, "Prisoner")
+                    wait(3)
+                until game.Players.localPlayer.Character
+                wait(0.5)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+            ]])
+        elseif fluxus then
+            fluxus.queue_on_teleport([[
+                repeat wait() until game:IsLoaded()
+                wait(3)
+                repeat
+                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                    local teamHash = 'tomm5a8a'
+                    network:FireServer(teamHash, "Prisoner")
+                    wait(3)
+                until game.Players.localPlayer.Character
+                wait(0.5)
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+            ]])
+        end
         Teleport()
     end
 end
@@ -4446,7 +4538,7 @@ function RobBank()
     LogMessage("robbed bank for $"..bankMoney)
     bankMoney = string.gsub(bankMoney, ",", "")
     if tonumber(bankMoney) ~= nil then
-        TotalMoneyEarned += tonumber(bankMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(bankMoney)
     end
 end
 
@@ -4950,7 +5042,7 @@ function RobJewel()
     LogMessage("robbed jewelry store for $"..jewelMoney)
     jewelMoney = string.gsub(jewelMoney, ",", "")
     if tonumber(jewelMoney) ~= nil then
-        TotalMoneyEarned += tonumber(jewelMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(jewelMoney)
     end
 end
 
@@ -5014,6 +5106,9 @@ function RobMansion()
     if reset then return end
 
     UpdateLog("shooting ceo")
+    
+    network:FireServer(hash, "AK47")
+    wait(0.5)
 
     local boss = nil
     for k, v in pairs(game.Workspace.MansionRobbery:GetDescendants()) do
@@ -5047,6 +5142,10 @@ function RobMansion()
     CEOplatform.Position = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -7, 0)
     while boss:FindFirstChild("Humanoid") do
 
+        if not Bot.Folder:FindFirstChild("Ak47") then
+            network:FireServer(hash, "AK47")
+            wait(0.5)
+        end
         if not Bot.Character:FindFirstChild("AK47") then
 
             wait(0.5)
@@ -5132,7 +5231,7 @@ function RobMansion()
     wait(1)
     RobbingLocation = false
     LogMessage("robbed mansion for $16,000")
-    TotalMoneyEarned += 16000
+    ScriptTime.TotalMoneyEarned += 16000
 end
 
 function RobCasino()
@@ -5749,7 +5848,7 @@ function RobCasino()
     LogMessage("robbed casino for $"..casinoMoney)
     casinoMoney = string.gsub(casinoMoney, ",", "")
     if tonumber(casinoMoney) ~= nil then
-        TotalMoneyEarned += tonumber(casinoMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(casinoMoney)
     end
 end
 
@@ -5894,12 +5993,12 @@ function RobMuseum()
     if string.len(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text) == 9 then
         LogMessage("robbed museum for "..string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 3))
         if tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 1)) ~= nil then
-            TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 1)) * 700
+            ScriptTime.TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 1)) * 700
         end
     else
         LogMessage("robbed museum for "..string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 4))
         if tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 2)) ~= nil then
-            TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 2)) * 700
+            ScriptTime.TotalMoneyEarned += tonumber(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 2)) * 700
         end
     end
 end
@@ -6103,7 +6202,7 @@ function RobTrain()
     LogMessage("robbed cargo train for $"..trainMoney)
     trainMoney = string.gsub(trainMoney, ",", "")
     if tonumber(trainMoney) ~= nil then
-        TotalMoneyEarned += tonumber(trainMoney)
+        ScriptTime.TotalMoneyEarned += tonumber(trainMoney)
     end
 end
 
@@ -6272,7 +6371,7 @@ function RobTomb()
     RobbingLocation = false
     robbedTomb = true
     LogMessage("robbed tomb for $7,000")
-    TotalMoneyEarned += 7000
+    ScriptTime.TotalMoneyEarned += 7000
 end
 
 function RobDrop(Drop, pos)
@@ -6305,8 +6404,9 @@ function RobDrop(Drop, pos)
 
     local ohBoolean1 = true
 
+    if reset then return end
     wait(25)
-
+    if reset then return end
     local ohBoolean1 = false
 
     workspace.Drop.BriefcaseRelease:FireServer(ohBoolean1)
@@ -6319,11 +6419,15 @@ function RobDrop(Drop, pos)
         end
     end
 
+    repeat
+        wait()
+        if reset then return end
+        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+    until not Drop:FindFirstChild("Root")
+
     wait(0.5)
 
     UpdateLog("collecting cash")
-
-    game:GetService('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
     
     wait(1)
     local MoneyCollected = 0
@@ -6345,10 +6449,11 @@ function RobDrop(Drop, pos)
 
     wait(5)
     if reset then return end
-    MoneyCollected = tostring(MoneyCollected)
     RobbingLocation = false
-    LogMessage("robbed air drop for $"..string.sub(MoneyCollected, 1, 1)..","..string.sub(MoneyCollected, 2, 4))
-    TotalMoneyEarned += tonumber(MoneyCollected)
+    LogMessage("robbed air drop for $"..string.sub(tostring(MoneyCollected), 1, 1)..","..string.sub(tostring(MoneyCollected), 2, 4))
+    if MoneyCollected ~= nil then
+        ScriptTime.TotalMoneyEarned += MoneyCollected
+    end
 end
 
 function RobBoat()
@@ -6403,7 +6508,7 @@ function RobPlane()
             wait(2)
             robbedPlane = true
             LogMessage("robbed cargo plane for $7,000")
-            TotalMoneyEarned += 7000
+            ScriptTime.TotalMoneyEarned += 7000
         end
         
         robbedPlane = true
@@ -6424,7 +6529,7 @@ function RobPlane()
                 RobbingLocation = false
                 return
             end
-        until math.floor(game.Workspace.Plane.CargoPlane.Position.X == -1185)
+        until math.floor(game.Workspace.Plane.CargoPlane.Position.X) == -1185
 
         UpdateLog("entering plane")
         pathMove(Vector3.new(-1158, 47, 2904))
@@ -6460,7 +6565,7 @@ function RobPlane()
         wait(2)
         robbedPlane = true
         LogMessage("robbed cargo plane for $7,000")
-        TotalMoneyEarned += 7000
+        ScriptTime.TotalMoneyEarned += 7000
     end
 end
 
@@ -6696,17 +6801,6 @@ require(plrUtils).hasKey = function()
     return true
 end
 
-
-local ScriptTime = {
-    seconds = 0,
-    minutes = 0,
-    hours = 0,
-    secondsStr = "00",
-    minutesStr = "00",
-    hoursStr = "00",
-    TotalMoneyEarnedStr = "00,000,000",
-}
-
 coroutine.wrap(function()
     while true do
         ScriptTime.seconds += 1
@@ -6737,7 +6831,10 @@ coroutine.wrap(function()
         else
             ScriptTime.hoursStr = tostring(ScriptTime.hours)
         end
-        ScriptTime.TotalMoneyEarnedStr = TotalMoneyEarned
+        ScriptTime.TotalMoneyEarnedStr = ScriptTime.TotalMoneyEarned
+        if ScriptTime.TotalMoneyEarnedStr == nil then
+            ScriptTime.TotalMoneyEarnedStr = 0
+        end
         if string.len(ScriptTime.TotalMoneyEarnedStr) > 8 then
             ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
         end
@@ -6836,3 +6933,5 @@ else
 end
 
 config.ServerHop = false
+config.MinPlayers = 10
+config.MaxPing = 100
