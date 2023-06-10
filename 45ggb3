@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- DONE
+
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -6821,6 +6821,9 @@ coroutine.wrap(function()
             ScriptTime.hoursStr = tostring(ScriptTime.hours)
         end
         ScriptTime.TotalMoneyEarnedStr = ScriptTime.TotalMoneyEarned
+        if ScriptTime.TotalMoneyEarnedStr == nil then
+            ScriptTime.TotalMoneyEarnedStr = 0
+        end
         if string.len(ScriptTime.TotalMoneyEarnedStr) > 8 then
             ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
         end
