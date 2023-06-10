@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- EVEN MORE UPDATED
+
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -6387,8 +6387,9 @@ function RobDrop(Drop, pos)
 
     local ohBoolean1 = true
 
+    if reset then return end
     wait(25)
-
+    if reset then return end
     local ohBoolean1 = false
 
     workspace.Drop.BriefcaseRelease:FireServer(ohBoolean1)
@@ -6401,11 +6402,15 @@ function RobDrop(Drop, pos)
         end
     end
 
+    repeat
+        wait()
+        if reset then return end
+        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+    until not Drop:FindFirstChild("Root")
+    
     wait(0.5)
 
     UpdateLog("collecting cash")
-
-    game:GetService('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
     
     wait(1)
     local MoneyCollected = 0
@@ -6430,7 +6435,9 @@ function RobDrop(Drop, pos)
     MoneyCollected = tostring(MoneyCollected)
     RobbingLocation = false
     LogMessage("robbed air drop for $"..string.sub(MoneyCollected, 1, 1)..","..string.sub(MoneyCollected, 2, 4))
-    ScriptTime.TotalMoneyEarned += tonumber(MoneyCollected)
+    if tonumber(MoneyCollected) ~= nil then
+        ScriptTime.TotalMoneyEarned += tonumber(MoneyCollected)
+    end
 end
 
 function RobBoat()
