@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- UPDATED
+-- EVEN MORE UPDATED
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -1692,7 +1692,7 @@ else
 end
 
 local ScriptTime = {
-    TotalMoneyEarned = 0
+    TotalMoneyEarned = 0,
     seconds = 0,
     minutes = 0,
     hours = 0,
