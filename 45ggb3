@@ -2801,7 +2801,7 @@ function BotMove(location, LocationName, teleporting)
             end
         end
 
-        wait(0.5)
+        wait(1)
         if reset then return end
         
         for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
@@ -3360,8 +3360,10 @@ function robLocation()
                 end
             end
         elseif game.Workspace:FindFirstChild("Plane") and config.safe then
-            if game.Workspace.Plane.CargoPlane.Position.X < -1150 then
-                robPlane = true
+            if game.Workspace.Plane:FindFirstChild("CargoPlane") then
+                if game.Workspace.Plane.CargoPlane.Position.X < -1150 then
+                    robPlane = true
+                end
             end
         end
     end
