@@ -1703,15 +1703,15 @@ local ScriptTime = {
 
 local LastSession
 if readfile and isfile then 
-    if isfile("ProjectBotSession.txt") then
-        LastSession = HttpService:JSONDecode(readfile("ProjectBotSession.txt"))
+    if isfile("ProjectAutoSession.txt") then
+        LastSession = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
     end
 end
 
 if _G.CurrentSession == LastSession then
     if readfile and isfile then 
-        if isfile("ProjectBotSessionStats.txt") then
-            ScriptTime = HttpService:JSONDecode(readfile("ProjectBotSessionStats.txt"))
+        if isfile("ProjectAutoSessionStats.txt") then
+            ScriptTime = HttpService:JSONDecode(readfile("ProjectAutoSessionStats.txt"))
         end
     end
 end
@@ -1719,13 +1719,13 @@ end
 local json
 if writefile then 
     json = HttpService:JSONEncode(CurrentSession)
-    writefile("ProjectBotSession.txt", json)
+    writefile("ProjectAutoSession.txt", json)
 end
 
 function saveStats()
     if writefile then 
         json = HttpService:JSONEncode(ScriptTime)
-        writefile("ProjectBotSessionStats.txt", json)
+        writefile("ProjectAutoSessionStats.txt", json)
     end
 end
 
