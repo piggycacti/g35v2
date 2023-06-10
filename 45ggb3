@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- UPDATED
+-- BETTER
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -1751,7 +1751,8 @@ local config = {
     BoatToggled = true,
     PlaneToggled = true,
     ServerHop = true,
-    MinPlayers = 10
+    MinPlayers = 10,
+    MaxPing = 100
 }
 
 ----------------------------------------------------------------
@@ -2480,7 +2481,7 @@ function TPReturner()
     for i,v in pairs(Site.data) do
         local Possible = true
         ID = tostring(v.id)
-        if tonumber(v.maxPlayers) > tonumber(v.playing) and tonumber(v.playing) > config.MinPlayers then
+        if tonumber(v.maxPlayers) > tonumber(v.playing) and tonumber(v.playing) > config.MinPlayers and tonumber(v.ping) < config.MaxPing then
             for _,Existing in pairs(AllIDs) do
                 if num ~= 0 then
                     if ID == tostring(Existing) then
@@ -5104,6 +5105,9 @@ function RobMansion()
     if reset then return end
 
     UpdateLog("shooting ceo")
+    
+    network:FireServer(hash, "AK47")
+    wait(0.5)
 
     local boss = nil
     for k, v in pairs(game.Workspace.MansionRobbery:GetDescendants()) do
@@ -5137,6 +5141,10 @@ function RobMansion()
     CEOplatform.Position = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -7, 0)
     while boss:FindFirstChild("Humanoid") do
 
+        if not Bot.Folder:FindFirstChild("Ak47") then
+            network:FireServer(hash, "AK47")
+            wait(0.5)
+        end
         if not Bot.Character:FindFirstChild("AK47") then
 
             wait(0.5)
@@ -6925,3 +6933,4 @@ end
 
 config.ServerHop = true
 config.MinPlayers = 10
+config.MaxPing = 100
