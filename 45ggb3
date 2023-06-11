@@ -2822,7 +2822,7 @@ end
 
 local json
 if writefile then 
-    json = HttpService:JSONEncode(CurrentSession)
+    json = HttpService:JSONEncode(_G.CurrentSession)
     writefile("ProjectAutoSession.txt", json)
 end
 
@@ -7501,13 +7501,25 @@ function RobDrop(Drop, pos)
     local ohBoolean1 = true
 
     if reset then return end
+    if not Drop then
+        RobbingLocation = false
+        return 
+    end
+    if not Drop:FindFirstChild("Root") then 
+        RobbingLocation = false
+        return 
+    end
     wait(25)
     if reset then return end
+    if not Drop:FindFirstChild("Root") then 
+        RobbingLocation = false
+        return 
+    end
     local ohBoolean1 = false
 
-    workspace.Drop.BriefcaseRelease:FireServer(ohBoolean1)
+    Drop.BriefcaseRelease:FireServer(ohBoolean1)
 
-    workspace.Drop.BriefcaseCollect:FireServer()
+    Drop.BriefcaseCollect:FireServer()
 
     for i,v in pairs (UI.CircleAction.Specs) do
         if v.Name == "Open Crate" then
@@ -7516,7 +7528,8 @@ function RobDrop(Drop, pos)
     end
 
     repeat
-        workspace.Drop.BriefcasePress:FireServer(ohBoolean1)
+        if not Drop:FindFirstChild("Root") then break end
+        Drop.BriefcasePress:FireServer(ohBoolean1)
 
         for i,v in pairs (UI.CircleAction.Specs) do
             if v.Name == "Open Crate" then
@@ -7529,12 +7542,13 @@ function RobDrop(Drop, pos)
 
         if reset then return end
         wait(0.5)
+        if not Drop:FindFirstChild("Root") then break end
         if reset then return end
         local ohBoolean1 = false
 
-        workspace.Drop.BriefcaseRelease:FireServer(ohBoolean1)
+        Drop.BriefcaseRelease:FireServer(ohBoolean1)
 
-        workspace.Drop.BriefcaseCollect:FireServer()
+        Drop.BriefcaseCollect:FireServer()
 
         for i,v in pairs (UI.CircleAction.Specs) do
             if v.Name == "Open Crate" then
