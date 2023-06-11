@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
-
+-- DONE
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -4605,6 +4605,7 @@ function robLocation()
                 syn.queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
                     local session
+                    local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
                         if isfile("ProjectAutoSession.txt") then
                             session = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
@@ -4624,6 +4625,7 @@ function robLocation()
                 queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
                     local session
+                    local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
                         if isfile("ProjectAutoSession.txt") then
                             session = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
@@ -4644,6 +4646,7 @@ function robLocation()
                 fluxus.queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
                     local session
+                    local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
                         if isfile("ProjectAutoSession.txt") then
                             session = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
