@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- UPDATED
+
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -504,7 +504,7 @@ ProjectAutoV2.ConsoleTab.Name = "ConsoleTab"
 ProjectAutoV2.ConsoleTab.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.ConsoleTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.ConsoleTab.BorderSizePixel = 0
-ProjectAutoV2.ConsoleTab.Position = UDim2.new(0, 667, 0, 72)
+ProjectAutoV2.ConsoleTab.Position = UDim2.new(0, 101, 0, 50)
 ProjectAutoV2.ConsoleTab.Size = UDim2.new(0, 299, 0, 399)
 
 ProjectAutoV2.Console.Name = "Console"
@@ -546,7 +546,7 @@ ProjectAutoV2.LocationsTab.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.LocationsTab.Active = true
 ProjectAutoV2.LocationsTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.LocationsTab.BorderSizePixel = 0
-ProjectAutoV2.LocationsTab.Position = UDim2.new(0, 539, 0, 116)
+ProjectAutoV2.LocationsTab.Position = UDim2.new(0, 101, 0, 50)
 ProjectAutoV2.LocationsTab.Size = UDim2.new(0, 299, 0, 399)
 ProjectAutoV2.LocationsTab.CanvasSize = UDim2.new(0, 0, 0.870000005, 0)
 ProjectAutoV2.LocationsTab.ScrollBarThickness = 5
@@ -2062,7 +2062,7 @@ ProjectAutoV2.InfoTab.Name = "InfoTab"
 ProjectAutoV2.InfoTab.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.InfoTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.InfoTab.BorderSizePixel = 0
-ProjectAutoV2.InfoTab.Position = UDim2.new(0, 570, 0, 32)
+ProjectAutoV2.InfoTab.Position = UDim2.new(0, 101, 0, 50)
 ProjectAutoV2.InfoTab.Size = UDim2.new(0, 299, 0, 399)
 
 ProjectAutoV2.Creator.Name = "Creator"
@@ -3241,11 +3241,11 @@ ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position = UDim2.
 coroutine.wrap(function() -- 200 * NUM + MIN = MAX, (MAX - MIN) / 200 = NUM
     while true do
         config.FlySpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -0.5 - 50
-        ProjectAutoV2.BotSpeedValue.Text = tostring(math.round((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100) / 100).."%"
+        ProjectAutoV2.BotSpeedValue.Text = tostring((math.round((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100) / 100) * 100).."%"
         config.avoidCopRange = ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position.X.Offset * 2.5 + 100
         ProjectAutoV2.CopAvoidValue.Text = math.round(config.avoidCopRange * 100) / 100
         config.GroundSpeed = ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset * 0.04 + 1
-         ProjectAutoV2.BotSpeedValue.Text = tostring(math.round((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100) / 100).."%"
+         ProjectAutoV2.PathSpeedValue.Text = tostring((math.round((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100) / 100) * 100).."%"
         config.CarSpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -2.5 - 100
         config.killAuraRange = ProjectAutoV2.KillAuraSlider:FindFirstChild("Handle").Position.X.Offset * 2.75 + 50
         ProjectAutoV2.KillAuraValue.Text = math.round(config.killAuraRange * 100) / 100
