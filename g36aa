@@ -2117,7 +2117,7 @@ ProjectAutoV2.Version.Position = UDim2.new(0, 10, 0, 8)
 ProjectAutoV2.Version.Size = UDim2.new(0, 279, 0, 25)
 ProjectAutoV2.Version.ZIndex = 2
 ProjectAutoV2.Version.Font = Enum.Font.SourceSansSemibold
-ProjectAutoV2.Version.Text = "Version 0.6 beta"
+ProjectAutoV2.Version.Text = "Version 0.6"
 ProjectAutoV2.Version.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Version.TextSize = 15.000
 
