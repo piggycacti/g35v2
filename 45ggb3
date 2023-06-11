@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- UPDATED
+
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -4617,7 +4617,7 @@ function robLocation()
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.Character
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
                     wait(0.5)
                     loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
@@ -4638,7 +4638,7 @@ function robLocation()
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.Character
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
                     wait(0.5)
                     loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
@@ -4659,7 +4659,7 @@ function robLocation()
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.Character
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
                     wait(0.5)
                     loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
