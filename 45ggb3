@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
-
+-- DONE
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -7686,6 +7686,7 @@ function RobPlane()
         robbedPlane = true
         LogMessage("robbed cargo plane for $7,000")
         ScriptTime.TotalMoneyEarned += 7000
+        RobbingLocation = false
     end
 end
 
