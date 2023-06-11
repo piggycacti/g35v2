@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- DONE
+
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -504,7 +504,7 @@ ProjectAutoV2.ConsoleTab.Name = "ConsoleTab"
 ProjectAutoV2.ConsoleTab.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.ConsoleTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.ConsoleTab.BorderSizePixel = 0
-ProjectAutoV2.ConsoleTab.Position = UDim2.new(0, 101, 0, 50)
+ProjectAutoV2.ConsoleTab.Position = UDim2.new(0, 101, 0, 51)
 ProjectAutoV2.ConsoleTab.Size = UDim2.new(0, 299, 0, 399)
 
 ProjectAutoV2.Console.Name = "Console"
@@ -546,7 +546,7 @@ ProjectAutoV2.LocationsTab.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.LocationsTab.Active = true
 ProjectAutoV2.LocationsTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.LocationsTab.BorderSizePixel = 0
-ProjectAutoV2.LocationsTab.Position = UDim2.new(0, 101, 0, 50)
+ProjectAutoV2.LocationsTab.Position = UDim2.new(0, 101, 0, 51)
 ProjectAutoV2.LocationsTab.Size = UDim2.new(0, 299, 0, 399)
 ProjectAutoV2.LocationsTab.CanvasSize = UDim2.new(0, 0, 0.870000005, 0)
 ProjectAutoV2.LocationsTab.ScrollBarThickness = 5
@@ -1136,7 +1136,7 @@ ProjectAutoV2.SettingsTab.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.SettingsTab.Active = true
 ProjectAutoV2.SettingsTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.SettingsTab.BorderSizePixel = 0
-ProjectAutoV2.SettingsTab.Position = UDim2.new(0, 101, 0, 50)
+ProjectAutoV2.SettingsTab.Position = UDim2.new(0, 101, 0, 51)
 ProjectAutoV2.SettingsTab.Size = UDim2.new(0, 299, 0, 399)
 ProjectAutoV2.SettingsTab.AutomaticCanvasSize = "Y"
 ProjectAutoV2.SettingsTab.CanvasSize = UDim2.new(0, 0, 0.790000021, 0)
@@ -2062,7 +2062,7 @@ ProjectAutoV2.InfoTab.Name = "InfoTab"
 ProjectAutoV2.InfoTab.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.InfoTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.InfoTab.BorderSizePixel = 0
-ProjectAutoV2.InfoTab.Position = UDim2.new(0, 101, 0, 50)
+ProjectAutoV2.InfoTab.Position = UDim2.new(0, 101, 0, 51)
 ProjectAutoV2.InfoTab.Size = UDim2.new(0, 299, 0, 399)
 
 ProjectAutoV2.Creator.Name = "Creator"
