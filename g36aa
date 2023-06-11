@@ -1,6 +1,6 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
 
-versionChecker.version = "0.6 beta"
+versionChecker.version = "0.6"
 versionChecker.checkVersion()
 
 local hwid = nil
@@ -288,25 +288,32 @@ local ProjectAutoV2 = {
 	UICorner_93 = Instance.new("UICorner"),
 	MaxPingValue = Instance.new("TextLabel"),
 	Title_10 = Instance.new("TextLabel"),
-	AutoRobToggle = Instance.new("TextLabel"),
+	ServerHopWaitTimeSlider = Instance.new("ImageLabel"),
+	Handle_7 = Instance.new("ImageButton"),
 	UICorner_94 = Instance.new("UICorner"),
-	Border_20 = Instance.new("TextLabel"),
+	BackGround_9 = Instance.new("ImageLabel"),
 	UICorner_95 = Instance.new("UICorner"),
-	AutoRobToggleButton = Instance.new("ImageButton"),
+	ServerHopWaitTimeValue = Instance.new("TextLabel"),
+	Title_11 = Instance.new("TextLabel"),
+	AutoRobToggle = Instance.new("TextLabel"),
 	UICorner_96 = Instance.new("UICorner"),
-	ImageLabel_19 = Instance.new("ImageLabel"),
+	Border_20 = Instance.new("TextLabel"),
 	UICorner_97 = Instance.new("UICorner"),
+	AutoRobToggleButton = Instance.new("ImageButton"),
+	UICorner_98 = Instance.new("UICorner"),
+	ImageLabel_19 = Instance.new("ImageLabel"),
+	UICorner_99 = Instance.new("UICorner"),
 	InfoTab = Instance.new("Frame"),
 	Creator = Instance.new("TextLabel"),
-	UICorner_98 = Instance.new("UICorner"),
+	UICorner_100 = Instance.new("UICorner"),
 	Border_21 = Instance.new("TextLabel"),
-	UICorner_99 = Instance.new("UICorner"),
+	UICorner_101 = Instance.new("UICorner"),
 	UIListLayout_4 = Instance.new("UIListLayout"),
 	Gap_3 = Instance.new("TextLabel"),
 	Version = Instance.new("TextLabel"),
-	UICorner_100 = Instance.new("UICorner"),
+	UICorner_102 = Instance.new("UICorner"),
 	Border_22 = Instance.new("TextLabel"),
-	UICorner_101 = Instance.new("UICorner"),
+	UICorner_103 = Instance.new("UICorner"),
 }
 
 --Properties:
@@ -403,7 +410,7 @@ ProjectAutoV2.Time.Name = "Time"
 ProjectAutoV2.Time.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.Time.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ProjectAutoV2.Time.BackgroundTransparency = 1.000
-ProjectAutoV2.Time.Position = UDim2.new(0, 150, 0, 450)
+ProjectAutoV2.Time.Position = UDim2.new(0, 200, 0, 450)
 ProjectAutoV2.Time.Size = UDim2.new(0, 130, 0, 25)
 ProjectAutoV2.Time.Font = Enum.Font.SourceSansSemibold
 ProjectAutoV2.Time.Text = "Time Elapsed: 00:00:00"
@@ -415,7 +422,7 @@ ProjectAutoV2.Money.Name = "Money"
 ProjectAutoV2.Money.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.Money.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ProjectAutoV2.Money.BackgroundTransparency = 1.000
-ProjectAutoV2.Money.Position = UDim2.new(0, 150, 0, 475)
+ProjectAutoV2.Money.Position = UDim2.new(0, 200, 0, 475)
 ProjectAutoV2.Money.Size = UDim2.new(0, 150, 0, 25)
 ProjectAutoV2.Money.Font = Enum.Font.SourceSansSemibold
 ProjectAutoV2.Money.Text = "Money Earned: $00,000,000"
@@ -541,7 +548,6 @@ ProjectAutoV2.LocationsTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.LocationsTab.BorderSizePixel = 0
 ProjectAutoV2.LocationsTab.Position = UDim2.new(0, 101, 0, 51)
 ProjectAutoV2.LocationsTab.Size = UDim2.new(0, 299, 0, 399)
-ProjectAutoV2.LocationsTab.CanvasPosition = Vector2.new(0, 36)
 ProjectAutoV2.LocationsTab.CanvasSize = UDim2.new(0, 0, 0.870000005, 0)
 ProjectAutoV2.LocationsTab.ScrollBarThickness = 5
 
@@ -1949,6 +1955,63 @@ ProjectAutoV2.Title_10.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Title_10.TextSize = 15.000
 ProjectAutoV2.Title_10.TextStrokeTransparency = 0.000
 
+ProjectAutoV2.ServerHopWaitTimeSlider.Name = "ServerHopWaitTimeSlider"
+ProjectAutoV2.ServerHopWaitTimeSlider.Parent = ProjectAutoV2.ServerHopSection
+ProjectAutoV2.ServerHopWaitTimeSlider.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+ProjectAutoV2.ServerHopWaitTimeSlider.BorderColor3 = Color3.fromRGB(200, 0, 0)
+ProjectAutoV2.ServerHopWaitTimeSlider.BorderSizePixel = 0
+ProjectAutoV2.ServerHopWaitTimeSlider.Position = UDim2.new(0, 10, 0, 155)
+ProjectAutoV2.ServerHopWaitTimeSlider.Size = UDim2.new(0, 210, 0, 14)
+ProjectAutoV2.ServerHopWaitTimeSlider.Visible = false
+ProjectAutoV2.ServerHopWaitTimeSlider.ZIndex = 3
+
+ProjectAutoV2.Handle_7.Name = "Handle"
+ProjectAutoV2.Handle_7.Parent = ProjectAutoV2.ServerHopWaitTimeSlider
+ProjectAutoV2.Handle_7.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ProjectAutoV2.Handle_7.BorderColor3 = Color3.fromRGB(0, 255, 255)
+ProjectAutoV2.Handle_7.Position = UDim2.new(0, 0, 0, -3)
+ProjectAutoV2.Handle_7.Size = UDim2.new(0, 10, 0, 20)
+ProjectAutoV2.Handle_7.ZIndex = 4
+
+ProjectAutoV2.UICorner_94.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_94.Parent = ProjectAutoV2.Handle_7
+
+ProjectAutoV2.BackGround_9.Name = "BackGround"
+ProjectAutoV2.BackGround_9.Parent = ProjectAutoV2.Handle_7
+ProjectAutoV2.BackGround_9.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.BackGround_9.Position = UDim2.new(0, -1, 0, -1)
+ProjectAutoV2.BackGround_9.Size = UDim2.new(0, 12, 0, 22)
+ProjectAutoV2.BackGround_9.ZIndex = 3
+
+ProjectAutoV2.UICorner_95.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_95.Parent = ProjectAutoV2.BackGround_9
+
+ProjectAutoV2.ServerHopWaitTimeValue.Name = "ServerHopWaitTimeValue"
+ProjectAutoV2.ServerHopWaitTimeValue.Parent = ProjectAutoV2.ServerHopWaitTimeSlider
+ProjectAutoV2.ServerHopWaitTimeValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ProjectAutoV2.ServerHopWaitTimeValue.BackgroundTransparency = 1.000
+ProjectAutoV2.ServerHopWaitTimeValue.Position = UDim2.new(0, 215, 0, -3)
+ProjectAutoV2.ServerHopWaitTimeValue.Size = UDim2.new(0, 50, 0, 20)
+ProjectAutoV2.ServerHopWaitTimeValue.ZIndex = 3
+ProjectAutoV2.ServerHopWaitTimeValue.Font = Enum.Font.SourceSansSemibold
+ProjectAutoV2.ServerHopWaitTimeValue.Text = "0"
+ProjectAutoV2.ServerHopWaitTimeValue.TextColor3 = Color3.fromRGB(200, 200, 200)
+ProjectAutoV2.ServerHopWaitTimeValue.TextSize = 15.000
+ProjectAutoV2.ServerHopWaitTimeValue.TextStrokeTransparency = 0.000
+
+ProjectAutoV2.Title_11.Name = "Title"
+ProjectAutoV2.Title_11.Parent = ProjectAutoV2.ServerHopWaitTimeSlider
+ProjectAutoV2.Title_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ProjectAutoV2.Title_11.BackgroundTransparency = 1.000
+ProjectAutoV2.Title_11.Position = UDim2.new(0, -10, 0, -20)
+ProjectAutoV2.Title_11.Size = UDim2.new(0, 279, 0, 15)
+ProjectAutoV2.Title_11.ZIndex = 3
+ProjectAutoV2.Title_11.Font = Enum.Font.SourceSansSemibold
+ProjectAutoV2.Title_11.Text = "Wait Time"
+ProjectAutoV2.Title_11.TextColor3 = Color3.fromRGB(200, 200, 200)
+ProjectAutoV2.Title_11.TextSize = 15.000
+ProjectAutoV2.Title_11.TextStrokeTransparency = 0.000
+
 ProjectAutoV2.AutoRobToggle.Name = "AutoRobToggle"
 ProjectAutoV2.AutoRobToggle.Parent = ProjectAutoV2.SettingsTab
 ProjectAutoV2.AutoRobToggle.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
@@ -1960,8 +2023,8 @@ ProjectAutoV2.AutoRobToggle.Text = "Project Auto Enabled"
 ProjectAutoV2.AutoRobToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.AutoRobToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_94.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_94.Parent = ProjectAutoV2.AutoRobToggle
+ProjectAutoV2.UICorner_96.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_96.Parent = ProjectAutoV2.AutoRobToggle
 
 ProjectAutoV2.Border_20.Name = "Border"
 ProjectAutoV2.Border_20.Parent = ProjectAutoV2.AutoRobToggle
@@ -1973,8 +2036,8 @@ ProjectAutoV2.Border_20.Text = ""
 ProjectAutoV2.Border_20.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_20.TextSize = 15.000
 
-ProjectAutoV2.UICorner_95.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_95.Parent = ProjectAutoV2.Border_20
+ProjectAutoV2.UICorner_97.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_97.Parent = ProjectAutoV2.Border_20
 
 ProjectAutoV2.AutoRobToggleButton.Name = "AutoRobToggleButton"
 ProjectAutoV2.AutoRobToggleButton.Parent = ProjectAutoV2.AutoRobToggle
@@ -1983,8 +2046,8 @@ ProjectAutoV2.AutoRobToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.AutoRobToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.AutoRobToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_96.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_96.Parent = ProjectAutoV2.AutoRobToggleButton
+ProjectAutoV2.UICorner_98.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_98.Parent = ProjectAutoV2.AutoRobToggleButton
 
 ProjectAutoV2.ImageLabel_19.Parent = ProjectAutoV2.AutoRobToggleButton
 ProjectAutoV2.ImageLabel_19.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -1992,8 +2055,8 @@ ProjectAutoV2.ImageLabel_19.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_19.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_19.ZIndex = 3
 
-ProjectAutoV2.UICorner_97.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_97.Parent = ProjectAutoV2.ImageLabel_19
+ProjectAutoV2.UICorner_99.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_99.Parent = ProjectAutoV2.ImageLabel_19
 
 ProjectAutoV2.InfoTab.Name = "InfoTab"
 ProjectAutoV2.InfoTab.Parent = ProjectAutoV2.BackGround
@@ -2014,8 +2077,8 @@ ProjectAutoV2.Creator.Text = "Made By Pxsta"
 ProjectAutoV2.Creator.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Creator.TextSize = 15.000
 
-ProjectAutoV2.UICorner_98.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_98.Parent = ProjectAutoV2.Creator
+ProjectAutoV2.UICorner_100.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_100.Parent = ProjectAutoV2.Creator
 
 ProjectAutoV2.Border_21.Name = "Border"
 ProjectAutoV2.Border_21.Parent = ProjectAutoV2.Creator
@@ -2027,8 +2090,8 @@ ProjectAutoV2.Border_21.Text = ""
 ProjectAutoV2.Border_21.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_21.TextSize = 15.000
 
-ProjectAutoV2.UICorner_99.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_99.Parent = ProjectAutoV2.Border_21
+ProjectAutoV2.UICorner_101.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_101.Parent = ProjectAutoV2.Border_21
 
 ProjectAutoV2.UIListLayout_4.Parent = ProjectAutoV2.InfoTab
 ProjectAutoV2.UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -2058,8 +2121,8 @@ ProjectAutoV2.Version.Text = "Version 0.6 beta"
 ProjectAutoV2.Version.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Version.TextSize = 15.000
 
-ProjectAutoV2.UICorner_100.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_100.Parent = ProjectAutoV2.Version
+ProjectAutoV2.UICorner_102.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_102.Parent = ProjectAutoV2.Version
 
 ProjectAutoV2.Border_22.Name = "Border"
 ProjectAutoV2.Border_22.Parent = ProjectAutoV2.Version
@@ -2071,12 +2134,12 @@ ProjectAutoV2.Border_22.Text = ""
 ProjectAutoV2.Border_22.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_22.TextSize = 15.000
 
-ProjectAutoV2.UICorner_101.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_101.Parent = ProjectAutoV2.Border_22
+ProjectAutoV2.UICorner_103.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_103.Parent = ProjectAutoV2.Border_22
 
 -- Scripts:
 
-local function SWCO_fake_script() -- ProjectAutoV2.Console.ScrollBarTransparency 
+local function IMWA_fake_script() -- ProjectAutoV2.Console.ScrollBarTransparency 
 	local script = Instance.new('LocalScript', ProjectAutoV2.Console)
 
 	local Tab = script.Parent
@@ -2091,8 +2154,8 @@ local function SWCO_fake_script() -- ProjectAutoV2.Console.ScrollBarTransparency
 		wait()
 	end
 end
-coroutine.wrap(SWCO_fake_script)()
-local function ZTQGHV_fake_script() -- ProjectAutoV2.LocationsTab.ScrollBarTransparency 
+coroutine.wrap(IMWA_fake_script)()
+local function VNTI_fake_script() -- ProjectAutoV2.LocationsTab.ScrollBarTransparency 
 	local script = Instance.new('LocalScript', ProjectAutoV2.LocationsTab)
 
 	local Tab = script.Parent
@@ -2107,8 +2170,8 @@ local function ZTQGHV_fake_script() -- ProjectAutoV2.LocationsTab.ScrollBarTrans
 		wait()
 	end
 end
-coroutine.wrap(ZTQGHV_fake_script)()
-local function ZKTPFU_fake_script() -- ProjectAutoV2.MainSection.SectionScript 
+coroutine.wrap(VNTI_fake_script)()
+local function NSHEL_fake_script() -- ProjectAutoV2.MainSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.MainSection)
 
 	local FullSize = 170
@@ -2147,8 +2210,8 @@ local function ZKTPFU_fake_script() -- ProjectAutoV2.MainSection.SectionScript
 		end
 	end)
 end
-coroutine.wrap(ZKTPFU_fake_script)()
-local function MJFLT_fake_script() -- ProjectAutoV2.BotSpeedSlider.SliderScript 
+coroutine.wrap(NSHEL_fake_script)()
+local function OJVAN_fake_script() -- ProjectAutoV2.BotSpeedSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.BotSpeedSlider)
 
 	local slider = script.Parent
@@ -2179,8 +2242,8 @@ local function MJFLT_fake_script() -- ProjectAutoV2.BotSpeedSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(MJFLT_fake_script)()
-local function CTULF_fake_script() -- ProjectAutoV2.PathSpeedSlider.SliderScript 
+coroutine.wrap(OJVAN_fake_script)()
+local function JGUJ_fake_script() -- ProjectAutoV2.PathSpeedSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.PathSpeedSlider)
 
 	local slider = script.Parent
@@ -2211,8 +2274,8 @@ local function CTULF_fake_script() -- ProjectAutoV2.PathSpeedSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(CTULF_fake_script)()
-local function SHTXKLM_fake_script() -- ProjectAutoV2.SettingsTab.ScrollBarTransparency 
+coroutine.wrap(JGUJ_fake_script)()
+local function NAMVDH_fake_script() -- ProjectAutoV2.SettingsTab.ScrollBarTransparency 
 	local script = Instance.new('LocalScript', ProjectAutoV2.SettingsTab)
 
 	local Tab = script.Parent
@@ -2227,8 +2290,8 @@ local function SHTXKLM_fake_script() -- ProjectAutoV2.SettingsTab.ScrollBarTrans
 		wait()
 	end
 end
-coroutine.wrap(SHTXKLM_fake_script)()
-local function FLGDICR_fake_script() -- ProjectAutoV2.KillAuraSection.SectionScript 
+coroutine.wrap(NAMVDH_fake_script)()
+local function AGWH_fake_script() -- ProjectAutoV2.KillAuraSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.KillAuraSection)
 
 	local FullSize = 100
@@ -2267,8 +2330,8 @@ local function FLGDICR_fake_script() -- ProjectAutoV2.KillAuraSection.SectionScr
 		end
 	end)
 end
-coroutine.wrap(FLGDICR_fake_script)()
-local function KWSZA_fake_script() -- ProjectAutoV2.KillAuraSlider.SliderScript 
+coroutine.wrap(AGWH_fake_script)()
+local function LIPAJO_fake_script() -- ProjectAutoV2.KillAuraSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.KillAuraSlider)
 
 	local slider = script.Parent
@@ -2299,8 +2362,8 @@ local function KWSZA_fake_script() -- ProjectAutoV2.KillAuraSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(KWSZA_fake_script)()
-local function JBPJSRS_fake_script() -- ProjectAutoV2.AvoidCopSection.SectionScript 
+coroutine.wrap(LIPAJO_fake_script)()
+local function YRKFKBI_fake_script() -- ProjectAutoV2.AvoidCopSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.AvoidCopSection)
 
 	local FullSize = 100
@@ -2339,8 +2402,8 @@ local function JBPJSRS_fake_script() -- ProjectAutoV2.AvoidCopSection.SectionScr
 		end
 	end)
 end
-coroutine.wrap(JBPJSRS_fake_script)()
-local function CMKI_fake_script() -- ProjectAutoV2.CopAvoidSlider.SliderScript 
+coroutine.wrap(YRKFKBI_fake_script)()
+local function OSLED_fake_script() -- ProjectAutoV2.CopAvoidSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.CopAvoidSlider)
 
 	local slider = script.Parent
@@ -2371,11 +2434,11 @@ local function CMKI_fake_script() -- ProjectAutoV2.CopAvoidSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(CMKI_fake_script)()
-local function OZAFRZU_fake_script() -- ProjectAutoV2.ServerHopSection.SectionScript 
+coroutine.wrap(OSLED_fake_script)()
+local function NHKAS_fake_script() -- ProjectAutoV2.ServerHopSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.ServerHopSection)
 
-	local FullSize = 140
+	local FullSize = 180
 	
 	local Section = script.Parent
 	local SectionBorder = script.Parent:FindFirstChild("Border")
@@ -2411,8 +2474,8 @@ local function OZAFRZU_fake_script() -- ProjectAutoV2.ServerHopSection.SectionSc
 		end
 	end)
 end
-coroutine.wrap(OZAFRZU_fake_script)()
-local function GQPFPMR_fake_script() -- ProjectAutoV2.MinPlayersSlider.SliderScript 
+coroutine.wrap(NHKAS_fake_script)()
+local function PJBZCFK_fake_script() -- ProjectAutoV2.MinPlayersSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.MinPlayersSlider)
 
 	local slider = script.Parent
@@ -2443,8 +2506,8 @@ local function GQPFPMR_fake_script() -- ProjectAutoV2.MinPlayersSlider.SliderScr
 		wait()
 	end
 end
-coroutine.wrap(GQPFPMR_fake_script)()
-local function YSHDQK_fake_script() -- ProjectAutoV2.MaxPingSlider.SliderScript 
+coroutine.wrap(PJBZCFK_fake_script)()
+local function BMKCI_fake_script() -- ProjectAutoV2.MaxPingSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.MaxPingSlider)
 
 	local slider = script.Parent
@@ -2475,20 +2538,56 @@ local function YSHDQK_fake_script() -- ProjectAutoV2.MaxPingSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(YSHDQK_fake_script)()
+coroutine.wrap(BMKCI_fake_script)()
+local function UPZVB_fake_script() -- ProjectAutoV2.ServerHopWaitTimeSlider.SliderScript 
+	local script = Instance.new('LocalScript', ProjectAutoV2.ServerHopWaitTimeSlider)
+
+	local slider = script.Parent
+	local handle = slider.Handle
+	local held = false
+	
+	handle.MouseButton1Down:Connect(function()
+		held = true
+	end)
+	
+	game:GetService("UserInputService").InputEnded:Connect(function(input, proccesed)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			held = false
+		end
+	end) 
+	
+	while true do 
+		if held then
+			pos = game:GetService("UserInputService"):GetMouseLocation() - slider.AbsolutePosition
+			handle.Position = UDim2.new(0, pos.X - (handle.Size.X.Offset / 2), 0, handle.Position.Y.Offset)
+			if handle.Position.X.Offset < 0 then
+				handle.Position = UDim2.new(0, 0, 0, handle.Position.Y.Offset)
+			end
+			if handle.Position.X.Offset + handle.Size.X.Offset > slider.Size.X.Offset then
+				handle.Position = UDim2.new(0, slider.Size.X.Offset - handle.Size.X.Offset, 0, handle.Position.Y.Offset)
+			end
+		end
+		wait()
+	end
+end
+coroutine.wrap(UPZVB_fake_script)()
 
 ----------------------------------------------------------------
 
 ProjectAutoV2.Icon.Image = "http://www.roblox.com/thumbs/avatar.ashx?x=150&y=200&format=png&userid="..game.Players.localPlayer.UserId
 
-local KEY = nil
-if readfile and isfile then 
-    if isfile("ProjectAutoKey.txt") then
-        KEY = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
-    end
+
+if _G.Key == nil then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "missing key, join our discord for a key - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    return
 end
 
-local VerifyString = KEY.." "..tostring(hwid)
+local VerifyString = _G.Key.." "..tostring(hwid)
 
 local data = {['VERIFY'] = VerifyString}
 
@@ -2502,20 +2601,10 @@ if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 24, #(Server.Body))
 end
 
-if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" then
-    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you need epic role or above to access beta, join discord to get beta - auto.projectbot.top"
-    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
-    _G.AutoRobLoaded = false
-    wait(5)
-    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
-    return
-end
-
 if Server.Body == "INCORRECT HWID" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect hwid, reset your hwid using our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -2523,9 +2612,9 @@ if Server.Body == "INCORRECT HWID" then
 end
 
 if Server.Body == "NO KEY" then
-    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect or missing key, join our discord for a key - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect key, join our discord for a key - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -2538,7 +2627,7 @@ Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST",
 if Server.Body == "INVALID KEY" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Key not activated, activate key in our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -2576,6 +2665,7 @@ local config = {
     ServerHop = true,
     MinPlayers = 10,
     MaxPing = 100,
+    ServerHopWaitTime = 30,
     ToggleKey = Enum.KeyCode.RightShift
 }
 
@@ -2683,6 +2773,7 @@ end
 ----------------------------------------------------------------
 
 local Bot = game.Players.localPlayer
+local serverHopTime = 0
 local platform = nil
 local RobbingLocation = false
 local toggled = true -- TRUE = ON  | FALSE = OFF
@@ -2694,9 +2785,7 @@ local hash = 'icsfdqe3'  -- Y
 
 local session
 if _G.CurrentSession == nil then
-    local session = math.random(1, 1000)
-else
-    session = _G.CurrentSession
+    _G.CurrentSession = math.random(1, 1000)
 end
 
 local ScriptTime = {
@@ -2727,7 +2816,7 @@ end
 
 local json
 if writefile then 
-    json = HttpService:JSONEncode(CurrentSession)
+    json = HttpService:JSONEncode(_G.CurrentSession)
     writefile("ProjectAutoSession.txt", json)
 end
 
@@ -2962,6 +3051,9 @@ end
 if config.MaxPing == nil then
     config.MaxPing = 100
 end
+if config.ServerHopWaitTime == nil then
+    config.ServerHopWaitTime = 30
+end
 if config.teleport == nil then
     config.teleport = true
 end
@@ -3122,11 +3214,11 @@ end
 
 -- for locations not added yet
 
-ProjectAutoV2.SmallStoresToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+ProjectAutoV2.SmallStoresToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 
-ProjectAutoV2.PowerPlantToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+ProjectAutoV2.PowerPlantToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 
-ProjectAutoV2.BoatToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+ProjectAutoV2.BoatToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 
 -- (MAX + MIN) / NUM = 200, (MAX + MIN) / 200 = NUM
 ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position = UDim2.new(0, (config.FlySpeed + 50) / -0.5, ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.Y.Scale, ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.Y.Offset)
@@ -3136,15 +3228,15 @@ ProjectAutoV2.KillAuraSlider:FindFirstChild("Handle").Position = UDim2.new(0, (c
 ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position = UDim2.new(0, (config.avoidCopRange - 100) / 2.5, ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position.Y.Scale, ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position.Y.Offset)
 ProjectAutoV2.MinPlayersSlider:FindFirstChild("Handle").Position = UDim2.new(0, (config.MinPlayers - 1) / 0.12, ProjectAutoV2.MinPlayersSlider:FindFirstChild("Handle").Position.Y.Scale, ProjectAutoV2.MinPlayersSlider:FindFirstChild("Handle").Position.Y.Offset)
 ProjectAutoV2.MaxPingSlider:FindFirstChild("Handle").Position = UDim2.new(0, (config.MaxPing - 50) / 0.5, ProjectAutoV2.MaxPingSlider:FindFirstChild("Handle").Position.Y.Scale, ProjectAutoV2.MaxPingSlider:FindFirstChild("Handle").Position.Y.Offset)
-
+ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position = UDim2.new(0, (config.ServerHopWaitTime) / 0.3, ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position.Y.Scale, ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position.Y.Offset)
 coroutine.wrap(function() -- 200 * NUM + MIN = MAX, (MAX - MIN) / 200 = NUM
     while true do
         config.FlySpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -0.5 - 50
-        ProjectAutoV2.BotSpeedValue.Text = math.abs(math.round(config.FlySpeed * 100) / 100)
+        ProjectAutoV2.BotSpeedValue.Text = tostring(math.round((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
         config.avoidCopRange = ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position.X.Offset * 2.5 + 100
         ProjectAutoV2.CopAvoidValue.Text = math.round(config.avoidCopRange * 100) / 100
         config.GroundSpeed = ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset * 0.04 + 1
-        ProjectAutoV2.PathSpeedValue.Text = math.round(config.GroundSpeed * 100) / 100
+         ProjectAutoV2.PathSpeedValue.Text = tostring(math.round((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
         config.CarSpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -2.5 - 100
         config.killAuraRange = ProjectAutoV2.KillAuraSlider:FindFirstChild("Handle").Position.X.Offset * 2.75 + 50
         ProjectAutoV2.KillAuraValue.Text = math.round(config.killAuraRange * 100) / 100
@@ -3152,6 +3244,8 @@ coroutine.wrap(function() -- 200 * NUM + MIN = MAX, (MAX - MIN) / 200 = NUM
         ProjectAutoV2.MinPlayersValue.Text = config.MinPlayers
         config.MaxPing = ProjectAutoV2.MaxPingSlider:FindFirstChild("Handle").Position.X.Offset * 0.5 + 50
         ProjectAutoV2.MaxPingValue.Text = math.round(config.MaxPing * 100) / 100
+        config.ServerHopWaitTime = ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position.X.Offset * 0.3
+        ProjectAutoV2.ServerHopWaitTimeValue.Text = math.round(config.ServerHopWaitTime * 100) / 100
         wait()
     end
 end)()
@@ -4496,51 +4590,76 @@ function robLocation()
     UpdateLog("waiting for locations to open")
 
     if config.ServerHop then
-        UpdateLog("changing servers")
-        saveStats()
-        wait(0.1)
-        if syn then
-            syn.queue_on_teleport([[
-                repeat wait() until game:IsLoaded()
-                _G.CurrentSession = session
-                repeat
-                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                    local teamHash = 'tomm5a8a'
-                    network:FireServer(teamHash, "Prisoner")
+        serverHopTime += 1
+        if serverHopTime > config.ServerHopWaitTime then
+            UpdateLog("changing servers")
+            saveStats()
+            wait(0.1)
+            if syn then
+                syn.queue_on_teleport([[
+                    repeat wait() until game:IsLoaded()
+                    local session
+                    local HttpService = game:GetService("HttpService")
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            session = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
+                        end
+                    end
+                    _G.CurrentSession = session
+                    repeat
+                        local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                        local teamHash = 'tomm5a8a'
+                        network:FireServer(teamHash, "Prisoner")
+                        wait(3)
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    wait(0.5)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                ]])
+            elseif queue_on_teleport then
+                queue_on_teleport([[
+                    repeat wait() until game:IsLoaded()
+                    local session
+                    local HttpService = game:GetService("HttpService")
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            session = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
+                        end
+                    end
+                    _G.CurrentSession = session
                     wait(3)
-                until game.Players.localPlayer.Character
-                wait(0.5)
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
-            ]])
-        elseif queue_on_teleport then
-            queue_on_teleport([[
-                repeat wait() until game:IsLoaded()
-                _G.CurrentSession = session
-                wait(3)
-                repeat
-                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                    local teamHash = 'tomm5a8a'
-                    network:FireServer(teamHash, "Prisoner")
+                    repeat
+                        local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                        local teamHash = 'tomm5a8a'
+                        network:FireServer(teamHash, "Prisoner")
+                        wait(3)
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    wait(0.5)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                ]])
+            elseif fluxus then
+                fluxus.queue_on_teleport([[
+                    repeat wait() until game:IsLoaded()
+                    local session
+                    local HttpService = game:GetService("HttpService")
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            session = HttpService:JSONDecode(readfile("ProjectAutoSession.txt"))
+                        end
+                    end
+                    _G.CurrentSession = session
                     wait(3)
-                until game.Players.localPlayer.Character
-                wait(0.5)
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
-            ]])
-        elseif fluxus then
-            fluxus.queue_on_teleport([[
-                repeat wait() until game:IsLoaded()
-                wait(3)
-                repeat
-                    local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                    local teamHash = 'tomm5a8a'
-                    network:FireServer(teamHash, "Prisoner")
-                    wait(3)
-                until game.Players.localPlayer.Character
-                wait(0.5)
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
-            ]])
+                    repeat
+                        local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
+                        local teamHash = 'tomm5a8a'
+                        network:FireServer(teamHash, "Prisoner")
+                        wait(3)
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    wait(0.5)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                ]])
+            end
+            Teleport()
         end
-        Teleport()
     end
 end
 
@@ -7376,13 +7495,25 @@ function RobDrop(Drop, pos)
     local ohBoolean1 = true
 
     if reset then return end
+    if not Drop then
+        RobbingLocation = false
+        return 
+    end
+    if not Drop:FindFirstChild("Root") then 
+        RobbingLocation = false
+        return 
+    end
     wait(25)
     if reset then return end
+    if not Drop:FindFirstChild("Root") then 
+        RobbingLocation = false
+        return 
+    end
     local ohBoolean1 = false
 
-    workspace.Drop.BriefcaseRelease:FireServer(ohBoolean1)
+    Drop.BriefcaseRelease:FireServer(ohBoolean1)
 
-    workspace.Drop.BriefcaseCollect:FireServer()
+    Drop.BriefcaseCollect:FireServer()
 
     for i,v in pairs (UI.CircleAction.Specs) do
         if v.Name == "Open Crate" then
@@ -7391,6 +7522,33 @@ function RobDrop(Drop, pos)
     end
 
     repeat
+        if not Drop:FindFirstChild("Root") then break end
+        Drop.BriefcasePress:FireServer(ohBoolean1)
+
+        for i,v in pairs (UI.CircleAction.Specs) do
+            if v.Name == "Open Crate" then
+                v.Pressed = true
+                v.PressedAt = os.time()
+            end
+        end
+
+        local ohBoolean1 = true
+
+        if reset then return end
+        wait(0.5)
+        if not Drop:FindFirstChild("Root") then break end
+        if reset then return end
+        local ohBoolean1 = false
+
+        Drop.BriefcaseRelease:FireServer(ohBoolean1)
+
+        Drop.BriefcaseCollect:FireServer()
+
+        for i,v in pairs (UI.CircleAction.Specs) do
+            if v.Name == "Open Crate" then
+                v:Callback(v, true)
+            end
+        end
         wait()
         if reset then return end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
@@ -7482,7 +7640,6 @@ function RobPlane()
             ScriptTime.TotalMoneyEarned += 7000
         end
         
-        robbedPlane = true
         RobbingLocation = false
     else
         UpdateLog("going to air port")
@@ -7537,6 +7694,7 @@ function RobPlane()
         robbedPlane = true
         LogMessage("robbed cargo plane for $7,000")
         ScriptTime.TotalMoneyEarned += 7000
+        RobbingLocation = false
     end
 end
 
@@ -7805,7 +7963,7 @@ coroutine.wrap(function()
             end
             ScriptTime.TotalMoneyEarnedStr = ScriptTime.TotalMoneyEarned
             if ScriptTime.TotalMoneyEarnedStr == nil then
-                ScriptTime.TotalMoneyEarnedStr = 0
+                ScriptTime.TotalMoneyEarnedStr = "0"
             end
             if string.len(ScriptTime.TotalMoneyEarnedStr) > 8 then
                 ScriptTime.TotalMoneyEarnedStr = ">99,999,999"
