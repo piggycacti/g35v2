@@ -3025,6 +3025,9 @@ end
 if config.BoatToggled == nil then
     config.BoatToggled = true
 end
+if config.toggleKey == nil then
+    config.toggleKey = Enum.KeyCode.RightShift
+end
 
 if not config.MansionToggled then
     ProjectAutoV2.MansionToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
