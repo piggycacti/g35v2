@@ -3109,6 +3109,11 @@ if not config.killAura then
 else
     ProjectAutoV2.KillAuraToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 end
+if not config.ServerHop then
+    ProjectAutoV2.ServerHopToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+else
+    ProjectAutoV2.ServerHopToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+end
 if not toggled then
     ProjectAutoV2.AutoRobToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 else
