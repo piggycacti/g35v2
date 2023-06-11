@@ -4613,7 +4613,7 @@ function robLocation()
                         wait(3)
                     until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g35aba"))()
                 ]])
             elseif queue_on_teleport then
                 queue_on_teleport([[
@@ -4634,7 +4634,7 @@ function robLocation()
                         wait(3)
                     until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g35aba"))()
                 ]])
             elseif fluxus then
                 fluxus.queue_on_teleport([[
@@ -4655,7 +4655,7 @@ function robLocation()
                         wait(3)
                     until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g35aba"))()
                 ]])
             end
             Teleport()
