@@ -2621,7 +2621,7 @@ if Server.Body == "NO KEY" then
     return
 end
 
-data = {['DISCORD'] = KEY}
+data = {['DISCORD'] = _G.Key}
 
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
 if Server.Body == "INVALID KEY" then
