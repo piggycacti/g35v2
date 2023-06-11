@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
-
+-- UPDATED
 versionChecker.version = "0.7 beta"
 versionChecker.checkVersion()
 
@@ -4617,6 +4617,11 @@ function robLocation()
                         end
                     end
                     _G.CurrentSession = session
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
+                        end
+                    end
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
                         local teamHash = 'tomm5a8a'
@@ -4637,6 +4642,11 @@ function robLocation()
                         end
                     end
                     _G.CurrentSession = session
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
+                        end
+                    end
                     wait(3)
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
@@ -4658,6 +4668,11 @@ function robLocation()
                         end
                     end
                     _G.CurrentSession = session
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
+                        end
+                    end
                     wait(3)
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
