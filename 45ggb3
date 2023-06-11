@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
-
+-- UPDATED
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -3241,11 +3241,11 @@ ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position = UDim2.
 coroutine.wrap(function() -- 200 * NUM + MIN = MAX, (MAX - MIN) / 200 = NUM
     while true do
         config.FlySpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -0.5 - 50
-        ProjectAutoV2.BotSpeedValue.Text = tostring((math.round((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100) / 100) * 100).."%"
+        ProjectAutoV2.BotSpeedValue.Text = tostring(math.round((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
         config.avoidCopRange = ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position.X.Offset * 2.5 + 100
         ProjectAutoV2.CopAvoidValue.Text = math.round(config.avoidCopRange * 100) / 100
         config.GroundSpeed = ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset * 0.04 + 1
-         ProjectAutoV2.PathSpeedValue.Text = tostring((math.round((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100) / 100) * 100).."%"
+         ProjectAutoV2.PathSpeedValue.Text = tostring(math.round((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
         config.CarSpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -2.5 - 100
         config.killAuraRange = ProjectAutoV2.KillAuraSlider:FindFirstChild("Handle").Position.X.Offset * 2.75 + 50
         ProjectAutoV2.KillAuraValue.Text = math.round(config.killAuraRange * 100) / 100
