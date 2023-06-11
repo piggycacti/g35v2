@@ -1,6 +1,6 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
 
-versionChecker.version = "0.6 beta"
+versionChecker.version = "0.7 beta"
 versionChecker.checkVersion()
 
 local hwid = nil
@@ -2117,7 +2117,7 @@ ProjectAutoV2.Version.Position = UDim2.new(0, 10, 0, 8)
 ProjectAutoV2.Version.Size = UDim2.new(0, 279, 0, 25)
 ProjectAutoV2.Version.ZIndex = 2
 ProjectAutoV2.Version.Font = Enum.Font.SourceSansSemibold
-ProjectAutoV2.Version.Text = "Version 0.6 beta"
+ProjectAutoV2.Version.Text = "Version 0.7 beta"
 ProjectAutoV2.Version.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Version.TextSize = 15.000
 
@@ -2576,14 +2576,18 @@ coroutine.wrap(UPZVB_fake_script)()
 
 ProjectAutoV2.Icon.Image = "http://www.roblox.com/thumbs/avatar.ashx?x=150&y=200&format=png&userid="..game.Players.localPlayer.UserId
 
-local KEY = nil
-if readfile and isfile then 
-    if isfile("ProjectAutoKey.txt") then
-        KEY = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
-    end
+
+if _G.Key == nil then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "missing key, join our discord for a key - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    return
 end
 
-local VerifyString = KEY.." "..tostring(hwid)
+local VerifyString = _G.Key.." "..tostring(hwid)
 
 local data = {['VERIFY'] = VerifyString}
 
@@ -2600,7 +2604,7 @@ end
 if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you need epic role or above to access beta, join discord to get beta - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -2610,7 +2614,7 @@ end
 if Server.Body == "INCORRECT HWID" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect hwid, reset your hwid using our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -2618,22 +2622,23 @@ if Server.Body == "INCORRECT HWID" then
 end
 
 if Server.Body == "NO KEY" then
-    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect or missing key, join our discord for a key - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect key, join our discord for a key - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
     return
 end
 
-data = {['DISCORD'] = KEY}
+data = {['DISCORD'] = _G.Key}
 
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
+
 if Server.Body == "INVALID KEY" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Key not activated, activate key in our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAuto:Destroy()
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -3238,11 +3243,11 @@ ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position = UDim2.
 coroutine.wrap(function() -- 200 * NUM + MIN = MAX, (MAX - MIN) / 200 = NUM
     while true do
         config.FlySpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -0.5 - 50
-        ProjectAutoV2.BotSpeedValue.Text = tostring(math.round((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
+        ProjectAutoV2.BotSpeedValue.Text = tostring(math.round(((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset + 1) / 201) * 100)).."%"
         config.avoidCopRange = ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position.X.Offset * 2.5 + 100
         ProjectAutoV2.CopAvoidValue.Text = math.round(config.avoidCopRange * 100) / 100
         config.GroundSpeed = ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset * 0.04 + 1
-         ProjectAutoV2.PathSpeedValue.Text = tostring(math.round((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
+        ProjectAutoV2.PathSpeedValue.Text = tostring(math.round(((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset + 1) / 201) * 100)).."%"
         config.CarSpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -2.5 - 100
         config.killAuraRange = ProjectAutoV2.KillAuraSlider:FindFirstChild("Handle").Position.X.Offset * 2.75 + 50
         ProjectAutoV2.KillAuraValue.Text = math.round(config.killAuraRange * 100) / 100
@@ -4617,7 +4622,7 @@ function robLocation()
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
                     loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
@@ -4638,7 +4643,7 @@ function robLocation()
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
                     loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
@@ -4659,7 +4664,7 @@ function robLocation()
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
                     loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
