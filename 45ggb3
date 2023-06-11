@@ -1,5 +1,5 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- DONE
+-- UPDATED
 versionChecker.version = "0.6 beta"
 versionChecker.checkVersion()
 
@@ -410,7 +410,7 @@ ProjectAutoV2.Time.Name = "Time"
 ProjectAutoV2.Time.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.Time.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ProjectAutoV2.Time.BackgroundTransparency = 1.000
-ProjectAutoV2.Time.Position = UDim2.new(0, 150, 0, 450)
+ProjectAutoV2.Time.Position = UDim2.new(0, 200, 0, 450)
 ProjectAutoV2.Time.Size = UDim2.new(0, 130, 0, 25)
 ProjectAutoV2.Time.Font = Enum.Font.SourceSansSemibold
 ProjectAutoV2.Time.Text = "Time Elapsed: 00:00:00"
@@ -422,7 +422,7 @@ ProjectAutoV2.Money.Name = "Money"
 ProjectAutoV2.Money.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.Money.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ProjectAutoV2.Money.BackgroundTransparency = 1.000
-ProjectAutoV2.Money.Position = UDim2.new(0, 150, 0, 475)
+ProjectAutoV2.Money.Position = UDim2.new(0, 200, 0, 475)
 ProjectAutoV2.Money.Size = UDim2.new(0, 150, 0, 25)
 ProjectAutoV2.Money.Font = Enum.Font.SourceSansSemibold
 ProjectAutoV2.Money.Text = "Money Earned: $00,000,000"
