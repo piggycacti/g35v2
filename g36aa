@@ -2601,6 +2601,16 @@ if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 24, #(Server.Body))
 end
 
+if false then -- string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER"
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you need epic role or above to access beta, join discord to get beta - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    return
+end
+
 if Server.Body == "INCORRECT HWID" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect hwid, reset your hwid using our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
@@ -2624,6 +2634,7 @@ end
 data = {['DISCORD'] = _G.Key}
 
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
+
 if Server.Body == "INVALID KEY" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Key not activated, activate key in our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
@@ -3232,11 +3243,11 @@ ProjectAutoV2.ServerHopWaitTimeSlider:FindFirstChild("Handle").Position = UDim2.
 coroutine.wrap(function() -- 200 * NUM + MIN = MAX, (MAX - MIN) / 200 = NUM
     while true do
         config.FlySpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -0.5 - 50
-        ProjectAutoV2.BotSpeedValue.Text = tostring(math.round((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
+        ProjectAutoV2.BotSpeedValue.Text = tostring(math.round(((ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset + 1) / 201) * 100)).."%"
         config.avoidCopRange = ProjectAutoV2.CopAvoidSlider:FindFirstChild("Handle").Position.X.Offset * 2.5 + 100
         ProjectAutoV2.CopAvoidValue.Text = math.round(config.avoidCopRange * 100) / 100
         config.GroundSpeed = ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset * 0.04 + 1
-         ProjectAutoV2.PathSpeedValue.Text = tostring(math.round((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset / 200) * 100)).."%"
+        ProjectAutoV2.PathSpeedValue.Text = tostring(math.round(((ProjectAutoV2.PathSpeedSlider:FindFirstChild("Handle").Position.X.Offset + 1) / 201) * 100)).."%"
         config.CarSpeed = ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.X.Offset * -2.5 - 100
         config.killAuraRange = ProjectAutoV2.KillAuraSlider:FindFirstChild("Handle").Position.X.Offset * 2.75 + 50
         ProjectAutoV2.KillAuraValue.Text = math.round(config.killAuraRange * 100) / 100
@@ -4606,14 +4617,19 @@ function robLocation()
                         end
                     end
                     _G.CurrentSession = session
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
+                        end
+                    end
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
             elseif queue_on_teleport then
                 queue_on_teleport([[
@@ -4626,15 +4642,20 @@ function robLocation()
                         end
                     end
                     _G.CurrentSession = session
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
+                        end
+                    end
                     wait(3)
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
             elseif fluxus then
                 fluxus.queue_on_teleport([[
@@ -4647,15 +4668,20 @@ function robLocation()
                         end
                     end
                     _G.CurrentSession = session
+                    if readfile and isfile then 
+                        if isfile("ProjectAutoSession.txt") then
+                            _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
+                        end
+                    end
                     wait(3)
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
                         local teamHash = 'tomm5a8a'
                         network:FireServer(teamHash, "Prisoner")
                         wait(3)
-                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled = false
+                    until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
                 ]])
             end
             Teleport()
@@ -4786,7 +4812,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -4885,7 +4911,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -4985,7 +5011,7 @@ function RobBank()
         
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5088,7 +5114,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5191,7 +5217,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5296,7 +5322,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5399,7 +5425,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5494,7 +5520,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5593,7 +5619,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5939,7 +5965,7 @@ function RobJewel()
 
     if config.wait then
         UpdateLog("waiting")
-        wait(config.GroundSpeed * 2.5)
+        wait(config.GroundSpeed * 3.5)
     end
 
     UpdateLog("exiting jewelry store")
@@ -6158,6 +6184,9 @@ function RobMansion()
         if reset then return end
         pathMove(Vector3.new(3199, 70, -4606))
         if reset then return end
+    else
+        pathMove(Vector3.new(3197, 63, -4655))
+        if reset then return end
     end
 
     pathMove(Vector3.new(3196, 63, -4662)) 
@@ -6365,6 +6394,7 @@ function RobCasino()
                 wait(0.01)
             end
         end
+        UpdateLog("waiting")
         wait(10)
     else
         UpdateLog("going to casino")
@@ -7056,6 +7086,11 @@ function RobMuseum()
 
     if reset then return end
 
+    if config.wait then
+        UpdateLog("waiting")
+        wait(config.GroundSpeed)
+    end
+
     UpdateLog("exiting museum")
 
     if not config.teleport then
@@ -7209,6 +7244,23 @@ function RobTrain()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(cart.Model.Rob.Gold.Position + Vector3.new(0, 4, 0))
         if reset then return end
         wait()
+    end
+
+    if config.wait then
+        UpdateLog("waiting")
+        for i = 1, 20 * config.GroundSpeed, 1 do
+            if cart == nil then 
+                RobbingLocation = false
+                return 
+            end
+            if not cart:FindFirstChild("Model") then
+                RobbingLocation = false
+                return 
+            end
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(cart.Model.Rob.Gold.Position + Vector3.new(0, 4, 0))
+            if reset then return end
+            wait()
+        end
     end
 
     local rayOrigin = cart.Model.Rob.Gold.Position + Vector3.new(0, 10, 0)
@@ -7629,6 +7681,11 @@ function RobPlane()
 
         wait(1)
 
+        if config.wait then
+            UpdateLog("waiting")
+            wait(config.GroundSpeed)
+        end
+
         if Bot.PlayerGui.RobberyMoneyGui.Enabled then
             if reset then return end
             UpdateLog("going to cargo port")
@@ -7636,8 +7693,8 @@ function RobPlane()
 
             wait(2)
             robbedPlane = true
-            LogMessage("robbed cargo plane for $7,000")
-            ScriptTime.TotalMoneyEarned += 7000
+            LogMessage("robbed cargo plane for $4,000")
+            ScriptTime.TotalMoneyEarned += 4000
         end
         
         RobbingLocation = false
@@ -7678,6 +7735,11 @@ function RobPlane()
             end
             if reset then return end
             wait(0.01)
+        end
+
+        if config.wait then
+            UpdateLog("waiting")
+            wait(config.GroundSpeed)
         end
 
         UpdateLog("exiting plane")
