@@ -1,6 +1,8 @@
+_G.Key = "61843"
+
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
--- UPDATED
-versionChecker.version = "0.7 beta"
+
+versionChecker.version = "0.6"
 versionChecker.checkVersion()
 
 local hwid = nil
@@ -2117,7 +2119,7 @@ ProjectAutoV2.Version.Position = UDim2.new(0, 10, 0, 8)
 ProjectAutoV2.Version.Size = UDim2.new(0, 279, 0, 25)
 ProjectAutoV2.Version.ZIndex = 2
 ProjectAutoV2.Version.Font = Enum.Font.SourceSansSemibold
-ProjectAutoV2.Version.Text = "Version 0.7 beta"
+ProjectAutoV2.Version.Text = "Version 0.6"
 ProjectAutoV2.Version.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Version.TextSize = 15.000
 
@@ -2601,7 +2603,7 @@ if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 24, #(Server.Body))
 end
 
-if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" then
+if false then -- string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER"
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you need epic role or above to access beta, join discord to get beta - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
     game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
@@ -4812,7 +4814,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -4911,7 +4913,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5011,7 +5013,7 @@ function RobBank()
         
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5114,7 +5116,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5217,7 +5219,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5322,7 +5324,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5425,7 +5427,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5520,7 +5522,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5619,7 +5621,7 @@ function RobBank()
 
         if config.wait then
             UpdateLog("waiting")
-            wait(config.GroundSpeed * 1.5)
+            wait(config.GroundSpeed * 2)
         end
 
         UpdateLog("exiting bank")
@@ -5965,7 +5967,7 @@ function RobJewel()
 
     if config.wait then
         UpdateLog("waiting")
-        wait(config.GroundSpeed * 2.5)
+        wait(config.GroundSpeed * 3.5)
     end
 
     UpdateLog("exiting jewelry store")
@@ -6184,6 +6186,9 @@ function RobMansion()
         if reset then return end
         pathMove(Vector3.new(3199, 70, -4606))
         if reset then return end
+    else
+        pathMove(Vector3.new(3197, 63, -4655))
+        if reset then return end
     end
 
     pathMove(Vector3.new(3196, 63, -4662)) 
@@ -6391,6 +6396,7 @@ function RobCasino()
                 wait(0.01)
             end
         end
+        UpdateLog("waiting")
         wait(10)
     else
         UpdateLog("going to casino")
@@ -7082,6 +7088,11 @@ function RobMuseum()
 
     if reset then return end
 
+    if config.wait then
+        UpdateLog("waiting")
+        wait(config.GroundSpeed)
+    end
+
     UpdateLog("exiting museum")
 
     if not config.teleport then
@@ -7235,6 +7246,23 @@ function RobTrain()
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(cart.Model.Rob.Gold.Position + Vector3.new(0, 4, 0))
         if reset then return end
         wait()
+    end
+
+    if config.wait then
+        UpdateLog("waiting")
+        for i = 1, 20 * config.GroundSpeed, 1 do
+            if cart == nil then 
+                RobbingLocation = false
+                return 
+            end
+            if not cart:FindFirstChild("Model") then
+                RobbingLocation = false
+                return 
+            end
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(cart.Model.Rob.Gold.Position + Vector3.new(0, 4, 0))
+            if reset then return end
+            wait()
+        end
     end
 
     local rayOrigin = cart.Model.Rob.Gold.Position + Vector3.new(0, 10, 0)
@@ -7655,6 +7683,11 @@ function RobPlane()
 
         wait(1)
 
+        if config.wait then
+            UpdateLog("waiting")
+            wait(config.GroundSpeed)
+        end
+
         if Bot.PlayerGui.RobberyMoneyGui.Enabled then
             if reset then return end
             UpdateLog("going to cargo port")
@@ -7662,8 +7695,8 @@ function RobPlane()
 
             wait(2)
             robbedPlane = true
-            LogMessage("robbed cargo plane for $7,000")
-            ScriptTime.TotalMoneyEarned += 7000
+            LogMessage("robbed cargo plane for $4,000")
+            ScriptTime.TotalMoneyEarned += 4000
         end
         
         RobbingLocation = false
@@ -7704,6 +7737,11 @@ function RobPlane()
             end
             if reset then return end
             wait(0.01)
+        end
+
+        if config.wait then
+            UpdateLog("waiting")
+            wait(config.GroundSpeed)
         end
 
         UpdateLog("exiting plane")
