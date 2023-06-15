@@ -2791,8 +2791,8 @@ local toggled = true -- TRUE = ON  | FALSE = OFF
 local reset = false
 local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-local punchHash = "vrnj128w" -- Y
-local hash = 'icsfdqe3'  -- Y
+local punchHash = "g0ax8b32" -- Y
+local hash = 'yhq8xckn'  -- Y
 
 local session
 if _G.CurrentSession == nil then
