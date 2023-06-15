@@ -4245,16 +4245,21 @@ end
 
 function pathFind(pos)
 
+    if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
     local PathFindingService = game:GetService("PathfindingService")
-    local human = game.Players.LocalPlayer.Character.Humanoid
-    local torso = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local human = Bot.Character.Humanoid
+    local torso = Bot.Character.HumanoidRootPart
 
     local path = PathFindingService:CreatePath()
     path:ComputeAsync(torso.Position, pos)
+    if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
     local Waypoints = path:GetWaypoints()
+
+    if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
 
     for i, Waypoint in pairs(Waypoints) do
         pathFindMove(Waypoint.Position + Vector3.new(0, 2, 0))
+        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
     end
 end
 
@@ -7903,10 +7908,8 @@ coroutine.wrap(function()
         local shoot = false
         if config.killAura and toggled then
             for k, v in pairs(game.Players:GetChildren()) do
-                if v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
-                    if (v.Character.HumanoidRootPart.Position - Bot.Character.HumanoidRootPart.Position).magnitude < config.killAuraRange and v.Team ~= Bot.Team then
-                        shoot = true
-                    end
+                if v.Character and v.Character:FindFirstChild("HumanoidRootPart") and (v.Character.HumanoidRootPart.Position - Bot.Character.HumanoidRootPart.Position).magnitude < config.killAuraRange and v.Team ~= Bot.Team then
+                    shoot = true
                 end
             end
 
