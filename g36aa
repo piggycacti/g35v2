@@ -1,6 +1,6 @@
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
 
-versionChecker.version = "0.6"
+versionChecker.version = "0.7 beta"
 versionChecker.checkVersion()
 
 local hwid = nil
@@ -31,13 +31,14 @@ if hwid == nil then
     if hwid == nil then
         hwid = decoded.headers["Fingerprint"]
     end
-
     local json
     if writefile then 
         json = HttpService:JSONEncode(hwid)
         writefile("HWID.txt", json)
     end
 end
+
+local json
 
 if _G.AutoRobLoaded then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "auto rob already loaded"
@@ -88,232 +89,276 @@ local ProjectAutoV2 = {
 	UICorner_7 = Instance.new("UICorner"),
 	ImageLabel = Instance.new("ImageLabel"),
 	UICorner_8 = Instance.new("UICorner"),
-	MuseumToggle = Instance.new("TextLabel"),
+	Tick = Instance.new("ImageLabel"),
 	UICorner_9 = Instance.new("UICorner"),
-	Border_3 = Instance.new("TextLabel"),
+	MuseumToggle = Instance.new("TextLabel"),
 	UICorner_10 = Instance.new("UICorner"),
-	MuseumToggleButton = Instance.new("ImageButton"),
+	Border_3 = Instance.new("TextLabel"),
 	UICorner_11 = Instance.new("UICorner"),
-	ImageLabel_2 = Instance.new("ImageLabel"),
+	MuseumToggleButton = Instance.new("ImageButton"),
 	UICorner_12 = Instance.new("UICorner"),
-	JewelryToggle = Instance.new("TextLabel"),
+	ImageLabel_2 = Instance.new("ImageLabel"),
 	UICorner_13 = Instance.new("UICorner"),
-	Border_4 = Instance.new("TextLabel"),
+	Tick_2 = Instance.new("ImageLabel"),
 	UICorner_14 = Instance.new("UICorner"),
-	JewelryToggleButton = Instance.new("ImageButton"),
+	JewelryToggle = Instance.new("TextLabel"),
 	UICorner_15 = Instance.new("UICorner"),
-	ImageLabel_3 = Instance.new("ImageLabel"),
+	Border_4 = Instance.new("TextLabel"),
 	UICorner_16 = Instance.new("UICorner"),
-	CasinoToggle = Instance.new("TextLabel"),
+	JewelryToggleButton = Instance.new("ImageButton"),
 	UICorner_17 = Instance.new("UICorner"),
-	Border_5 = Instance.new("TextLabel"),
+	ImageLabel_3 = Instance.new("ImageLabel"),
 	UICorner_18 = Instance.new("UICorner"),
-	CasinoToggleButton = Instance.new("ImageButton"),
+	Tick_3 = Instance.new("ImageLabel"),
 	UICorner_19 = Instance.new("UICorner"),
-	ImageLabel_4 = Instance.new("ImageLabel"),
+	CasinoToggle = Instance.new("TextLabel"),
 	UICorner_20 = Instance.new("UICorner"),
-	TombToggle = Instance.new("TextLabel"),
+	Border_5 = Instance.new("TextLabel"),
 	UICorner_21 = Instance.new("UICorner"),
-	Border_6 = Instance.new("TextLabel"),
+	CasinoToggleButton = Instance.new("ImageButton"),
 	UICorner_22 = Instance.new("UICorner"),
-	TombToggleButton = Instance.new("ImageButton"),
+	ImageLabel_4 = Instance.new("ImageLabel"),
 	UICorner_23 = Instance.new("UICorner"),
-	ImageLabel_5 = Instance.new("ImageLabel"),
+	Tick_4 = Instance.new("ImageLabel"),
 	UICorner_24 = Instance.new("UICorner"),
-	PowerPlantToggle = Instance.new("TextLabel"),
+	TombToggle = Instance.new("TextLabel"),
 	UICorner_25 = Instance.new("UICorner"),
-	Border_7 = Instance.new("TextLabel"),
+	Border_6 = Instance.new("TextLabel"),
 	UICorner_26 = Instance.new("UICorner"),
-	PowerPlantToggleButton = Instance.new("ImageButton"),
+	TombToggleButton = Instance.new("ImageButton"),
 	UICorner_27 = Instance.new("UICorner"),
-	ImageLabel_6 = Instance.new("ImageLabel"),
+	ImageLabel_5 = Instance.new("ImageLabel"),
 	UICorner_28 = Instance.new("UICorner"),
-	BoatToggle = Instance.new("TextLabel"),
+	Tick_5 = Instance.new("ImageLabel"),
 	UICorner_29 = Instance.new("UICorner"),
-	Border_8 = Instance.new("TextLabel"),
+	PowerPlantToggle = Instance.new("TextLabel"),
 	UICorner_30 = Instance.new("UICorner"),
-	BoatToggleButton = Instance.new("ImageButton"),
+	Border_7 = Instance.new("TextLabel"),
 	UICorner_31 = Instance.new("UICorner"),
-	ImageLabel_7 = Instance.new("ImageLabel"),
+	PowerPlantToggleButton = Instance.new("ImageButton"),
 	UICorner_32 = Instance.new("UICorner"),
-	PlaneToggle = Instance.new("TextLabel"),
+	ImageLabel_6 = Instance.new("ImageLabel"),
 	UICorner_33 = Instance.new("UICorner"),
-	Border_9 = Instance.new("TextLabel"),
+	Tick_6 = Instance.new("ImageLabel"),
 	UICorner_34 = Instance.new("UICorner"),
-	PlaneToggleButton = Instance.new("ImageButton"),
+	BoatToggle = Instance.new("TextLabel"),
 	UICorner_35 = Instance.new("UICorner"),
-	ImageLabel_8 = Instance.new("ImageLabel"),
+	Border_8 = Instance.new("TextLabel"),
 	UICorner_36 = Instance.new("UICorner"),
-	TrainToggle = Instance.new("TextLabel"),
+	BoatToggleButton = Instance.new("ImageButton"),
 	UICorner_37 = Instance.new("UICorner"),
-	Border_10 = Instance.new("TextLabel"),
+	ImageLabel_7 = Instance.new("ImageLabel"),
 	UICorner_38 = Instance.new("UICorner"),
-	TrainToggleButton = Instance.new("ImageButton"),
+	Tick_7 = Instance.new("ImageLabel"),
 	UICorner_39 = Instance.new("UICorner"),
-	ImageLabel_9 = Instance.new("ImageLabel"),
+	PlaneToggle = Instance.new("TextLabel"),
 	UICorner_40 = Instance.new("UICorner"),
-	SmallStoresToggle = Instance.new("TextLabel"),
+	Border_9 = Instance.new("TextLabel"),
 	UICorner_41 = Instance.new("UICorner"),
-	Border_11 = Instance.new("TextLabel"),
+	PlaneToggleButton = Instance.new("ImageButton"),
 	UICorner_42 = Instance.new("UICorner"),
-	SmallStoresToggleButton = Instance.new("ImageButton"),
+	ImageLabel_8 = Instance.new("ImageLabel"),
 	UICorner_43 = Instance.new("UICorner"),
-	ImageLabel_10 = Instance.new("ImageLabel"),
+	Tick_8 = Instance.new("ImageLabel"),
 	UICorner_44 = Instance.new("UICorner"),
-	DropToggle = Instance.new("TextLabel"),
+	TrainToggle = Instance.new("TextLabel"),
 	UICorner_45 = Instance.new("UICorner"),
-	Border_12 = Instance.new("TextLabel"),
+	Border_10 = Instance.new("TextLabel"),
 	UICorner_46 = Instance.new("UICorner"),
-	DropToggleButton = Instance.new("ImageButton"),
+	TrainToggleButton = Instance.new("ImageButton"),
 	UICorner_47 = Instance.new("UICorner"),
-	ImageLabel_11 = Instance.new("ImageLabel"),
+	ImageLabel_9 = Instance.new("ImageLabel"),
 	UICorner_48 = Instance.new("UICorner"),
-	BankToggle = Instance.new("TextLabel"),
+	Tick_9 = Instance.new("ImageLabel"),
 	UICorner_49 = Instance.new("UICorner"),
-	Border_13 = Instance.new("TextLabel"),
+	SmallStoresToggle = Instance.new("TextLabel"),
 	UICorner_50 = Instance.new("UICorner"),
-	BankToggleButton = Instance.new("ImageButton"),
+	Border_11 = Instance.new("TextLabel"),
 	UICorner_51 = Instance.new("UICorner"),
-	ImageLabel_12 = Instance.new("ImageLabel"),
+	SmallStoresToggleButton = Instance.new("ImageButton"),
 	UICorner_52 = Instance.new("UICorner"),
+	ImageLabel_10 = Instance.new("ImageLabel"),
+	UICorner_53 = Instance.new("UICorner"),
+	Tick_10 = Instance.new("ImageLabel"),
+	UICorner_54 = Instance.new("UICorner"),
+	DropToggle = Instance.new("TextLabel"),
+	UICorner_55 = Instance.new("UICorner"),
+	Border_12 = Instance.new("TextLabel"),
+	UICorner_56 = Instance.new("UICorner"),
+	DropToggleButton = Instance.new("ImageButton"),
+	UICorner_57 = Instance.new("UICorner"),
+	ImageLabel_11 = Instance.new("ImageLabel"),
+	UICorner_58 = Instance.new("UICorner"),
+	Tick_11 = Instance.new("ImageLabel"),
+	UICorner_59 = Instance.new("UICorner"),
+	BankToggle = Instance.new("TextLabel"),
+	UICorner_60 = Instance.new("UICorner"),
+	Border_13 = Instance.new("TextLabel"),
+	UICorner_61 = Instance.new("UICorner"),
+	BankToggleButton = Instance.new("ImageButton"),
+	UICorner_62 = Instance.new("UICorner"),
+	ImageLabel_12 = Instance.new("ImageLabel"),
+	UICorner_63 = Instance.new("UICorner"),
+	Tick_12 = Instance.new("ImageLabel"),
+	UICorner_64 = Instance.new("UICorner"),
 	Gap = Instance.new("TextLabel"),
 	SettingsTab = Instance.new("ScrollingFrame"),
 	UIListLayout_3 = Instance.new("UIListLayout"),
 	MainSection = Instance.new("TextLabel"),
-	UICorner_53 = Instance.new("UICorner"),
+	UICorner_65 = Instance.new("UICorner"),
 	Border_14 = Instance.new("TextLabel"),
-	UICorner_54 = Instance.new("UICorner"),
+	UICorner_66 = Instance.new("UICorner"),
 	Title = Instance.new("TextLabel"),
 	TeleportToggle = Instance.new("TextLabel"),
-	UICorner_55 = Instance.new("UICorner"),
+	UICorner_67 = Instance.new("UICorner"),
 	TeleportToggleButton = Instance.new("ImageButton"),
-	UICorner_56 = Instance.new("UICorner"),
+	UICorner_68 = Instance.new("UICorner"),
 	ImageLabel_13 = Instance.new("ImageLabel"),
-	UICorner_57 = Instance.new("UICorner"),
+	UICorner_69 = Instance.new("UICorner"),
+	Tick_13 = Instance.new("ImageLabel"),
+	UICorner_70 = Instance.new("UICorner"),
 	WaitToggle = Instance.new("TextLabel"),
-	UICorner_58 = Instance.new("UICorner"),
+	UICorner_71 = Instance.new("UICorner"),
 	WaitToggleButton = Instance.new("ImageButton"),
-	UICorner_59 = Instance.new("UICorner"),
+	UICorner_72 = Instance.new("UICorner"),
 	ImageLabel_14 = Instance.new("ImageLabel"),
-	UICorner_60 = Instance.new("UICorner"),
+	UICorner_73 = Instance.new("UICorner"),
+	Tick_14 = Instance.new("ImageLabel"),
+	UICorner_74 = Instance.new("UICorner"),
 	BotSpeedSlider = Instance.new("ImageLabel"),
 	Handle = Instance.new("ImageButton"),
-	UICorner_61 = Instance.new("UICorner"),
+	UICorner_75 = Instance.new("UICorner"),
 	BackGround_3 = Instance.new("ImageLabel"),
-	UICorner_62 = Instance.new("UICorner"),
+	UICorner_76 = Instance.new("UICorner"),
 	BotSpeedValue = Instance.new("TextLabel"),
 	Title_2 = Instance.new("TextLabel"),
 	PathSpeedSlider = Instance.new("ImageLabel"),
 	Handle_2 = Instance.new("ImageButton"),
-	UICorner_63 = Instance.new("UICorner"),
+	UICorner_77 = Instance.new("UICorner"),
 	BackGround_4 = Instance.new("ImageLabel"),
-	UICorner_64 = Instance.new("UICorner"),
+	UICorner_78 = Instance.new("UICorner"),
 	PathSpeedValue = Instance.new("TextLabel"),
 	Title_3 = Instance.new("TextLabel"),
 	Button = Instance.new("ImageButton"),
+	SafeToggle = Instance.new("TextLabel"),
+	UICorner_79 = Instance.new("UICorner"),
+	SafeToggleButton = Instance.new("ImageButton"),
+	UICorner_80 = Instance.new("UICorner"),
+	ImageLabel_15 = Instance.new("ImageLabel"),
+	UICorner_81 = Instance.new("UICorner"),
+	Tick_15 = Instance.new("ImageLabel"),
+	UICorner_82 = Instance.new("UICorner"),
 	Gap_2 = Instance.new("TextLabel"),
 	MenuToggle = Instance.new("TextLabel"),
-	UICorner_65 = Instance.new("UICorner"),
+	UICorner_83 = Instance.new("UICorner"),
 	Border_15 = Instance.new("TextLabel"),
-	UICorner_66 = Instance.new("UICorner"),
+	UICorner_84 = Instance.new("UICorner"),
 	MenuToggleKey = Instance.new("TextButton"),
-	UICorner_67 = Instance.new("UICorner"),
-	ImageLabel_15 = Instance.new("ImageLabel"),
-	UICorner_68 = Instance.new("UICorner"),
+	UICorner_85 = Instance.new("UICorner"),
+	ImageLabel_16 = Instance.new("ImageLabel"),
+	UICorner_86 = Instance.new("UICorner"),
 	ResetButton = Instance.new("TextButton"),
-	UICorner_69 = Instance.new("UICorner"),
+	UICorner_87 = Instance.new("UICorner"),
 	Border_16 = Instance.new("TextLabel"),
-	UICorner_70 = Instance.new("UICorner"),
+	UICorner_88 = Instance.new("UICorner"),
 	KillAuraSection = Instance.new("TextLabel"),
-	UICorner_71 = Instance.new("UICorner"),
+	UICorner_89 = Instance.new("UICorner"),
 	Border_17 = Instance.new("TextLabel"),
-	UICorner_72 = Instance.new("UICorner"),
+	UICorner_90 = Instance.new("UICorner"),
 	Title_4 = Instance.new("TextLabel"),
 	KillAuraToggle = Instance.new("TextLabel"),
-	UICorner_73 = Instance.new("UICorner"),
+	UICorner_91 = Instance.new("UICorner"),
 	KillAuraToggleButton = Instance.new("ImageButton"),
-	UICorner_74 = Instance.new("UICorner"),
-	ImageLabel_16 = Instance.new("ImageLabel"),
-	UICorner_75 = Instance.new("UICorner"),
+	UICorner_92 = Instance.new("UICorner"),
+	ImageLabel_17 = Instance.new("ImageLabel"),
+	UICorner_93 = Instance.new("UICorner"),
+	Tick_16 = Instance.new("ImageLabel"),
+	UICorner_94 = Instance.new("UICorner"),
 	KillAuraSlider = Instance.new("ImageLabel"),
 	Handle_3 = Instance.new("ImageButton"),
-	UICorner_76 = Instance.new("UICorner"),
+	UICorner_95 = Instance.new("UICorner"),
 	BackGround_5 = Instance.new("ImageLabel"),
-	UICorner_77 = Instance.new("UICorner"),
+	UICorner_96 = Instance.new("UICorner"),
 	KillAuraValue = Instance.new("TextLabel"),
 	Title_5 = Instance.new("TextLabel"),
 	Button_2 = Instance.new("ImageButton"),
 	AvoidCopSection = Instance.new("TextLabel"),
-	UICorner_78 = Instance.new("UICorner"),
+	UICorner_97 = Instance.new("UICorner"),
 	Border_18 = Instance.new("TextLabel"),
-	UICorner_79 = Instance.new("UICorner"),
+	UICorner_98 = Instance.new("UICorner"),
 	Title_6 = Instance.new("TextLabel"),
 	CopAvoidToggle = Instance.new("TextLabel"),
-	UICorner_80 = Instance.new("UICorner"),
+	UICorner_99 = Instance.new("UICorner"),
 	CopAvoidToggleButton = Instance.new("ImageButton"),
-	UICorner_81 = Instance.new("UICorner"),
-	ImageLabel_17 = Instance.new("ImageLabel"),
-	UICorner_82 = Instance.new("UICorner"),
+	UICorner_100 = Instance.new("UICorner"),
+	ImageLabel_18 = Instance.new("ImageLabel"),
+	UICorner_101 = Instance.new("UICorner"),
+	Tick_17 = Instance.new("ImageLabel"),
+	UICorner_102 = Instance.new("UICorner"),
 	CopAvoidSlider = Instance.new("ImageLabel"),
 	Handle_4 = Instance.new("ImageButton"),
-	UICorner_83 = Instance.new("UICorner"),
+	UICorner_103 = Instance.new("UICorner"),
 	BackGround_6 = Instance.new("ImageLabel"),
-	UICorner_84 = Instance.new("UICorner"),
+	UICorner_104 = Instance.new("UICorner"),
 	CopAvoidValue = Instance.new("TextLabel"),
 	Title_7 = Instance.new("TextLabel"),
 	Button_3 = Instance.new("ImageButton"),
 	ServerHopSection = Instance.new("TextLabel"),
-	UICorner_85 = Instance.new("UICorner"),
+	UICorner_105 = Instance.new("UICorner"),
 	Border_19 = Instance.new("TextLabel"),
-	UICorner_86 = Instance.new("UICorner"),
+	UICorner_106 = Instance.new("UICorner"),
 	Title_8 = Instance.new("TextLabel"),
 	ServerHopToggle = Instance.new("TextLabel"),
-	UICorner_87 = Instance.new("UICorner"),
+	UICorner_107 = Instance.new("UICorner"),
 	ServerHopToggleButton = Instance.new("ImageButton"),
-	UICorner_88 = Instance.new("UICorner"),
-	ImageLabel_18 = Instance.new("ImageLabel"),
-	UICorner_89 = Instance.new("UICorner"),
+	UICorner_108 = Instance.new("UICorner"),
+	ImageLabel_19 = Instance.new("ImageLabel"),
+	UICorner_109 = Instance.new("UICorner"),
+	Tick_18 = Instance.new("ImageLabel"),
+	UICorner_110 = Instance.new("UICorner"),
 	MinPlayersSlider = Instance.new("ImageLabel"),
 	Handle_5 = Instance.new("ImageButton"),
-	UICorner_90 = Instance.new("UICorner"),
+	UICorner_111 = Instance.new("UICorner"),
 	BackGround_7 = Instance.new("ImageLabel"),
-	UICorner_91 = Instance.new("UICorner"),
+	UICorner_112 = Instance.new("UICorner"),
 	MinPlayersValue = Instance.new("TextLabel"),
 	Title_9 = Instance.new("TextLabel"),
 	Button_4 = Instance.new("ImageButton"),
 	MaxPingSlider = Instance.new("ImageLabel"),
 	Handle_6 = Instance.new("ImageButton"),
-	UICorner_92 = Instance.new("UICorner"),
+	UICorner_113 = Instance.new("UICorner"),
 	BackGround_8 = Instance.new("ImageLabel"),
-	UICorner_93 = Instance.new("UICorner"),
+	UICorner_114 = Instance.new("UICorner"),
 	MaxPingValue = Instance.new("TextLabel"),
 	Title_10 = Instance.new("TextLabel"),
 	ServerHopWaitTimeSlider = Instance.new("ImageLabel"),
 	Handle_7 = Instance.new("ImageButton"),
-	UICorner_94 = Instance.new("UICorner"),
+	UICorner_115 = Instance.new("UICorner"),
 	BackGround_9 = Instance.new("ImageLabel"),
-	UICorner_95 = Instance.new("UICorner"),
+	UICorner_116 = Instance.new("UICorner"),
 	ServerHopWaitTimeValue = Instance.new("TextLabel"),
 	Title_11 = Instance.new("TextLabel"),
 	AutoRobToggle = Instance.new("TextLabel"),
-	UICorner_96 = Instance.new("UICorner"),
+	UICorner_117 = Instance.new("UICorner"),
 	Border_20 = Instance.new("TextLabel"),
-	UICorner_97 = Instance.new("UICorner"),
+	UICorner_118 = Instance.new("UICorner"),
 	AutoRobToggleButton = Instance.new("ImageButton"),
-	UICorner_98 = Instance.new("UICorner"),
-	ImageLabel_19 = Instance.new("ImageLabel"),
-	UICorner_99 = Instance.new("UICorner"),
+	UICorner_119 = Instance.new("UICorner"),
+	ImageLabel_20 = Instance.new("ImageLabel"),
+	UICorner_120 = Instance.new("UICorner"),
+	Tick_19 = Instance.new("ImageLabel"),
+	UICorner_121 = Instance.new("UICorner"),
 	InfoTab = Instance.new("Frame"),
 	Creator = Instance.new("TextLabel"),
-	UICorner_100 = Instance.new("UICorner"),
+	UICorner_122 = Instance.new("UICorner"),
 	Border_21 = Instance.new("TextLabel"),
-	UICorner_101 = Instance.new("UICorner"),
+	UICorner_123 = Instance.new("UICorner"),
 	UIListLayout_4 = Instance.new("UIListLayout"),
 	Gap_3 = Instance.new("TextLabel"),
 	Version = Instance.new("TextLabel"),
-	UICorner_102 = Instance.new("UICorner"),
+	UICorner_124 = Instance.new("UICorner"),
 	Border_22 = Instance.new("TextLabel"),
-	UICorner_103 = Instance.new("UICorner"),
+	UICorner_125 = Instance.new("UICorner"),
 }
 
 --Properties:
@@ -368,7 +413,7 @@ ProjectAutoV2.User.BackgroundTransparency = 1.000
 ProjectAutoV2.User.Position = UDim2.new(0, 55, 0, 450)
 ProjectAutoV2.User.Size = UDim2.new(0, 80, 0, 25)
 ProjectAutoV2.User.Font = Enum.Font.SourceSansSemibold
-ProjectAutoV2.User.Text = "Pxsta#4133"
+ProjectAutoV2.User.Text = "User"
 ProjectAutoV2.User.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.User.TextSize = 15.000
 ProjectAutoV2.User.TextXAlignment = Enum.TextXAlignment.Left
@@ -380,7 +425,7 @@ ProjectAutoV2.Status.BackgroundTransparency = 1.000
 ProjectAutoV2.Status.Position = UDim2.new(0, 55, 0, 475)
 ProjectAutoV2.Status.Size = UDim2.new(0, 50, 0, 25)
 ProjectAutoV2.Status.Font = Enum.Font.SourceSansSemibold
-ProjectAutoV2.Status.Text = "Owner"
+ProjectAutoV2.Status.Text = "Status"
 ProjectAutoV2.Status.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Status.TextSize = 15.000
 ProjectAutoV2.Status.TextXAlignment = Enum.TextXAlignment.Left
@@ -410,7 +455,7 @@ ProjectAutoV2.Time.Name = "Time"
 ProjectAutoV2.Time.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.Time.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ProjectAutoV2.Time.BackgroundTransparency = 1.000
-ProjectAutoV2.Time.Position = UDim2.new(0, 200, 0, 450)
+ProjectAutoV2.Time.Position = UDim2.new(0, 240, 0, 450)
 ProjectAutoV2.Time.Size = UDim2.new(0, 130, 0, 25)
 ProjectAutoV2.Time.Font = Enum.Font.SourceSansSemibold
 ProjectAutoV2.Time.Text = "Time Elapsed: 00:00:00"
@@ -422,7 +467,7 @@ ProjectAutoV2.Money.Name = "Money"
 ProjectAutoV2.Money.Parent = ProjectAutoV2.BackGround
 ProjectAutoV2.Money.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ProjectAutoV2.Money.BackgroundTransparency = 1.000
-ProjectAutoV2.Money.Position = UDim2.new(0, 200, 0, 475)
+ProjectAutoV2.Money.Position = UDim2.new(0, 240, 0, 475)
 ProjectAutoV2.Money.Size = UDim2.new(0, 150, 0, 25)
 ProjectAutoV2.Money.Font = Enum.Font.SourceSansSemibold
 ProjectAutoV2.Money.Text = "Money Earned: $00,000,000"
@@ -548,6 +593,7 @@ ProjectAutoV2.LocationsTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProjectAutoV2.LocationsTab.BorderSizePixel = 0
 ProjectAutoV2.LocationsTab.Position = UDim2.new(0, 101, 0, 51)
 ProjectAutoV2.LocationsTab.Size = UDim2.new(0, 299, 0, 399)
+ProjectAutoV2.LocationsTab.AutomaticCanvasSize = "Y"
 ProjectAutoV2.LocationsTab.CanvasSize = UDim2.new(0, 0, 0.870000005, 0)
 ProjectAutoV2.LocationsTab.ScrollBarThickness = 5
 
@@ -602,6 +648,18 @@ ProjectAutoV2.ImageLabel.ZIndex = 3
 ProjectAutoV2.UICorner_8.CornerRadius = UDim.new(0, 5)
 ProjectAutoV2.UICorner_8.Parent = ProjectAutoV2.ImageLabel
 
+ProjectAutoV2.Tick.Name = "Tick"
+ProjectAutoV2.Tick.Parent = ProjectAutoV2.MansionToggleButton
+ProjectAutoV2.Tick.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick.Visible = false
+ProjectAutoV2.Tick.ZIndex = 5
+ProjectAutoV2.Tick.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_9.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_9.Parent = ProjectAutoV2.Tick
+
 ProjectAutoV2.MuseumToggle.Name = "MuseumToggle"
 ProjectAutoV2.MuseumToggle.Parent = ProjectAutoV2.LocationsTab
 ProjectAutoV2.MuseumToggle.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
@@ -614,8 +672,8 @@ ProjectAutoV2.MuseumToggle.Text = "Museum"
 ProjectAutoV2.MuseumToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.MuseumToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_9.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_9.Parent = ProjectAutoV2.MuseumToggle
+ProjectAutoV2.UICorner_10.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_10.Parent = ProjectAutoV2.MuseumToggle
 
 ProjectAutoV2.Border_3.Name = "Border"
 ProjectAutoV2.Border_3.Parent = ProjectAutoV2.MuseumToggle
@@ -627,8 +685,8 @@ ProjectAutoV2.Border_3.Text = ""
 ProjectAutoV2.Border_3.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_3.TextSize = 15.000
 
-ProjectAutoV2.UICorner_10.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_10.Parent = ProjectAutoV2.Border_3
+ProjectAutoV2.UICorner_11.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_11.Parent = ProjectAutoV2.Border_3
 
 ProjectAutoV2.MuseumToggleButton.Name = "MuseumToggleButton"
 ProjectAutoV2.MuseumToggleButton.Parent = ProjectAutoV2.MuseumToggle
@@ -637,8 +695,8 @@ ProjectAutoV2.MuseumToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.MuseumToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.MuseumToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_11.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_11.Parent = ProjectAutoV2.MuseumToggleButton
+ProjectAutoV2.UICorner_12.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_12.Parent = ProjectAutoV2.MuseumToggleButton
 
 ProjectAutoV2.ImageLabel_2.Parent = ProjectAutoV2.MuseumToggleButton
 ProjectAutoV2.ImageLabel_2.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -646,8 +704,20 @@ ProjectAutoV2.ImageLabel_2.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_2.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_2.ZIndex = 3
 
-ProjectAutoV2.UICorner_12.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_12.Parent = ProjectAutoV2.ImageLabel_2
+ProjectAutoV2.UICorner_13.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_13.Parent = ProjectAutoV2.ImageLabel_2
+
+ProjectAutoV2.Tick_2.Name = "Tick"
+ProjectAutoV2.Tick_2.Parent = ProjectAutoV2.MuseumToggleButton
+ProjectAutoV2.Tick_2.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_2.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_2.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_2.Visible = false
+ProjectAutoV2.Tick_2.ZIndex = 5
+ProjectAutoV2.Tick_2.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_14.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_14.Parent = ProjectAutoV2.Tick_2
 
 ProjectAutoV2.JewelryToggle.Name = "JewelryToggle"
 ProjectAutoV2.JewelryToggle.Parent = ProjectAutoV2.LocationsTab
@@ -661,8 +731,8 @@ ProjectAutoV2.JewelryToggle.Text = "Jewelry"
 ProjectAutoV2.JewelryToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.JewelryToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_13.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_13.Parent = ProjectAutoV2.JewelryToggle
+ProjectAutoV2.UICorner_15.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_15.Parent = ProjectAutoV2.JewelryToggle
 
 ProjectAutoV2.Border_4.Name = "Border"
 ProjectAutoV2.Border_4.Parent = ProjectAutoV2.JewelryToggle
@@ -674,8 +744,8 @@ ProjectAutoV2.Border_4.Text = ""
 ProjectAutoV2.Border_4.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_4.TextSize = 15.000
 
-ProjectAutoV2.UICorner_14.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_14.Parent = ProjectAutoV2.Border_4
+ProjectAutoV2.UICorner_16.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_16.Parent = ProjectAutoV2.Border_4
 
 ProjectAutoV2.JewelryToggleButton.Name = "JewelryToggleButton"
 ProjectAutoV2.JewelryToggleButton.Parent = ProjectAutoV2.JewelryToggle
@@ -684,8 +754,8 @@ ProjectAutoV2.JewelryToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.JewelryToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.JewelryToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_15.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_15.Parent = ProjectAutoV2.JewelryToggleButton
+ProjectAutoV2.UICorner_17.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_17.Parent = ProjectAutoV2.JewelryToggleButton
 
 ProjectAutoV2.ImageLabel_3.Parent = ProjectAutoV2.JewelryToggleButton
 ProjectAutoV2.ImageLabel_3.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -693,8 +763,20 @@ ProjectAutoV2.ImageLabel_3.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_3.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_3.ZIndex = 3
 
-ProjectAutoV2.UICorner_16.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_16.Parent = ProjectAutoV2.ImageLabel_3
+ProjectAutoV2.UICorner_18.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_18.Parent = ProjectAutoV2.ImageLabel_3
+
+ProjectAutoV2.Tick_3.Name = "Tick"
+ProjectAutoV2.Tick_3.Parent = ProjectAutoV2.JewelryToggleButton
+ProjectAutoV2.Tick_3.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_3.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_3.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_3.Visible = false
+ProjectAutoV2.Tick_3.ZIndex = 5
+ProjectAutoV2.Tick_3.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_19.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_19.Parent = ProjectAutoV2.Tick_3
 
 ProjectAutoV2.CasinoToggle.Name = "CasinoToggle"
 ProjectAutoV2.CasinoToggle.Parent = ProjectAutoV2.LocationsTab
@@ -708,8 +790,8 @@ ProjectAutoV2.CasinoToggle.Text = "Casino"
 ProjectAutoV2.CasinoToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.CasinoToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_17.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_17.Parent = ProjectAutoV2.CasinoToggle
+ProjectAutoV2.UICorner_20.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_20.Parent = ProjectAutoV2.CasinoToggle
 
 ProjectAutoV2.Border_5.Name = "Border"
 ProjectAutoV2.Border_5.Parent = ProjectAutoV2.CasinoToggle
@@ -721,8 +803,8 @@ ProjectAutoV2.Border_5.Text = ""
 ProjectAutoV2.Border_5.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_5.TextSize = 15.000
 
-ProjectAutoV2.UICorner_18.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_18.Parent = ProjectAutoV2.Border_5
+ProjectAutoV2.UICorner_21.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_21.Parent = ProjectAutoV2.Border_5
 
 ProjectAutoV2.CasinoToggleButton.Name = "CasinoToggleButton"
 ProjectAutoV2.CasinoToggleButton.Parent = ProjectAutoV2.CasinoToggle
@@ -731,8 +813,8 @@ ProjectAutoV2.CasinoToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.CasinoToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.CasinoToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_19.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_19.Parent = ProjectAutoV2.CasinoToggleButton
+ProjectAutoV2.UICorner_22.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_22.Parent = ProjectAutoV2.CasinoToggleButton
 
 ProjectAutoV2.ImageLabel_4.Parent = ProjectAutoV2.CasinoToggleButton
 ProjectAutoV2.ImageLabel_4.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -740,8 +822,20 @@ ProjectAutoV2.ImageLabel_4.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_4.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_4.ZIndex = 3
 
-ProjectAutoV2.UICorner_20.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_20.Parent = ProjectAutoV2.ImageLabel_4
+ProjectAutoV2.UICorner_23.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_23.Parent = ProjectAutoV2.ImageLabel_4
+
+ProjectAutoV2.Tick_4.Name = "Tick"
+ProjectAutoV2.Tick_4.Parent = ProjectAutoV2.CasinoToggleButton
+ProjectAutoV2.Tick_4.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_4.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_4.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_4.Visible = false
+ProjectAutoV2.Tick_4.ZIndex = 5
+ProjectAutoV2.Tick_4.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_24.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_24.Parent = ProjectAutoV2.Tick_4
 
 ProjectAutoV2.TombToggle.Name = "TombToggle"
 ProjectAutoV2.TombToggle.Parent = ProjectAutoV2.LocationsTab
@@ -755,8 +849,8 @@ ProjectAutoV2.TombToggle.Text = "Tomb"
 ProjectAutoV2.TombToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.TombToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_21.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_21.Parent = ProjectAutoV2.TombToggle
+ProjectAutoV2.UICorner_25.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_25.Parent = ProjectAutoV2.TombToggle
 
 ProjectAutoV2.Border_6.Name = "Border"
 ProjectAutoV2.Border_6.Parent = ProjectAutoV2.TombToggle
@@ -768,8 +862,8 @@ ProjectAutoV2.Border_6.Text = ""
 ProjectAutoV2.Border_6.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_6.TextSize = 15.000
 
-ProjectAutoV2.UICorner_22.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_22.Parent = ProjectAutoV2.Border_6
+ProjectAutoV2.UICorner_26.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_26.Parent = ProjectAutoV2.Border_6
 
 ProjectAutoV2.TombToggleButton.Name = "TombToggleButton"
 ProjectAutoV2.TombToggleButton.Parent = ProjectAutoV2.TombToggle
@@ -778,8 +872,8 @@ ProjectAutoV2.TombToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.TombToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.TombToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_23.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_23.Parent = ProjectAutoV2.TombToggleButton
+ProjectAutoV2.UICorner_27.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_27.Parent = ProjectAutoV2.TombToggleButton
 
 ProjectAutoV2.ImageLabel_5.Parent = ProjectAutoV2.TombToggleButton
 ProjectAutoV2.ImageLabel_5.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -787,8 +881,20 @@ ProjectAutoV2.ImageLabel_5.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_5.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_5.ZIndex = 3
 
-ProjectAutoV2.UICorner_24.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_24.Parent = ProjectAutoV2.ImageLabel_5
+ProjectAutoV2.UICorner_28.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_28.Parent = ProjectAutoV2.ImageLabel_5
+
+ProjectAutoV2.Tick_5.Name = "Tick"
+ProjectAutoV2.Tick_5.Parent = ProjectAutoV2.TombToggleButton
+ProjectAutoV2.Tick_5.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_5.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_5.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_5.Visible = false
+ProjectAutoV2.Tick_5.ZIndex = 5
+ProjectAutoV2.Tick_5.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_29.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_29.Parent = ProjectAutoV2.Tick_5
 
 ProjectAutoV2.PowerPlantToggle.Name = "PowerPlantToggle"
 ProjectAutoV2.PowerPlantToggle.Parent = ProjectAutoV2.LocationsTab
@@ -802,8 +908,8 @@ ProjectAutoV2.PowerPlantToggle.Text = "Power Plant (NOT ADDED)"
 ProjectAutoV2.PowerPlantToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.PowerPlantToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_25.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_25.Parent = ProjectAutoV2.PowerPlantToggle
+ProjectAutoV2.UICorner_30.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_30.Parent = ProjectAutoV2.PowerPlantToggle
 
 ProjectAutoV2.Border_7.Name = "Border"
 ProjectAutoV2.Border_7.Parent = ProjectAutoV2.PowerPlantToggle
@@ -815,8 +921,8 @@ ProjectAutoV2.Border_7.Text = ""
 ProjectAutoV2.Border_7.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_7.TextSize = 15.000
 
-ProjectAutoV2.UICorner_26.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_26.Parent = ProjectAutoV2.Border_7
+ProjectAutoV2.UICorner_31.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_31.Parent = ProjectAutoV2.Border_7
 
 ProjectAutoV2.PowerPlantToggleButton.Name = "PowerPlantToggleButton"
 ProjectAutoV2.PowerPlantToggleButton.Parent = ProjectAutoV2.PowerPlantToggle
@@ -825,8 +931,8 @@ ProjectAutoV2.PowerPlantToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.PowerPlantToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.PowerPlantToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_27.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_27.Parent = ProjectAutoV2.PowerPlantToggleButton
+ProjectAutoV2.UICorner_32.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_32.Parent = ProjectAutoV2.PowerPlantToggleButton
 
 ProjectAutoV2.ImageLabel_6.Parent = ProjectAutoV2.PowerPlantToggleButton
 ProjectAutoV2.ImageLabel_6.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -834,8 +940,20 @@ ProjectAutoV2.ImageLabel_6.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_6.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_6.ZIndex = 3
 
-ProjectAutoV2.UICorner_28.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_28.Parent = ProjectAutoV2.ImageLabel_6
+ProjectAutoV2.UICorner_33.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_33.Parent = ProjectAutoV2.ImageLabel_6
+
+ProjectAutoV2.Tick_6.Name = "Tick"
+ProjectAutoV2.Tick_6.Parent = ProjectAutoV2.PowerPlantToggleButton
+ProjectAutoV2.Tick_6.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_6.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_6.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_6.Visible = false
+ProjectAutoV2.Tick_6.ZIndex = 5
+ProjectAutoV2.Tick_6.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_34.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_34.Parent = ProjectAutoV2.Tick_6
 
 ProjectAutoV2.BoatToggle.Name = "BoatToggle"
 ProjectAutoV2.BoatToggle.Parent = ProjectAutoV2.LocationsTab
@@ -849,8 +967,8 @@ ProjectAutoV2.BoatToggle.Text = "Boat (NOT ADDED)"
 ProjectAutoV2.BoatToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.BoatToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_29.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_29.Parent = ProjectAutoV2.BoatToggle
+ProjectAutoV2.UICorner_35.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_35.Parent = ProjectAutoV2.BoatToggle
 
 ProjectAutoV2.Border_8.Name = "Border"
 ProjectAutoV2.Border_8.Parent = ProjectAutoV2.BoatToggle
@@ -862,8 +980,8 @@ ProjectAutoV2.Border_8.Text = ""
 ProjectAutoV2.Border_8.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_8.TextSize = 15.000
 
-ProjectAutoV2.UICorner_30.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_30.Parent = ProjectAutoV2.Border_8
+ProjectAutoV2.UICorner_36.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_36.Parent = ProjectAutoV2.Border_8
 
 ProjectAutoV2.BoatToggleButton.Name = "BoatToggleButton"
 ProjectAutoV2.BoatToggleButton.Parent = ProjectAutoV2.BoatToggle
@@ -872,8 +990,8 @@ ProjectAutoV2.BoatToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.BoatToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.BoatToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_31.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_31.Parent = ProjectAutoV2.BoatToggleButton
+ProjectAutoV2.UICorner_37.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_37.Parent = ProjectAutoV2.BoatToggleButton
 
 ProjectAutoV2.ImageLabel_7.Parent = ProjectAutoV2.BoatToggleButton
 ProjectAutoV2.ImageLabel_7.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -881,8 +999,20 @@ ProjectAutoV2.ImageLabel_7.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_7.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_7.ZIndex = 3
 
-ProjectAutoV2.UICorner_32.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_32.Parent = ProjectAutoV2.ImageLabel_7
+ProjectAutoV2.UICorner_38.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_38.Parent = ProjectAutoV2.ImageLabel_7
+
+ProjectAutoV2.Tick_7.Name = "Tick"
+ProjectAutoV2.Tick_7.Parent = ProjectAutoV2.BoatToggleButton
+ProjectAutoV2.Tick_7.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_7.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_7.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_7.Visible = false
+ProjectAutoV2.Tick_7.ZIndex = 5
+ProjectAutoV2.Tick_7.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_39.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_39.Parent = ProjectAutoV2.Tick_7
 
 ProjectAutoV2.PlaneToggle.Name = "PlaneToggle"
 ProjectAutoV2.PlaneToggle.Parent = ProjectAutoV2.LocationsTab
@@ -896,8 +1026,8 @@ ProjectAutoV2.PlaneToggle.Text = "Plane"
 ProjectAutoV2.PlaneToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.PlaneToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_33.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_33.Parent = ProjectAutoV2.PlaneToggle
+ProjectAutoV2.UICorner_40.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_40.Parent = ProjectAutoV2.PlaneToggle
 
 ProjectAutoV2.Border_9.Name = "Border"
 ProjectAutoV2.Border_9.Parent = ProjectAutoV2.PlaneToggle
@@ -909,8 +1039,8 @@ ProjectAutoV2.Border_9.Text = ""
 ProjectAutoV2.Border_9.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_9.TextSize = 15.000
 
-ProjectAutoV2.UICorner_34.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_34.Parent = ProjectAutoV2.Border_9
+ProjectAutoV2.UICorner_41.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_41.Parent = ProjectAutoV2.Border_9
 
 ProjectAutoV2.PlaneToggleButton.Name = "PlaneToggleButton"
 ProjectAutoV2.PlaneToggleButton.Parent = ProjectAutoV2.PlaneToggle
@@ -919,8 +1049,8 @@ ProjectAutoV2.PlaneToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.PlaneToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.PlaneToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_35.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_35.Parent = ProjectAutoV2.PlaneToggleButton
+ProjectAutoV2.UICorner_42.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_42.Parent = ProjectAutoV2.PlaneToggleButton
 
 ProjectAutoV2.ImageLabel_8.Parent = ProjectAutoV2.PlaneToggleButton
 ProjectAutoV2.ImageLabel_8.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -928,8 +1058,20 @@ ProjectAutoV2.ImageLabel_8.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_8.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_8.ZIndex = 3
 
-ProjectAutoV2.UICorner_36.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_36.Parent = ProjectAutoV2.ImageLabel_8
+ProjectAutoV2.UICorner_43.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_43.Parent = ProjectAutoV2.ImageLabel_8
+
+ProjectAutoV2.Tick_8.Name = "Tick"
+ProjectAutoV2.Tick_8.Parent = ProjectAutoV2.PlaneToggleButton
+ProjectAutoV2.Tick_8.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_8.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_8.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_8.Visible = false
+ProjectAutoV2.Tick_8.ZIndex = 5
+ProjectAutoV2.Tick_8.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_44.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_44.Parent = ProjectAutoV2.Tick_8
 
 ProjectAutoV2.TrainToggle.Name = "TrainToggle"
 ProjectAutoV2.TrainToggle.Parent = ProjectAutoV2.LocationsTab
@@ -943,8 +1085,8 @@ ProjectAutoV2.TrainToggle.Text = "Train"
 ProjectAutoV2.TrainToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.TrainToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_37.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_37.Parent = ProjectAutoV2.TrainToggle
+ProjectAutoV2.UICorner_45.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_45.Parent = ProjectAutoV2.TrainToggle
 
 ProjectAutoV2.Border_10.Name = "Border"
 ProjectAutoV2.Border_10.Parent = ProjectAutoV2.TrainToggle
@@ -956,8 +1098,8 @@ ProjectAutoV2.Border_10.Text = ""
 ProjectAutoV2.Border_10.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_10.TextSize = 15.000
 
-ProjectAutoV2.UICorner_38.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_38.Parent = ProjectAutoV2.Border_10
+ProjectAutoV2.UICorner_46.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_46.Parent = ProjectAutoV2.Border_10
 
 ProjectAutoV2.TrainToggleButton.Name = "TrainToggleButton"
 ProjectAutoV2.TrainToggleButton.Parent = ProjectAutoV2.TrainToggle
@@ -966,8 +1108,8 @@ ProjectAutoV2.TrainToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.TrainToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.TrainToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_39.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_39.Parent = ProjectAutoV2.TrainToggleButton
+ProjectAutoV2.UICorner_47.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_47.Parent = ProjectAutoV2.TrainToggleButton
 
 ProjectAutoV2.ImageLabel_9.Parent = ProjectAutoV2.TrainToggleButton
 ProjectAutoV2.ImageLabel_9.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -975,8 +1117,20 @@ ProjectAutoV2.ImageLabel_9.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_9.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_9.ZIndex = 3
 
-ProjectAutoV2.UICorner_40.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_40.Parent = ProjectAutoV2.ImageLabel_9
+ProjectAutoV2.UICorner_48.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_48.Parent = ProjectAutoV2.ImageLabel_9
+
+ProjectAutoV2.Tick_9.Name = "Tick"
+ProjectAutoV2.Tick_9.Parent = ProjectAutoV2.TrainToggleButton
+ProjectAutoV2.Tick_9.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_9.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_9.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_9.Visible = false
+ProjectAutoV2.Tick_9.ZIndex = 5
+ProjectAutoV2.Tick_9.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_49.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_49.Parent = ProjectAutoV2.Tick_9
 
 ProjectAutoV2.SmallStoresToggle.Name = "SmallStoresToggle"
 ProjectAutoV2.SmallStoresToggle.Parent = ProjectAutoV2.LocationsTab
@@ -990,8 +1144,8 @@ ProjectAutoV2.SmallStoresToggle.Text = "Small Stores (NOT ADDED)"
 ProjectAutoV2.SmallStoresToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.SmallStoresToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_41.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_41.Parent = ProjectAutoV2.SmallStoresToggle
+ProjectAutoV2.UICorner_50.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_50.Parent = ProjectAutoV2.SmallStoresToggle
 
 ProjectAutoV2.Border_11.Name = "Border"
 ProjectAutoV2.Border_11.Parent = ProjectAutoV2.SmallStoresToggle
@@ -1003,8 +1157,8 @@ ProjectAutoV2.Border_11.Text = ""
 ProjectAutoV2.Border_11.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_11.TextSize = 15.000
 
-ProjectAutoV2.UICorner_42.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_42.Parent = ProjectAutoV2.Border_11
+ProjectAutoV2.UICorner_51.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_51.Parent = ProjectAutoV2.Border_11
 
 ProjectAutoV2.SmallStoresToggleButton.Name = "SmallStoresToggleButton"
 ProjectAutoV2.SmallStoresToggleButton.Parent = ProjectAutoV2.SmallStoresToggle
@@ -1013,8 +1167,8 @@ ProjectAutoV2.SmallStoresToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.SmallStoresToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.SmallStoresToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_43.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_43.Parent = ProjectAutoV2.SmallStoresToggleButton
+ProjectAutoV2.UICorner_52.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_52.Parent = ProjectAutoV2.SmallStoresToggleButton
 
 ProjectAutoV2.ImageLabel_10.Parent = ProjectAutoV2.SmallStoresToggleButton
 ProjectAutoV2.ImageLabel_10.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -1022,8 +1176,20 @@ ProjectAutoV2.ImageLabel_10.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_10.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_10.ZIndex = 3
 
-ProjectAutoV2.UICorner_44.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_44.Parent = ProjectAutoV2.ImageLabel_10
+ProjectAutoV2.UICorner_53.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_53.Parent = ProjectAutoV2.ImageLabel_10
+
+ProjectAutoV2.Tick_10.Name = "Tick"
+ProjectAutoV2.Tick_10.Parent = ProjectAutoV2.SmallStoresToggleButton
+ProjectAutoV2.Tick_10.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_10.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_10.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_10.Visible = false
+ProjectAutoV2.Tick_10.ZIndex = 5
+ProjectAutoV2.Tick_10.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_54.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_54.Parent = ProjectAutoV2.Tick_10
 
 ProjectAutoV2.DropToggle.Name = "DropToggle"
 ProjectAutoV2.DropToggle.Parent = ProjectAutoV2.LocationsTab
@@ -1037,8 +1203,8 @@ ProjectAutoV2.DropToggle.Text = "Air Drop"
 ProjectAutoV2.DropToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.DropToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_45.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_45.Parent = ProjectAutoV2.DropToggle
+ProjectAutoV2.UICorner_55.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_55.Parent = ProjectAutoV2.DropToggle
 
 ProjectAutoV2.Border_12.Name = "Border"
 ProjectAutoV2.Border_12.Parent = ProjectAutoV2.DropToggle
@@ -1050,8 +1216,8 @@ ProjectAutoV2.Border_12.Text = ""
 ProjectAutoV2.Border_12.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_12.TextSize = 15.000
 
-ProjectAutoV2.UICorner_46.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_46.Parent = ProjectAutoV2.Border_12
+ProjectAutoV2.UICorner_56.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_56.Parent = ProjectAutoV2.Border_12
 
 ProjectAutoV2.DropToggleButton.Name = "DropToggleButton"
 ProjectAutoV2.DropToggleButton.Parent = ProjectAutoV2.DropToggle
@@ -1060,8 +1226,8 @@ ProjectAutoV2.DropToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.DropToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.DropToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_47.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_47.Parent = ProjectAutoV2.DropToggleButton
+ProjectAutoV2.UICorner_57.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_57.Parent = ProjectAutoV2.DropToggleButton
 
 ProjectAutoV2.ImageLabel_11.Parent = ProjectAutoV2.DropToggleButton
 ProjectAutoV2.ImageLabel_11.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -1069,8 +1235,20 @@ ProjectAutoV2.ImageLabel_11.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_11.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_11.ZIndex = 3
 
-ProjectAutoV2.UICorner_48.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_48.Parent = ProjectAutoV2.ImageLabel_11
+ProjectAutoV2.UICorner_58.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_58.Parent = ProjectAutoV2.ImageLabel_11
+
+ProjectAutoV2.Tick_11.Name = "Tick"
+ProjectAutoV2.Tick_11.Parent = ProjectAutoV2.DropToggleButton
+ProjectAutoV2.Tick_11.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_11.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_11.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_11.Visible = false
+ProjectAutoV2.Tick_11.ZIndex = 5
+ProjectAutoV2.Tick_11.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_59.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_59.Parent = ProjectAutoV2.Tick_11
 
 ProjectAutoV2.BankToggle.Name = "BankToggle"
 ProjectAutoV2.BankToggle.Parent = ProjectAutoV2.LocationsTab
@@ -1084,8 +1262,8 @@ ProjectAutoV2.BankToggle.Text = "Bank"
 ProjectAutoV2.BankToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.BankToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_49.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_49.Parent = ProjectAutoV2.BankToggle
+ProjectAutoV2.UICorner_60.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_60.Parent = ProjectAutoV2.BankToggle
 
 ProjectAutoV2.Border_13.Name = "Border"
 ProjectAutoV2.Border_13.Parent = ProjectAutoV2.BankToggle
@@ -1097,8 +1275,8 @@ ProjectAutoV2.Border_13.Text = ""
 ProjectAutoV2.Border_13.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_13.TextSize = 15.000
 
-ProjectAutoV2.UICorner_50.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_50.Parent = ProjectAutoV2.Border_13
+ProjectAutoV2.UICorner_61.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_61.Parent = ProjectAutoV2.Border_13
 
 ProjectAutoV2.BankToggleButton.Name = "BankToggleButton"
 ProjectAutoV2.BankToggleButton.Parent = ProjectAutoV2.BankToggle
@@ -1107,8 +1285,8 @@ ProjectAutoV2.BankToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.BankToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.BankToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_51.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_51.Parent = ProjectAutoV2.BankToggleButton
+ProjectAutoV2.UICorner_62.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_62.Parent = ProjectAutoV2.BankToggleButton
 
 ProjectAutoV2.ImageLabel_12.Parent = ProjectAutoV2.BankToggleButton
 ProjectAutoV2.ImageLabel_12.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -1116,8 +1294,20 @@ ProjectAutoV2.ImageLabel_12.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_12.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_12.ZIndex = 3
 
-ProjectAutoV2.UICorner_52.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_52.Parent = ProjectAutoV2.ImageLabel_12
+ProjectAutoV2.UICorner_63.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_63.Parent = ProjectAutoV2.ImageLabel_12
+
+ProjectAutoV2.Tick_12.Name = "Tick"
+ProjectAutoV2.Tick_12.Parent = ProjectAutoV2.BankToggleButton
+ProjectAutoV2.Tick_12.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_12.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_12.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_12.Visible = false
+ProjectAutoV2.Tick_12.ZIndex = 5
+ProjectAutoV2.Tick_12.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_64.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_64.Parent = ProjectAutoV2.Tick_12
 
 ProjectAutoV2.Gap.Name = "Gap"
 ProjectAutoV2.Gap.Parent = ProjectAutoV2.LocationsTab
@@ -1159,8 +1349,8 @@ ProjectAutoV2.MainSection.Text = ""
 ProjectAutoV2.MainSection.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.MainSection.TextSize = 15.000
 
-ProjectAutoV2.UICorner_53.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_53.Parent = ProjectAutoV2.MainSection
+ProjectAutoV2.UICorner_65.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_65.Parent = ProjectAutoV2.MainSection
 
 ProjectAutoV2.Border_14.Name = "Border"
 ProjectAutoV2.Border_14.Parent = ProjectAutoV2.MainSection
@@ -1172,8 +1362,8 @@ ProjectAutoV2.Border_14.Text = ""
 ProjectAutoV2.Border_14.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_14.TextSize = 15.000
 
-ProjectAutoV2.UICorner_54.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_54.Parent = ProjectAutoV2.Border_14
+ProjectAutoV2.UICorner_66.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_66.Parent = ProjectAutoV2.Border_14
 
 ProjectAutoV2.Title.Name = "Title"
 ProjectAutoV2.Title.Parent = ProjectAutoV2.MainSection
@@ -1200,8 +1390,8 @@ ProjectAutoV2.TeleportToggle.Text = "Teleport"
 ProjectAutoV2.TeleportToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.TeleportToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_55.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_55.Parent = ProjectAutoV2.TeleportToggle
+ProjectAutoV2.UICorner_67.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_67.Parent = ProjectAutoV2.TeleportToggle
 
 ProjectAutoV2.TeleportToggleButton.Name = "TeleportToggleButton"
 ProjectAutoV2.TeleportToggleButton.Parent = ProjectAutoV2.TeleportToggle
@@ -1210,8 +1400,8 @@ ProjectAutoV2.TeleportToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.TeleportToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.TeleportToggleButton.ZIndex = 5
 
-ProjectAutoV2.UICorner_56.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_56.Parent = ProjectAutoV2.TeleportToggleButton
+ProjectAutoV2.UICorner_68.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_68.Parent = ProjectAutoV2.TeleportToggleButton
 
 ProjectAutoV2.ImageLabel_13.Parent = ProjectAutoV2.TeleportToggleButton
 ProjectAutoV2.ImageLabel_13.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -1219,8 +1409,20 @@ ProjectAutoV2.ImageLabel_13.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_13.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_13.ZIndex = 4
 
-ProjectAutoV2.UICorner_57.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_57.Parent = ProjectAutoV2.ImageLabel_13
+ProjectAutoV2.UICorner_69.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_69.Parent = ProjectAutoV2.ImageLabel_13
+
+ProjectAutoV2.Tick_13.Name = "Tick"
+ProjectAutoV2.Tick_13.Parent = ProjectAutoV2.TeleportToggleButton
+ProjectAutoV2.Tick_13.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_13.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_13.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_13.Visible = false
+ProjectAutoV2.Tick_13.ZIndex = 5
+ProjectAutoV2.Tick_13.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_70.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_70.Parent = ProjectAutoV2.Tick_13
 
 ProjectAutoV2.WaitToggle.Name = "WaitToggle"
 ProjectAutoV2.WaitToggle.Parent = ProjectAutoV2.MainSection
@@ -1235,8 +1437,8 @@ ProjectAutoV2.WaitToggle.Text = "Wait"
 ProjectAutoV2.WaitToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.WaitToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_58.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_58.Parent = ProjectAutoV2.WaitToggle
+ProjectAutoV2.UICorner_71.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_71.Parent = ProjectAutoV2.WaitToggle
 
 ProjectAutoV2.WaitToggleButton.Name = "WaitToggleButton"
 ProjectAutoV2.WaitToggleButton.Parent = ProjectAutoV2.WaitToggle
@@ -1245,8 +1447,8 @@ ProjectAutoV2.WaitToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.WaitToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.WaitToggleButton.ZIndex = 5
 
-ProjectAutoV2.UICorner_59.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_59.Parent = ProjectAutoV2.WaitToggleButton
+ProjectAutoV2.UICorner_72.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_72.Parent = ProjectAutoV2.WaitToggleButton
 
 ProjectAutoV2.ImageLabel_14.Parent = ProjectAutoV2.WaitToggleButton
 ProjectAutoV2.ImageLabel_14.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
@@ -1254,15 +1456,27 @@ ProjectAutoV2.ImageLabel_14.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.ImageLabel_14.Size = UDim2.new(0, 18, 0, 18)
 ProjectAutoV2.ImageLabel_14.ZIndex = 4
 
-ProjectAutoV2.UICorner_60.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_60.Parent = ProjectAutoV2.ImageLabel_14
+ProjectAutoV2.UICorner_73.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_73.Parent = ProjectAutoV2.ImageLabel_14
+
+ProjectAutoV2.Tick_14.Name = "Tick"
+ProjectAutoV2.Tick_14.Parent = ProjectAutoV2.WaitToggleButton
+ProjectAutoV2.Tick_14.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_14.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_14.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_14.Visible = false
+ProjectAutoV2.Tick_14.ZIndex = 5
+ProjectAutoV2.Tick_14.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_74.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_74.Parent = ProjectAutoV2.Tick_14
 
 ProjectAutoV2.BotSpeedSlider.Name = "BotSpeedSlider"
 ProjectAutoV2.BotSpeedSlider.Parent = ProjectAutoV2.MainSection
 ProjectAutoV2.BotSpeedSlider.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 ProjectAutoV2.BotSpeedSlider.BorderColor3 = Color3.fromRGB(200, 0, 0)
 ProjectAutoV2.BotSpeedSlider.BorderSizePixel = 0
-ProjectAutoV2.BotSpeedSlider.Position = UDim2.new(0, 10, 0, 105)
+ProjectAutoV2.BotSpeedSlider.Position = UDim2.new(0, 10, 0, 135)
 ProjectAutoV2.BotSpeedSlider.Size = UDim2.new(0, 210, 0, 14)
 ProjectAutoV2.BotSpeedSlider.Visible = false
 ProjectAutoV2.BotSpeedSlider.ZIndex = 3
@@ -1275,8 +1489,8 @@ ProjectAutoV2.Handle.Position = UDim2.new(0, 0, 0, -3)
 ProjectAutoV2.Handle.Size = UDim2.new(0, 10, 0, 20)
 ProjectAutoV2.Handle.ZIndex = 4
 
-ProjectAutoV2.UICorner_61.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_61.Parent = ProjectAutoV2.Handle
+ProjectAutoV2.UICorner_75.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_75.Parent = ProjectAutoV2.Handle
 
 ProjectAutoV2.BackGround_3.Name = "BackGround"
 ProjectAutoV2.BackGround_3.Parent = ProjectAutoV2.Handle
@@ -1285,8 +1499,8 @@ ProjectAutoV2.BackGround_3.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.BackGround_3.Size = UDim2.new(0, 12, 0, 22)
 ProjectAutoV2.BackGround_3.ZIndex = 3
 
-ProjectAutoV2.UICorner_62.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_62.Parent = ProjectAutoV2.BackGround_3
+ProjectAutoV2.UICorner_76.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_76.Parent = ProjectAutoV2.BackGround_3
 
 ProjectAutoV2.BotSpeedValue.Name = "BotSpeedValue"
 ProjectAutoV2.BotSpeedValue.Parent = ProjectAutoV2.BotSpeedSlider
@@ -1319,7 +1533,7 @@ ProjectAutoV2.PathSpeedSlider.Parent = ProjectAutoV2.MainSection
 ProjectAutoV2.PathSpeedSlider.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 ProjectAutoV2.PathSpeedSlider.BorderColor3 = Color3.fromRGB(200, 0, 0)
 ProjectAutoV2.PathSpeedSlider.BorderSizePixel = 0
-ProjectAutoV2.PathSpeedSlider.Position = UDim2.new(0, 10, 0, 145)
+ProjectAutoV2.PathSpeedSlider.Position = UDim2.new(0, 10, 0, 175)
 ProjectAutoV2.PathSpeedSlider.Size = UDim2.new(0, 210, 0, 14)
 ProjectAutoV2.PathSpeedSlider.Visible = false
 ProjectAutoV2.PathSpeedSlider.ZIndex = 3
@@ -1332,8 +1546,8 @@ ProjectAutoV2.Handle_2.Position = UDim2.new(0, 0, 0, -3)
 ProjectAutoV2.Handle_2.Size = UDim2.new(0, 10, 0, 20)
 ProjectAutoV2.Handle_2.ZIndex = 4
 
-ProjectAutoV2.UICorner_63.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_63.Parent = ProjectAutoV2.Handle_2
+ProjectAutoV2.UICorner_77.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_77.Parent = ProjectAutoV2.Handle_2
 
 ProjectAutoV2.BackGround_4.Name = "BackGround"
 ProjectAutoV2.BackGround_4.Parent = ProjectAutoV2.Handle_2
@@ -1342,8 +1556,8 @@ ProjectAutoV2.BackGround_4.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.BackGround_4.Size = UDim2.new(0, 12, 0, 22)
 ProjectAutoV2.BackGround_4.ZIndex = 3
 
-ProjectAutoV2.UICorner_64.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_64.Parent = ProjectAutoV2.BackGround_4
+ProjectAutoV2.UICorner_78.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_78.Parent = ProjectAutoV2.BackGround_4
 
 ProjectAutoV2.PathSpeedValue.Name = "PathSpeedValue"
 ProjectAutoV2.PathSpeedValue.Parent = ProjectAutoV2.PathSpeedSlider
@@ -1381,6 +1595,53 @@ ProjectAutoV2.Button.Size = UDim2.new(0, 15, 0, 15)
 ProjectAutoV2.Button.ZIndex = 3
 ProjectAutoV2.Button.Image = "http://www.roblox.com/asset/?id=3173271667"
 
+ProjectAutoV2.SafeToggle.Name = "SafeToggle"
+ProjectAutoV2.SafeToggle.Parent = ProjectAutoV2.MainSection
+ProjectAutoV2.SafeToggle.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ProjectAutoV2.SafeToggle.LayoutOrder = 2
+ProjectAutoV2.SafeToggle.Position = UDim2.new(0, 0, 0, 85)
+ProjectAutoV2.SafeToggle.Size = UDim2.new(0, 279, 0, 25)
+ProjectAutoV2.SafeToggle.Visible = false
+ProjectAutoV2.SafeToggle.ZIndex = 3
+ProjectAutoV2.SafeToggle.Font = Enum.Font.SourceSansSemibold
+ProjectAutoV2.SafeToggle.Text = "Safe"
+ProjectAutoV2.SafeToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
+ProjectAutoV2.SafeToggle.TextSize = 15.000
+
+ProjectAutoV2.UICorner_79.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_79.Parent = ProjectAutoV2.SafeToggle
+
+ProjectAutoV2.SafeToggleButton.Name = "SafeToggleButton"
+ProjectAutoV2.SafeToggleButton.Parent = ProjectAutoV2.SafeToggle
+ProjectAutoV2.SafeToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ProjectAutoV2.SafeToggleButton.Position = UDim2.new(0, 5, 0, 5)
+ProjectAutoV2.SafeToggleButton.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.SafeToggleButton.ZIndex = 5
+
+ProjectAutoV2.UICorner_80.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_80.Parent = ProjectAutoV2.SafeToggleButton
+
+ProjectAutoV2.ImageLabel_15.Parent = ProjectAutoV2.SafeToggleButton
+ProjectAutoV2.ImageLabel_15.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.ImageLabel_15.Position = UDim2.new(0, -1, 0, -1)
+ProjectAutoV2.ImageLabel_15.Size = UDim2.new(0, 18, 0, 18)
+ProjectAutoV2.ImageLabel_15.ZIndex = 4
+
+ProjectAutoV2.UICorner_81.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_81.Parent = ProjectAutoV2.ImageLabel_15
+
+ProjectAutoV2.Tick_15.Name = "Tick"
+ProjectAutoV2.Tick_15.Parent = ProjectAutoV2.SafeToggleButton
+ProjectAutoV2.Tick_15.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_15.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_15.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_15.Visible = false
+ProjectAutoV2.Tick_15.ZIndex = 5
+ProjectAutoV2.Tick_15.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_82.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_82.Parent = ProjectAutoV2.Tick_15
+
 ProjectAutoV2.Gap_2.Name = "Gap"
 ProjectAutoV2.Gap_2.Parent = ProjectAutoV2.SettingsTab
 ProjectAutoV2.Gap_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1406,8 +1667,8 @@ ProjectAutoV2.MenuToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.MenuToggle.TextSize = 15.000
 ProjectAutoV2.MenuToggle.TextXAlignment = Enum.TextXAlignment.Right
 
-ProjectAutoV2.UICorner_65.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_65.Parent = ProjectAutoV2.MenuToggle
+ProjectAutoV2.UICorner_83.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_83.Parent = ProjectAutoV2.MenuToggle
 
 ProjectAutoV2.Border_15.Name = "Border"
 ProjectAutoV2.Border_15.Parent = ProjectAutoV2.MenuToggle
@@ -1419,8 +1680,8 @@ ProjectAutoV2.Border_15.Text = ""
 ProjectAutoV2.Border_15.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_15.TextSize = 15.000
 
-ProjectAutoV2.UICorner_66.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_66.Parent = ProjectAutoV2.Border_15
+ProjectAutoV2.UICorner_84.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_84.Parent = ProjectAutoV2.Border_15
 
 ProjectAutoV2.MenuToggleKey.Name = "MenuToggleKey"
 ProjectAutoV2.MenuToggleKey.Parent = ProjectAutoV2.MenuToggle
@@ -1429,21 +1690,21 @@ ProjectAutoV2.MenuToggleKey.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.MenuToggleKey.Size = UDim2.new(0, 120, 0, 16)
 ProjectAutoV2.MenuToggleKey.ZIndex = 4
 ProjectAutoV2.MenuToggleKey.Font = Enum.Font.SourceSansSemibold
-ProjectAutoV2.MenuToggleKey.Text = "RightShift"
+ProjectAutoV2.MenuToggleKey.Text = "RIGHTSHIFT"
 ProjectAutoV2.MenuToggleKey.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.MenuToggleKey.TextSize = 15.000
 
-ProjectAutoV2.UICorner_67.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_67.Parent = ProjectAutoV2.MenuToggleKey
+ProjectAutoV2.UICorner_85.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_85.Parent = ProjectAutoV2.MenuToggleKey
 
-ProjectAutoV2.ImageLabel_15.Parent = ProjectAutoV2.MenuToggleKey
-ProjectAutoV2.ImageLabel_15.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
-ProjectAutoV2.ImageLabel_15.Position = UDim2.new(0, -1, 0, -1)
-ProjectAutoV2.ImageLabel_15.Size = UDim2.new(0, 122, 0, 18)
-ProjectAutoV2.ImageLabel_15.ZIndex = 3
+ProjectAutoV2.ImageLabel_16.Parent = ProjectAutoV2.MenuToggleKey
+ProjectAutoV2.ImageLabel_16.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.ImageLabel_16.Position = UDim2.new(0, -1, 0, -1)
+ProjectAutoV2.ImageLabel_16.Size = UDim2.new(0, 122, 0, 18)
+ProjectAutoV2.ImageLabel_16.ZIndex = 3
 
-ProjectAutoV2.UICorner_68.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_68.Parent = ProjectAutoV2.ImageLabel_15
+ProjectAutoV2.UICorner_86.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_86.Parent = ProjectAutoV2.ImageLabel_16
 
 ProjectAutoV2.ResetButton.Name = "ResetButton"
 ProjectAutoV2.ResetButton.Parent = ProjectAutoV2.SettingsTab
@@ -1456,8 +1717,8 @@ ProjectAutoV2.ResetButton.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.ResetButton.TextSize = 15.000
 ProjectAutoV2.ResetButton.TextStrokeTransparency = 0.000
 
-ProjectAutoV2.UICorner_69.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_69.Parent = ProjectAutoV2.ResetButton
+ProjectAutoV2.UICorner_87.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_87.Parent = ProjectAutoV2.ResetButton
 
 ProjectAutoV2.Border_16.Name = "Border"
 ProjectAutoV2.Border_16.Parent = ProjectAutoV2.ResetButton
@@ -1469,8 +1730,8 @@ ProjectAutoV2.Border_16.Text = ""
 ProjectAutoV2.Border_16.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_16.TextSize = 15.000
 
-ProjectAutoV2.UICorner_70.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_70.Parent = ProjectAutoV2.Border_16
+ProjectAutoV2.UICorner_88.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_88.Parent = ProjectAutoV2.Border_16
 
 ProjectAutoV2.KillAuraSection.Name = "KillAuraSection"
 ProjectAutoV2.KillAuraSection.Parent = ProjectAutoV2.SettingsTab
@@ -1484,8 +1745,8 @@ ProjectAutoV2.KillAuraSection.Text = ""
 ProjectAutoV2.KillAuraSection.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.KillAuraSection.TextSize = 15.000
 
-ProjectAutoV2.UICorner_71.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_71.Parent = ProjectAutoV2.KillAuraSection
+ProjectAutoV2.UICorner_89.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_89.Parent = ProjectAutoV2.KillAuraSection
 
 ProjectAutoV2.Border_17.Name = "Border"
 ProjectAutoV2.Border_17.Parent = ProjectAutoV2.KillAuraSection
@@ -1497,8 +1758,8 @@ ProjectAutoV2.Border_17.Text = ""
 ProjectAutoV2.Border_17.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_17.TextSize = 15.000
 
-ProjectAutoV2.UICorner_72.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_72.Parent = ProjectAutoV2.Border_17
+ProjectAutoV2.UICorner_90.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_90.Parent = ProjectAutoV2.Border_17
 
 ProjectAutoV2.Title_4.Name = "Title"
 ProjectAutoV2.Title_4.Parent = ProjectAutoV2.KillAuraSection
@@ -1525,8 +1786,8 @@ ProjectAutoV2.KillAuraToggle.Text = "Enabled"
 ProjectAutoV2.KillAuraToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.KillAuraToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_73.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_73.Parent = ProjectAutoV2.KillAuraToggle
+ProjectAutoV2.UICorner_91.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_91.Parent = ProjectAutoV2.KillAuraToggle
 
 ProjectAutoV2.KillAuraToggleButton.Name = "KillAuraToggleButton"
 ProjectAutoV2.KillAuraToggleButton.Parent = ProjectAutoV2.KillAuraToggle
@@ -1535,17 +1796,29 @@ ProjectAutoV2.KillAuraToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.KillAuraToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.KillAuraToggleButton.ZIndex = 5
 
-ProjectAutoV2.UICorner_74.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_74.Parent = ProjectAutoV2.KillAuraToggleButton
+ProjectAutoV2.UICorner_92.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_92.Parent = ProjectAutoV2.KillAuraToggleButton
 
-ProjectAutoV2.ImageLabel_16.Parent = ProjectAutoV2.KillAuraToggleButton
-ProjectAutoV2.ImageLabel_16.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
-ProjectAutoV2.ImageLabel_16.Position = UDim2.new(0, -1, 0, -1)
-ProjectAutoV2.ImageLabel_16.Size = UDim2.new(0, 18, 0, 18)
-ProjectAutoV2.ImageLabel_16.ZIndex = 4
+ProjectAutoV2.ImageLabel_17.Parent = ProjectAutoV2.KillAuraToggleButton
+ProjectAutoV2.ImageLabel_17.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.ImageLabel_17.Position = UDim2.new(0, -1, 0, -1)
+ProjectAutoV2.ImageLabel_17.Size = UDim2.new(0, 18, 0, 18)
+ProjectAutoV2.ImageLabel_17.ZIndex = 4
 
-ProjectAutoV2.UICorner_75.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_75.Parent = ProjectAutoV2.ImageLabel_16
+ProjectAutoV2.UICorner_93.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_93.Parent = ProjectAutoV2.ImageLabel_17
+
+ProjectAutoV2.Tick_16.Name = "Tick"
+ProjectAutoV2.Tick_16.Parent = ProjectAutoV2.KillAuraToggleButton
+ProjectAutoV2.Tick_16.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_16.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_16.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_16.Visible = false
+ProjectAutoV2.Tick_16.ZIndex = 5
+ProjectAutoV2.Tick_16.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_94.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_94.Parent = ProjectAutoV2.Tick_16
 
 ProjectAutoV2.KillAuraSlider.Name = "KillAuraSlider"
 ProjectAutoV2.KillAuraSlider.Parent = ProjectAutoV2.KillAuraSection
@@ -1565,8 +1838,8 @@ ProjectAutoV2.Handle_3.Position = UDim2.new(0, 0, 0, -3)
 ProjectAutoV2.Handle_3.Size = UDim2.new(0, 10, 0, 20)
 ProjectAutoV2.Handle_3.ZIndex = 4
 
-ProjectAutoV2.UICorner_76.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_76.Parent = ProjectAutoV2.Handle_3
+ProjectAutoV2.UICorner_95.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_95.Parent = ProjectAutoV2.Handle_3
 
 ProjectAutoV2.BackGround_5.Name = "BackGround"
 ProjectAutoV2.BackGround_5.Parent = ProjectAutoV2.Handle_3
@@ -1575,8 +1848,8 @@ ProjectAutoV2.BackGround_5.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.BackGround_5.Size = UDim2.new(0, 12, 0, 22)
 ProjectAutoV2.BackGround_5.ZIndex = 3
 
-ProjectAutoV2.UICorner_77.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_77.Parent = ProjectAutoV2.BackGround_5
+ProjectAutoV2.UICorner_96.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_96.Parent = ProjectAutoV2.BackGround_5
 
 ProjectAutoV2.KillAuraValue.Name = "KillAuraValue"
 ProjectAutoV2.KillAuraValue.Parent = ProjectAutoV2.KillAuraSlider
@@ -1626,8 +1899,8 @@ ProjectAutoV2.AvoidCopSection.Text = ""
 ProjectAutoV2.AvoidCopSection.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.AvoidCopSection.TextSize = 15.000
 
-ProjectAutoV2.UICorner_78.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_78.Parent = ProjectAutoV2.AvoidCopSection
+ProjectAutoV2.UICorner_97.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_97.Parent = ProjectAutoV2.AvoidCopSection
 
 ProjectAutoV2.Border_18.Name = "Border"
 ProjectAutoV2.Border_18.Parent = ProjectAutoV2.AvoidCopSection
@@ -1639,8 +1912,8 @@ ProjectAutoV2.Border_18.Text = ""
 ProjectAutoV2.Border_18.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_18.TextSize = 15.000
 
-ProjectAutoV2.UICorner_79.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_79.Parent = ProjectAutoV2.Border_18
+ProjectAutoV2.UICorner_98.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_98.Parent = ProjectAutoV2.Border_18
 
 ProjectAutoV2.Title_6.Name = "Title"
 ProjectAutoV2.Title_6.Parent = ProjectAutoV2.AvoidCopSection
@@ -1667,8 +1940,8 @@ ProjectAutoV2.CopAvoidToggle.Text = "Enabled"
 ProjectAutoV2.CopAvoidToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.CopAvoidToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_80.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_80.Parent = ProjectAutoV2.CopAvoidToggle
+ProjectAutoV2.UICorner_99.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_99.Parent = ProjectAutoV2.CopAvoidToggle
 
 ProjectAutoV2.CopAvoidToggleButton.Name = "CopAvoidToggleButton"
 ProjectAutoV2.CopAvoidToggleButton.Parent = ProjectAutoV2.CopAvoidToggle
@@ -1677,17 +1950,29 @@ ProjectAutoV2.CopAvoidToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.CopAvoidToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.CopAvoidToggleButton.ZIndex = 5
 
-ProjectAutoV2.UICorner_81.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_81.Parent = ProjectAutoV2.CopAvoidToggleButton
+ProjectAutoV2.UICorner_100.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_100.Parent = ProjectAutoV2.CopAvoidToggleButton
 
-ProjectAutoV2.ImageLabel_17.Parent = ProjectAutoV2.CopAvoidToggleButton
-ProjectAutoV2.ImageLabel_17.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
-ProjectAutoV2.ImageLabel_17.Position = UDim2.new(0, -1, 0, -1)
-ProjectAutoV2.ImageLabel_17.Size = UDim2.new(0, 18, 0, 18)
-ProjectAutoV2.ImageLabel_17.ZIndex = 4
+ProjectAutoV2.ImageLabel_18.Parent = ProjectAutoV2.CopAvoidToggleButton
+ProjectAutoV2.ImageLabel_18.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.ImageLabel_18.Position = UDim2.new(0, -1, 0, -1)
+ProjectAutoV2.ImageLabel_18.Size = UDim2.new(0, 18, 0, 18)
+ProjectAutoV2.ImageLabel_18.ZIndex = 4
 
-ProjectAutoV2.UICorner_82.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_82.Parent = ProjectAutoV2.ImageLabel_17
+ProjectAutoV2.UICorner_101.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_101.Parent = ProjectAutoV2.ImageLabel_18
+
+ProjectAutoV2.Tick_17.Name = "Tick"
+ProjectAutoV2.Tick_17.Parent = ProjectAutoV2.CopAvoidToggleButton
+ProjectAutoV2.Tick_17.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_17.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_17.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_17.Visible = false
+ProjectAutoV2.Tick_17.ZIndex = 5
+ProjectAutoV2.Tick_17.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_102.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_102.Parent = ProjectAutoV2.Tick_17
 
 ProjectAutoV2.CopAvoidSlider.Name = "CopAvoidSlider"
 ProjectAutoV2.CopAvoidSlider.Parent = ProjectAutoV2.AvoidCopSection
@@ -1707,8 +1992,8 @@ ProjectAutoV2.Handle_4.Position = UDim2.new(0, 0, 0, -3)
 ProjectAutoV2.Handle_4.Size = UDim2.new(0, 10, 0, 20)
 ProjectAutoV2.Handle_4.ZIndex = 4
 
-ProjectAutoV2.UICorner_83.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_83.Parent = ProjectAutoV2.Handle_4
+ProjectAutoV2.UICorner_103.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_103.Parent = ProjectAutoV2.Handle_4
 
 ProjectAutoV2.BackGround_6.Name = "BackGround"
 ProjectAutoV2.BackGround_6.Parent = ProjectAutoV2.Handle_4
@@ -1717,8 +2002,8 @@ ProjectAutoV2.BackGround_6.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.BackGround_6.Size = UDim2.new(0, 12, 0, 22)
 ProjectAutoV2.BackGround_6.ZIndex = 3
 
-ProjectAutoV2.UICorner_84.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_84.Parent = ProjectAutoV2.BackGround_6
+ProjectAutoV2.UICorner_104.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_104.Parent = ProjectAutoV2.BackGround_6
 
 ProjectAutoV2.CopAvoidValue.Name = "CopAvoidValue"
 ProjectAutoV2.CopAvoidValue.Parent = ProjectAutoV2.CopAvoidSlider
@@ -1768,8 +2053,8 @@ ProjectAutoV2.ServerHopSection.Text = ""
 ProjectAutoV2.ServerHopSection.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.ServerHopSection.TextSize = 15.000
 
-ProjectAutoV2.UICorner_85.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_85.Parent = ProjectAutoV2.ServerHopSection
+ProjectAutoV2.UICorner_105.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_105.Parent = ProjectAutoV2.ServerHopSection
 
 ProjectAutoV2.Border_19.Name = "Border"
 ProjectAutoV2.Border_19.Parent = ProjectAutoV2.ServerHopSection
@@ -1781,8 +2066,8 @@ ProjectAutoV2.Border_19.Text = ""
 ProjectAutoV2.Border_19.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_19.TextSize = 15.000
 
-ProjectAutoV2.UICorner_86.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_86.Parent = ProjectAutoV2.Border_19
+ProjectAutoV2.UICorner_106.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_106.Parent = ProjectAutoV2.Border_19
 
 ProjectAutoV2.Title_8.Name = "Title"
 ProjectAutoV2.Title_8.Parent = ProjectAutoV2.ServerHopSection
@@ -1809,8 +2094,8 @@ ProjectAutoV2.ServerHopToggle.Text = "Enabled"
 ProjectAutoV2.ServerHopToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.ServerHopToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_87.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_87.Parent = ProjectAutoV2.ServerHopToggle
+ProjectAutoV2.UICorner_107.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_107.Parent = ProjectAutoV2.ServerHopToggle
 
 ProjectAutoV2.ServerHopToggleButton.Name = "ServerHopToggleButton"
 ProjectAutoV2.ServerHopToggleButton.Parent = ProjectAutoV2.ServerHopToggle
@@ -1819,17 +2104,29 @@ ProjectAutoV2.ServerHopToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.ServerHopToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.ServerHopToggleButton.ZIndex = 5
 
-ProjectAutoV2.UICorner_88.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_88.Parent = ProjectAutoV2.ServerHopToggleButton
+ProjectAutoV2.UICorner_108.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_108.Parent = ProjectAutoV2.ServerHopToggleButton
 
-ProjectAutoV2.ImageLabel_18.Parent = ProjectAutoV2.ServerHopToggleButton
-ProjectAutoV2.ImageLabel_18.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
-ProjectAutoV2.ImageLabel_18.Position = UDim2.new(0, -1, 0, -1)
-ProjectAutoV2.ImageLabel_18.Size = UDim2.new(0, 18, 0, 18)
-ProjectAutoV2.ImageLabel_18.ZIndex = 4
+ProjectAutoV2.ImageLabel_19.Parent = ProjectAutoV2.ServerHopToggleButton
+ProjectAutoV2.ImageLabel_19.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.ImageLabel_19.Position = UDim2.new(0, -1, 0, -1)
+ProjectAutoV2.ImageLabel_19.Size = UDim2.new(0, 18, 0, 18)
+ProjectAutoV2.ImageLabel_19.ZIndex = 4
 
-ProjectAutoV2.UICorner_89.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_89.Parent = ProjectAutoV2.ImageLabel_18
+ProjectAutoV2.UICorner_109.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_109.Parent = ProjectAutoV2.ImageLabel_19
+
+ProjectAutoV2.Tick_18.Name = "Tick"
+ProjectAutoV2.Tick_18.Parent = ProjectAutoV2.ServerHopToggleButton
+ProjectAutoV2.Tick_18.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_18.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_18.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_18.Visible = false
+ProjectAutoV2.Tick_18.ZIndex = 5
+ProjectAutoV2.Tick_18.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_110.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_110.Parent = ProjectAutoV2.Tick_18
 
 ProjectAutoV2.MinPlayersSlider.Name = "MinPlayersSlider"
 ProjectAutoV2.MinPlayersSlider.Parent = ProjectAutoV2.ServerHopSection
@@ -1849,8 +2146,8 @@ ProjectAutoV2.Handle_5.Position = UDim2.new(0, 0, 0, -3)
 ProjectAutoV2.Handle_5.Size = UDim2.new(0, 10, 0, 20)
 ProjectAutoV2.Handle_5.ZIndex = 4
 
-ProjectAutoV2.UICorner_90.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_90.Parent = ProjectAutoV2.Handle_5
+ProjectAutoV2.UICorner_111.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_111.Parent = ProjectAutoV2.Handle_5
 
 ProjectAutoV2.BackGround_7.Name = "BackGround"
 ProjectAutoV2.BackGround_7.Parent = ProjectAutoV2.Handle_5
@@ -1859,8 +2156,8 @@ ProjectAutoV2.BackGround_7.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.BackGround_7.Size = UDim2.new(0, 12, 0, 22)
 ProjectAutoV2.BackGround_7.ZIndex = 3
 
-ProjectAutoV2.UICorner_91.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_91.Parent = ProjectAutoV2.BackGround_7
+ProjectAutoV2.UICorner_112.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_112.Parent = ProjectAutoV2.BackGround_7
 
 ProjectAutoV2.MinPlayersValue.Name = "MinPlayersValue"
 ProjectAutoV2.MinPlayersValue.Parent = ProjectAutoV2.MinPlayersSlider
@@ -1916,8 +2213,8 @@ ProjectAutoV2.Handle_6.Position = UDim2.new(0, 0, 0, -3)
 ProjectAutoV2.Handle_6.Size = UDim2.new(0, 10, 0, 20)
 ProjectAutoV2.Handle_6.ZIndex = 4
 
-ProjectAutoV2.UICorner_92.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_92.Parent = ProjectAutoV2.Handle_6
+ProjectAutoV2.UICorner_113.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_113.Parent = ProjectAutoV2.Handle_6
 
 ProjectAutoV2.BackGround_8.Name = "BackGround"
 ProjectAutoV2.BackGround_8.Parent = ProjectAutoV2.Handle_6
@@ -1926,8 +2223,8 @@ ProjectAutoV2.BackGround_8.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.BackGround_8.Size = UDim2.new(0, 12, 0, 22)
 ProjectAutoV2.BackGround_8.ZIndex = 3
 
-ProjectAutoV2.UICorner_93.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_93.Parent = ProjectAutoV2.BackGround_8
+ProjectAutoV2.UICorner_114.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_114.Parent = ProjectAutoV2.BackGround_8
 
 ProjectAutoV2.MaxPingValue.Name = "MaxPingValue"
 ProjectAutoV2.MaxPingValue.Parent = ProjectAutoV2.MaxPingSlider
@@ -1973,8 +2270,8 @@ ProjectAutoV2.Handle_7.Position = UDim2.new(0, 0, 0, -3)
 ProjectAutoV2.Handle_7.Size = UDim2.new(0, 10, 0, 20)
 ProjectAutoV2.Handle_7.ZIndex = 4
 
-ProjectAutoV2.UICorner_94.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_94.Parent = ProjectAutoV2.Handle_7
+ProjectAutoV2.UICorner_115.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_115.Parent = ProjectAutoV2.Handle_7
 
 ProjectAutoV2.BackGround_9.Name = "BackGround"
 ProjectAutoV2.BackGround_9.Parent = ProjectAutoV2.Handle_7
@@ -1983,8 +2280,8 @@ ProjectAutoV2.BackGround_9.Position = UDim2.new(0, -1, 0, -1)
 ProjectAutoV2.BackGround_9.Size = UDim2.new(0, 12, 0, 22)
 ProjectAutoV2.BackGround_9.ZIndex = 3
 
-ProjectAutoV2.UICorner_95.CornerRadius = UDim.new(0, 3)
-ProjectAutoV2.UICorner_95.Parent = ProjectAutoV2.BackGround_9
+ProjectAutoV2.UICorner_116.CornerRadius = UDim.new(0, 3)
+ProjectAutoV2.UICorner_116.Parent = ProjectAutoV2.BackGround_9
 
 ProjectAutoV2.ServerHopWaitTimeValue.Name = "ServerHopWaitTimeValue"
 ProjectAutoV2.ServerHopWaitTimeValue.Parent = ProjectAutoV2.ServerHopWaitTimeSlider
@@ -2023,8 +2320,8 @@ ProjectAutoV2.AutoRobToggle.Text = "Project Auto Enabled"
 ProjectAutoV2.AutoRobToggle.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.AutoRobToggle.TextSize = 15.000
 
-ProjectAutoV2.UICorner_96.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_96.Parent = ProjectAutoV2.AutoRobToggle
+ProjectAutoV2.UICorner_117.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_117.Parent = ProjectAutoV2.AutoRobToggle
 
 ProjectAutoV2.Border_20.Name = "Border"
 ProjectAutoV2.Border_20.Parent = ProjectAutoV2.AutoRobToggle
@@ -2036,8 +2333,8 @@ ProjectAutoV2.Border_20.Text = ""
 ProjectAutoV2.Border_20.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_20.TextSize = 15.000
 
-ProjectAutoV2.UICorner_97.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_97.Parent = ProjectAutoV2.Border_20
+ProjectAutoV2.UICorner_118.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_118.Parent = ProjectAutoV2.Border_20
 
 ProjectAutoV2.AutoRobToggleButton.Name = "AutoRobToggleButton"
 ProjectAutoV2.AutoRobToggleButton.Parent = ProjectAutoV2.AutoRobToggle
@@ -2046,17 +2343,29 @@ ProjectAutoV2.AutoRobToggleButton.Position = UDim2.new(0, 5, 0, 5)
 ProjectAutoV2.AutoRobToggleButton.Size = UDim2.new(0, 16, 0, 16)
 ProjectAutoV2.AutoRobToggleButton.ZIndex = 4
 
-ProjectAutoV2.UICorner_98.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_98.Parent = ProjectAutoV2.AutoRobToggleButton
+ProjectAutoV2.UICorner_119.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_119.Parent = ProjectAutoV2.AutoRobToggleButton
 
-ProjectAutoV2.ImageLabel_19.Parent = ProjectAutoV2.AutoRobToggleButton
-ProjectAutoV2.ImageLabel_19.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
-ProjectAutoV2.ImageLabel_19.Position = UDim2.new(0, -1, 0, -1)
-ProjectAutoV2.ImageLabel_19.Size = UDim2.new(0, 18, 0, 18)
-ProjectAutoV2.ImageLabel_19.ZIndex = 3
+ProjectAutoV2.ImageLabel_20.Parent = ProjectAutoV2.AutoRobToggleButton
+ProjectAutoV2.ImageLabel_20.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.ImageLabel_20.Position = UDim2.new(0, -1, 0, -1)
+ProjectAutoV2.ImageLabel_20.Size = UDim2.new(0, 18, 0, 18)
+ProjectAutoV2.ImageLabel_20.ZIndex = 3
 
-ProjectAutoV2.UICorner_99.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_99.Parent = ProjectAutoV2.ImageLabel_19
+ProjectAutoV2.UICorner_120.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_120.Parent = ProjectAutoV2.ImageLabel_20
+
+ProjectAutoV2.Tick_19.Name = "Tick"
+ProjectAutoV2.Tick_19.Parent = ProjectAutoV2.AutoRobToggleButton
+ProjectAutoV2.Tick_19.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
+ProjectAutoV2.Tick_19.BackgroundTransparency = 1.000
+ProjectAutoV2.Tick_19.Size = UDim2.new(0, 16, 0, 16)
+ProjectAutoV2.Tick_19.Visible = false
+ProjectAutoV2.Tick_19.ZIndex = 5
+ProjectAutoV2.Tick_19.Image = "http://www.roblox.com/asset/?id=6353957304"
+
+ProjectAutoV2.UICorner_121.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_121.Parent = ProjectAutoV2.Tick_19
 
 ProjectAutoV2.InfoTab.Name = "InfoTab"
 ProjectAutoV2.InfoTab.Parent = ProjectAutoV2.BackGround
@@ -2077,8 +2386,8 @@ ProjectAutoV2.Creator.Text = "Made By Pxsta"
 ProjectAutoV2.Creator.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Creator.TextSize = 15.000
 
-ProjectAutoV2.UICorner_100.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_100.Parent = ProjectAutoV2.Creator
+ProjectAutoV2.UICorner_122.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_122.Parent = ProjectAutoV2.Creator
 
 ProjectAutoV2.Border_21.Name = "Border"
 ProjectAutoV2.Border_21.Parent = ProjectAutoV2.Creator
@@ -2090,8 +2399,8 @@ ProjectAutoV2.Border_21.Text = ""
 ProjectAutoV2.Border_21.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_21.TextSize = 15.000
 
-ProjectAutoV2.UICorner_101.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_101.Parent = ProjectAutoV2.Border_21
+ProjectAutoV2.UICorner_123.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_123.Parent = ProjectAutoV2.Border_21
 
 ProjectAutoV2.UIListLayout_4.Parent = ProjectAutoV2.InfoTab
 ProjectAutoV2.UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -2117,12 +2426,12 @@ ProjectAutoV2.Version.Position = UDim2.new(0, 10, 0, 8)
 ProjectAutoV2.Version.Size = UDim2.new(0, 279, 0, 25)
 ProjectAutoV2.Version.ZIndex = 2
 ProjectAutoV2.Version.Font = Enum.Font.SourceSansSemibold
-ProjectAutoV2.Version.Text = "Version 0.6"
+ProjectAutoV2.Version.Text = "Version 0.7 beta"
 ProjectAutoV2.Version.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Version.TextSize = 15.000
 
-ProjectAutoV2.UICorner_102.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_102.Parent = ProjectAutoV2.Version
+ProjectAutoV2.UICorner_124.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_124.Parent = ProjectAutoV2.Version
 
 ProjectAutoV2.Border_22.Name = "Border"
 ProjectAutoV2.Border_22.Parent = ProjectAutoV2.Version
@@ -2134,12 +2443,12 @@ ProjectAutoV2.Border_22.Text = ""
 ProjectAutoV2.Border_22.TextColor3 = Color3.fromRGB(200, 200, 200)
 ProjectAutoV2.Border_22.TextSize = 15.000
 
-ProjectAutoV2.UICorner_103.CornerRadius = UDim.new(0, 5)
-ProjectAutoV2.UICorner_103.Parent = ProjectAutoV2.Border_22
+ProjectAutoV2.UICorner_125.CornerRadius = UDim.new(0, 5)
+ProjectAutoV2.UICorner_125.Parent = ProjectAutoV2.Border_22
 
 -- Scripts:
 
-local function IMWA_fake_script() -- ProjectAutoV2.Console.ScrollBarTransparency 
+local function PUFYKC_fake_script() -- ProjectAutoV2.Console.ScrollBarTransparency 
 	local script = Instance.new('LocalScript', ProjectAutoV2.Console)
 
 	local Tab = script.Parent
@@ -2154,8 +2463,8 @@ local function IMWA_fake_script() -- ProjectAutoV2.Console.ScrollBarTransparency
 		wait()
 	end
 end
-coroutine.wrap(IMWA_fake_script)()
-local function VNTI_fake_script() -- ProjectAutoV2.LocationsTab.ScrollBarTransparency 
+coroutine.wrap(PUFYKC_fake_script)()
+local function MXUNU_fake_script() -- ProjectAutoV2.LocationsTab.ScrollBarTransparency 
 	local script = Instance.new('LocalScript', ProjectAutoV2.LocationsTab)
 
 	local Tab = script.Parent
@@ -2170,11 +2479,11 @@ local function VNTI_fake_script() -- ProjectAutoV2.LocationsTab.ScrollBarTranspa
 		wait()
 	end
 end
-coroutine.wrap(VNTI_fake_script)()
-local function NSHEL_fake_script() -- ProjectAutoV2.MainSection.SectionScript 
+coroutine.wrap(MXUNU_fake_script)()
+local function WJXJBXX_fake_script() -- ProjectAutoV2.MainSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.MainSection)
 
-	local FullSize = 170
+	local FullSize = 200
 	
 	local Section = script.Parent
 	local SectionBorder = script.Parent:FindFirstChild("Border")
@@ -2210,8 +2519,8 @@ local function NSHEL_fake_script() -- ProjectAutoV2.MainSection.SectionScript
 		end
 	end)
 end
-coroutine.wrap(NSHEL_fake_script)()
-local function OJVAN_fake_script() -- ProjectAutoV2.BotSpeedSlider.SliderScript 
+coroutine.wrap(WJXJBXX_fake_script)()
+local function DMGESY_fake_script() -- ProjectAutoV2.BotSpeedSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.BotSpeedSlider)
 
 	local slider = script.Parent
@@ -2242,8 +2551,8 @@ local function OJVAN_fake_script() -- ProjectAutoV2.BotSpeedSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(OJVAN_fake_script)()
-local function JGUJ_fake_script() -- ProjectAutoV2.PathSpeedSlider.SliderScript 
+coroutine.wrap(DMGESY_fake_script)()
+local function VNRE_fake_script() -- ProjectAutoV2.PathSpeedSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.PathSpeedSlider)
 
 	local slider = script.Parent
@@ -2274,8 +2583,8 @@ local function JGUJ_fake_script() -- ProjectAutoV2.PathSpeedSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(JGUJ_fake_script)()
-local function NAMVDH_fake_script() -- ProjectAutoV2.SettingsTab.ScrollBarTransparency 
+coroutine.wrap(VNRE_fake_script)()
+local function XRUZCF_fake_script() -- ProjectAutoV2.SettingsTab.ScrollBarTransparency 
 	local script = Instance.new('LocalScript', ProjectAutoV2.SettingsTab)
 
 	local Tab = script.Parent
@@ -2290,8 +2599,8 @@ local function NAMVDH_fake_script() -- ProjectAutoV2.SettingsTab.ScrollBarTransp
 		wait()
 	end
 end
-coroutine.wrap(NAMVDH_fake_script)()
-local function AGWH_fake_script() -- ProjectAutoV2.KillAuraSection.SectionScript 
+coroutine.wrap(XRUZCF_fake_script)()
+local function YTNWBF_fake_script() -- ProjectAutoV2.KillAuraSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.KillAuraSection)
 
 	local FullSize = 100
@@ -2330,8 +2639,8 @@ local function AGWH_fake_script() -- ProjectAutoV2.KillAuraSection.SectionScript
 		end
 	end)
 end
-coroutine.wrap(AGWH_fake_script)()
-local function LIPAJO_fake_script() -- ProjectAutoV2.KillAuraSlider.SliderScript 
+coroutine.wrap(YTNWBF_fake_script)()
+local function ZZQGFI_fake_script() -- ProjectAutoV2.KillAuraSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.KillAuraSlider)
 
 	local slider = script.Parent
@@ -2362,8 +2671,8 @@ local function LIPAJO_fake_script() -- ProjectAutoV2.KillAuraSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(LIPAJO_fake_script)()
-local function YRKFKBI_fake_script() -- ProjectAutoV2.AvoidCopSection.SectionScript 
+coroutine.wrap(ZZQGFI_fake_script)()
+local function QIRWI_fake_script() -- ProjectAutoV2.AvoidCopSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.AvoidCopSection)
 
 	local FullSize = 100
@@ -2402,8 +2711,8 @@ local function YRKFKBI_fake_script() -- ProjectAutoV2.AvoidCopSection.SectionScr
 		end
 	end)
 end
-coroutine.wrap(YRKFKBI_fake_script)()
-local function OSLED_fake_script() -- ProjectAutoV2.CopAvoidSlider.SliderScript 
+coroutine.wrap(QIRWI_fake_script)()
+local function XPHVE_fake_script() -- ProjectAutoV2.CopAvoidSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.CopAvoidSlider)
 
 	local slider = script.Parent
@@ -2434,8 +2743,8 @@ local function OSLED_fake_script() -- ProjectAutoV2.CopAvoidSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(OSLED_fake_script)()
-local function NHKAS_fake_script() -- ProjectAutoV2.ServerHopSection.SectionScript 
+coroutine.wrap(XPHVE_fake_script)()
+local function RDIGXAV_fake_script() -- ProjectAutoV2.ServerHopSection.SectionScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.ServerHopSection)
 
 	local FullSize = 180
@@ -2474,8 +2783,8 @@ local function NHKAS_fake_script() -- ProjectAutoV2.ServerHopSection.SectionScri
 		end
 	end)
 end
-coroutine.wrap(NHKAS_fake_script)()
-local function PJBZCFK_fake_script() -- ProjectAutoV2.MinPlayersSlider.SliderScript 
+coroutine.wrap(RDIGXAV_fake_script)()
+local function QQWA_fake_script() -- ProjectAutoV2.MinPlayersSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.MinPlayersSlider)
 
 	local slider = script.Parent
@@ -2506,8 +2815,8 @@ local function PJBZCFK_fake_script() -- ProjectAutoV2.MinPlayersSlider.SliderScr
 		wait()
 	end
 end
-coroutine.wrap(PJBZCFK_fake_script)()
-local function BMKCI_fake_script() -- ProjectAutoV2.MaxPingSlider.SliderScript 
+coroutine.wrap(QQWA_fake_script)()
+local function UHAW_fake_script() -- ProjectAutoV2.MaxPingSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.MaxPingSlider)
 
 	local slider = script.Parent
@@ -2538,8 +2847,8 @@ local function BMKCI_fake_script() -- ProjectAutoV2.MaxPingSlider.SliderScript
 		wait()
 	end
 end
-coroutine.wrap(BMKCI_fake_script)()
-local function UPZVB_fake_script() -- ProjectAutoV2.ServerHopWaitTimeSlider.SliderScript 
+coroutine.wrap(UHAW_fake_script)()
+local function NZYJ_fake_script() -- ProjectAutoV2.ServerHopWaitTimeSlider.SliderScript 
 	local script = Instance.new('LocalScript', ProjectAutoV2.ServerHopWaitTimeSlider)
 
 	local slider = script.Parent
@@ -2570,7 +2879,8 @@ local function UPZVB_fake_script() -- ProjectAutoV2.ServerHopWaitTimeSlider.Slid
 		wait()
 	end
 end
-coroutine.wrap(UPZVB_fake_script)()
+coroutine.wrap(NZYJ_fake_script)()
+
 
 ----------------------------------------------------------------
 
@@ -2645,8 +2955,6 @@ if Server.Body == "INVALID KEY" then
     return
 end
 
-wait(1)
-
 ProjectAutoV2.User.Text = string.sub(Server.Body, 10, #(Server.Body))
 
 ----------------------------------------------------------------
@@ -2677,14 +2985,15 @@ local config = {
     MinPlayers = 10,
     MaxPing = 100,
     ServerHopWaitTime = 30,
-    ToggleKey = Enum.KeyCode.RightShift
+    ToggleKey = RightShift,
+    safe = true
 }
 
 local ToggleMenuButtonHold = false
 
 game:GetService("UserInputService").InputBegan:Connect(function(input, proccesed)
     if not ToggleMenuButtonHold then
-        if input.KeyCode == config.ToggleKey then
+        if input.KeyCode.Name == config.ToggleKey then
             if not ProjectAutoV2.BackGround.Visible then
                 ProjectAutoV2.BackGround.Visible = true
             else
@@ -2692,12 +3001,11 @@ game:GetService("UserInputService").InputBegan:Connect(function(input, proccesed
             end
         end
     else
-        config.ToggleKey = input.KeyCode
+        config.ToggleKey = input.KeyCode.Name
         ProjectAutoV2.MenuToggleKey.Text = string.upper(input.KeyCode.Name)
         ToggleMenuButtonHold = false
     end
 end)
-
 ProjectAutoV2.MenuToggleKey.MouseButton1Click:Connect(function()
     ToggleMenuButtonHold = true
     ProjectAutoV2.MenuToggleKey.Text = ""
@@ -2794,7 +3102,6 @@ local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).Se
 local punchHash = "g0ax8b32" -- Y
 local hash = 'yhq8xckn'  -- Y
 
-local session
 if _G.CurrentSession == nil then
     _G.CurrentSession = math.random(1, 1000)
 end
@@ -2817,25 +3124,28 @@ if readfile and isfile then
     end
 end
 
+function saveStats()
+    if writefile then 
+        json = HttpService:JSONEncode(ScriptTime)
+        writefile("ProjectAutoSessionStats.txt", json)
+    end
+end
+
 if _G.CurrentSession == LastSession then
     if readfile and isfile then 
         if isfile("ProjectAutoSessionStats.txt") then
             ScriptTime = HttpService:JSONDecode(readfile("ProjectAutoSessionStats.txt"))
         end
     end
+else
+    saveStats()
 end
+    
 
 local json
 if writefile then 
     json = HttpService:JSONEncode(_G.CurrentSession)
     writefile("ProjectAutoSession.txt", json)
-end
-
-function saveStats()
-    if writefile then 
-        json = HttpService:JSONEncode(ScriptTime)
-        writefile("ProjectAutoSessionStats.txt", json)
-    end
 end
 
 ----------------------------------------------------------------
@@ -2845,8 +3155,12 @@ ProjectAutoV2.TeleportToggleButton.MouseButton1Click:Connect(function()
 
     if not config.teleport then
         ProjectAutoV2.TeleportToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.TeleportToggleButton.Tick.Visible = false
+        ProjectAutoV2.TeleportToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.TeleportToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.TeleportToggleButton.Tick.Visible = true
+        ProjectAutoV2.TeleportToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2855,8 +3169,22 @@ ProjectAutoV2.WaitToggleButton.MouseButton1Click:Connect(function()
 
     if not config.wait then
         ProjectAutoV2.WaitToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.WaitToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.WaitToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.WaitToggleButton.Tick.Visible = true
+    end
+end)
+
+ProjectAutoV2.SafeToggleButton.MouseButton1Click:Connect(function()
+    config.safe = not config.safe
+
+    if not config.safe then
+        ProjectAutoV2.SafeToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.SafeToggleButton.Tick.Visible = false
+    else
+        ProjectAutoV2.SafeToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.SafeToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2865,8 +3193,10 @@ ProjectAutoV2.CopAvoidToggleButton.MouseButton1Click:Connect(function()
 
     if not config.copAvoid then
         ProjectAutoV2.CopAvoidToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.CopAvoidToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.CopAvoidToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.CopAvoidToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2875,8 +3205,10 @@ ProjectAutoV2.KillAuraToggleButton.MouseButton1Click:Connect(function()
 
     if not config.killAura then
         ProjectAutoV2.KillAuraToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.KillAuraToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.KillAuraToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.KillAuraToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2885,8 +3217,10 @@ ProjectAutoV2.AutoRobToggleButton.MouseButton1Click:Connect(function()
 
     if not toggled then
         ProjectAutoV2.AutoRobToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.AutoRobToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.AutoRobToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.AutoRobToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2895,8 +3229,10 @@ ProjectAutoV2.ServerHopToggleButton.MouseButton1Click:Connect(function()
 
     if not config.ServerHop then
         ProjectAutoV2.ServerHopToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.ServerHopToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.ServerHopToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.ServerHopToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2911,8 +3247,10 @@ ProjectAutoV2.MansionToggleButton.MouseButton1Click:Connect(function()
 
     if not config.MansionToggled then
         ProjectAutoV2.MansionToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.MansionToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.MansionToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.MansionToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2921,8 +3259,10 @@ ProjectAutoV2.MuseumToggleButton.MouseButton1Click:Connect(function()
 
     if not config.MuseumToggled then
         ProjectAutoV2.MuseumToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.MuseumToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.MuseumToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.MuseumToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2931,8 +3271,10 @@ ProjectAutoV2.BankToggleButton.MouseButton1Click:Connect(function()
 
     if not config.BankToggled then
         ProjectAutoV2.BankToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.BankToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.BankToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.BankToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2941,8 +3283,10 @@ ProjectAutoV2.JewelryToggleButton.MouseButton1Click:Connect(function()
 
     if not config.JewelToggled then
         ProjectAutoV2.JewelryToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.JewelryToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.JewelryToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.JewelryToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2951,8 +3295,10 @@ ProjectAutoV2.CasinoToggleButton.MouseButton1Click:Connect(function()
 
     if not config.CasinoToggled then
         ProjectAutoV2.CasinoToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.CasinoToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.CasinoToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.CasinoToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2961,8 +3307,10 @@ ProjectAutoV2.DropToggleButton.MouseButton1Click:Connect(function()
 
     if not config.DropToggled then
         ProjectAutoV2.DropToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.DropToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.DropToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.DropToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2971,8 +3319,10 @@ ProjectAutoV2.TrainToggleButton.MouseButton1Click:Connect(function()
 
     if not config.TrainToggled then
         ProjectAutoV2.TrainToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.TrainToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.TrainToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.TrainToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2983,8 +3333,10 @@ ProjectAutoV2.SmallStoresToggleButton.MouseButton1Click:Connect(function()
 
     if not config.StoresToggled then
         ProjectAutoV2.SmallStoresToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.SmallStoresToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.SmallStoresToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.SmallStoresToggleButton.Tick.Visible = true
     end
 end)
 
@@ -2993,8 +3345,10 @@ ProjectAutoV2.TombToggleButton.MouseButton1Click:Connect(function()
 
     if not config.TombToggled then
         ProjectAutoV2.TombToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.TombToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.TombToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.TombToggleButton.Tick.Visible = true
     end
 end)
 
@@ -3003,8 +3357,10 @@ ProjectAutoV2.PlaneToggleButton.MouseButton1Click:Connect(function()
 
     if not config.PlaneToggled then
         ProjectAutoV2.PlaneToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.PlaneToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.PlaneToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.PlaneToggleButton.Tick.Visible = true
     end
 end)
 
@@ -3014,8 +3370,10 @@ ProjectAutoV2.PowerPlantToggleButton.MouseButton1Click:Connect(function()
 
     if not config.PowerToggled then
         ProjectAutoV2.PowerPlantToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.PowerPlantToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.PowerPlantToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.PowerPlantToggleButton.Tick.Visible = true
     end
 end)
 
@@ -3025,8 +3383,10 @@ ProjectAutoV2.BoatToggleButton.MouseButton1Click:Connect(function()
 
     if not config.BoatToggled then
         ProjectAutoV2.BoatToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        ProjectAutoV2.BoatToggleButton.Tick.Visible = false
     else
         ProjectAutoV2.BoatToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        ProjectAutoV2.BoatToggleButton.Tick.Visible = true
     end
 end)
 
@@ -3070,6 +3430,9 @@ if config.teleport == nil then
 end
 if config.wait == nil then
     config.wait = true
+end
+if config.safe == nil then
+    config.safe = true
 end
 if config.avoidCopRange == nil then
     config.avoidCopRange = 50
@@ -3128,108 +3491,154 @@ end
 if config.BoatToggled == nil then
     config.BoatToggled = true
 end
-if config.toggleKey == nil then
-    config.toggleKey = Enum.KeyCode.RightShift
+if config.ToggleKey == nil then
+    config.ToggleKey = RightShift
 end
 
 if not config.MansionToggled then
     ProjectAutoV2.MansionToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.MansionToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.MansionToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.MansionToggleButton.Tick.Visible = true
 end
 if not config.MuseumToggled then
     ProjectAutoV2.MuseumToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.MuseumToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.MuseumToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.MuseumToggleButton.Tick.Visible = true
 end
 if not config.BankToggled then
     ProjectAutoV2.BankToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.BankToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.BankToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.BankToggleButton.Tick.Visible = true
 end
 if not config.JewelToggled then
     ProjectAutoV2.JewelryToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.JewelryToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.JewelryToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.JewelryToggleButton.Tick.Visible = true
 end
 if not config.CasinoToggled then
     ProjectAutoV2.CasinoToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.CasinoToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.CasinoToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.CasinoToggleButton.Tick.Visible = true
 end
 if not config.DropToggled then
     ProjectAutoV2.DropToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.DropToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.DropToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.DropToggleButton.Tick.Visible = true
 end
 if not config.TrainToggled then
     ProjectAutoV2.TrainToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.TrainToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.TrainToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.TrainToggleButton.Tick.Visible = true
 end
 if not config.StoresToggled then
     ProjectAutoV2.SmallStoresToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.SmallStoresToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.SmallStoresToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.SmallStoresToggleButton.Tick.Visible = true
 end
 if not config.TombToggled then
     ProjectAutoV2.TombToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.TombToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.TombToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.TombToggleButton.Tick.Visible = true
 end
 if not config.PlaneToggled then
     ProjectAutoV2.PlaneToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.PlaneToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.PlaneToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.PlaneToggleButton.Tick.Visible = true
 end
 if not config.PowerToggled then
     ProjectAutoV2.PowerPlantToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.PowerPlantToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.PowerPlantToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.PowerPlantToggleButton.Tick.Visible = true
 end
 if not config.BoatToggled then
     ProjectAutoV2.BoatToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.BoatToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.BoatToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.BoatToggleButton.Tick.Visible = true
 end
 if not config.teleport then
     ProjectAutoV2.TeleportToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.TeleportToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.TeleportToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.TeleportToggleButton.Tick.Visible = true
 end
 if not config.wait then
     ProjectAutoV2.WaitToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.WaitToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.WaitToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.WaitToggleButton.Tick.Visible = true
+end
+if not config.safe then
+    ProjectAutoV2.SafeToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.SafeToggleButton.Tick.Visible = false
+else
+    ProjectAutoV2.SafeToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.SafeToggleButton.Tick.Visible = true
 end
 if not config.copAvoid then
     ProjectAutoV2.CopAvoidToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.CopAvoidToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.CopAvoidToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.CopAvoidToggleButton.Tick.Visible = true
 end
 if not config.killAura then
     ProjectAutoV2.KillAuraToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.KillAuraToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.KillAuraToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.KillAuraToggleButton.Tick.Visible = true
 end
 if not config.ServerHop then
     ProjectAutoV2.ServerHopToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.ServerHopToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.ServerHopToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.ServerHopToggleButton.Tick.Visible = true
 end
 if not toggled then
     ProjectAutoV2.AutoRobToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    ProjectAutoV2.AutoRobToggleButton.Tick.Visible = false
 else
     ProjectAutoV2.AutoRobToggleButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    ProjectAutoV2.AutoRobToggleButton.Tick.Visible = true
 end
 
 -- for locations not added yet
 
 ProjectAutoV2.SmallStoresToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ProjectAutoV2.SmallStoresToggleButton.Tick.Visible = false
 
 ProjectAutoV2.PowerPlantToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ProjectAutoV2.PowerPlantToggleButton.Tick.Visible = false
 
 ProjectAutoV2.BoatToggleButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ProjectAutoV2.BoatToggleButton.Tick.Visible = false
 
 -- (MAX + MIN) / NUM = 200, (MAX + MIN) / 200 = NUM
 ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position = UDim2.new(0, (config.FlySpeed + 50) / -0.5, ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.Y.Scale, ProjectAutoV2.BotSpeedSlider:FindFirstChild("Handle").Position.Y.Offset)
@@ -3396,8 +3805,11 @@ function respawn(prisoner)
         wait(0.1)
     end
 
-    wait(1)
-
+    if config.safe then
+        wait(1)
+    else
+        wait(0.3)
+    end
     if not prisoner then
         if Bot.Character:FindFirstChild("HumanoidRootPart") and (Vector3.new(2009, 20, -2538) - Bot.Character.HumanoidRootPart.Position).magnitude < 5 then
             pathMove(Vector3.new(2102, 20, -2556))
@@ -3525,8 +3937,11 @@ function respawn(prisoner)
         end
     end
 
-    wait(1)
-    
+    if config.safe then
+        wait(1)
+    else
+        wait(0.3)
+    end
     RobbingLocation = false
     respawning = false
 
@@ -3582,7 +3997,11 @@ function TPReturner()
                     wait()
                     game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
                 end)
-                wait(4)
+                if config.safe then
+                    wait(4)
+                else
+                    wait(1)
+                end
             end
         end
     end
@@ -3679,7 +4098,7 @@ function BotMove(location, LocationName, teleporting)
 
     if Car == nil and Bot.Team.Name ~= "Prisoner" then
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
-        local rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -2, 0)
+        local rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -5, 0)
         local ray = Ray.new(rayOrigin, rayDirection)
         local rain = game:GetService("Workspace"):FindFirstChild("Rain")
         if rain ~= nil then
@@ -3704,7 +4123,11 @@ function BotMove(location, LocationName, teleporting)
         if hit ~= nil then
             if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
             Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, pos.Y, Bot.Character.HumanoidRootPart.CFrame.Z)
-            wait(0.5)
+            if config.safe then
+                wait(0.5)
+            else
+                wait(0.1)
+            end
         else
             if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
             Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, 300, Bot.Character.HumanoidRootPart.CFrame.Z)
@@ -3715,7 +4138,7 @@ function BotMove(location, LocationName, teleporting)
                 ray = Ray.new(rayOrigin, rayDirection2)
                 rain = game:GetService("Workspace"):FindFirstChild("Rain")
                 if rain ~= nil then
-                    ignoreStuff = {rain.RainDroplets, rain.RainFall}
+                    local ignoreStuff = {rain.RainDroplets, rain.RainFall}
                     if platform ~= nil then
                         table.insert(ignoreStuff, #(ignoreStuff), platform)
                     end
@@ -3735,6 +4158,9 @@ function BotMove(location, LocationName, teleporting)
                 end
                 wait()
             end
+            if config.safe then
+                wait(0.1)
+            end
         end
         if reset then return end
         Bot.Character.HumanoidRootPart.Velocity = Vector3.new()
@@ -3746,7 +4172,11 @@ function BotMove(location, LocationName, teleporting)
         game:GetService("ReplicatedStorage").GarageSpawnVehicle:FireServer(unpack(args))
     end
 
-    wait(2)
+    if config.safe then
+        wait(2)
+    else
+        wait(0.5)
+    end
 
     if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
     for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
@@ -3761,13 +4191,15 @@ function BotMove(location, LocationName, teleporting)
     while Car == nil do
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, 500, Bot.Character.HumanoidRootPart.CFrame.Z)
-        wait(1)
+        if config.safe then
+            wait(1)
+        end
         if reset then return end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
         move(GetPos(Bot.Character.HumanoidRootPart.Position))
         if reset then return end
 
-        local rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -2, 0)
+        local rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -5, 0)
         local ray = Ray.new(rayOrigin, rayDirection)
         local rain = game:GetService("Workspace"):FindFirstChild("Rain")
         if rain ~= nil then
@@ -3794,7 +4226,11 @@ function BotMove(location, LocationName, teleporting)
         if hit ~= nil then
             if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
             Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, pos.Y, Bot.Character.HumanoidRootPart.CFrame.Z)
-            wait(0.5)
+            if config.safe then
+                wait(0.5)
+            else
+                wait(0.1)
+            end
         else
             if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
             Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, 300, Bot.Character.HumanoidRootPart.CFrame.Z)
@@ -3824,6 +4260,9 @@ function BotMove(location, LocationName, teleporting)
                     hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
                 end
                 wait()
+            end
+            if config.safe then
+                wait(0.5)
             end
         end
         if reset then return end
@@ -3878,7 +4317,11 @@ function BotMove(location, LocationName, teleporting)
             end
         end
 
-        wait(1)
+        if config.safe then
+            wait(1)
+        else
+            wait(0.5)
+        end
         if reset then return end
         
         for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
@@ -3961,7 +4404,9 @@ function BotMove(location, LocationName, teleporting)
     end
     if reset then return end
     Car.Engine.CFrame = CFrame.new(Car.Engine.CFrame.X, 500, Car.Engine.CFrame.Z)
-    wait(1)
+    if config.safe then
+        wait(1)
+    end
     if reset then return end
     if LocationName ~= "Train" then
         while (Vector3.new(Car.Engine.Position.X, 500, Car.Engine.Position.Z) - location).magnitude > 11 do 
@@ -4112,22 +4557,27 @@ function BotMove(location, LocationName, teleporting)
     
 
     if LocationName == "volcano base" then
-        wait(0.5)
+        if config.safe then
+            wait(0.5)
+        end
         pathMove(Vector3.new(2275, 25, -2024))
         if reset then return end
         pathMove(Vector3.new(2204, 25, -2479))
         if reset then return end
         pathMove(Vector3.new(2289, 25, -2584))
         if reset then return end
-        wait(1)
+        if config.safe then
+            wait(1)
+        end
         if reset then return end
         pathMove(Vector3.new(2204, 25, -2479))
         if reset then return end
         pathMove(Vector3.new(2275, 25, -2024))
         if reset then return end
     end
-
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    end
 end
 
 function move(pos, object)
@@ -4156,7 +4606,7 @@ function move(pos, object)
                 Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.Position.X, 500, Bot.Character.HumanoidRootPart.Position.Z)
                 wait()
                 moveTime += 0.03
-                if moveTime > 30 then
+                if moveTime > 90 - (config.CarSpeed * -0.1) then
                     LogMessage("possibly stuck, ressetting")
                     Bot.Character.Humanoid.Health = 0
                     exitCar.OnJump()
@@ -4180,7 +4630,7 @@ function move(pos, object)
                 Car.Engine.CFrame = CFrame.new(Car.Engine.Position.X, 500, Car.Engine.Position.Z)
                 wait()
                 moveTime += 0.03
-                if moveTime > 30 then
+                if moveTime > 90 - (config.CarSpeed * -0.1) then
                     LogMessage("possibly stuck, ressetting")
                     Bot.Character.Humanoid.Health = 0
                     exitCar.OnJump()
@@ -4205,7 +4655,7 @@ function move(pos, object)
                 Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.Position.X, 500, Bot.Character.HumanoidRootPart.Position.Z)
                 wait()
                 moveTime += 0.03
-                if moveTime > 30 then
+                if moveTime > 90 - (config.CarSpeed * -0.1) then
                     LogMessage("possibly stuck, ressetting")
                     Bot.Character.Humanoid.Health = 0
                     exitCar.OnJump()
@@ -4228,7 +4678,7 @@ function move(pos, object)
                 Car.Engine.CFrame = CFrame.new(Car.Engine.Position.X, 500, Car.Engine.Position.Z)
                 wait()
                 moveTime += 0.03
-                if moveTime > 30 then
+                if moveTime > 90 - (config.CarSpeed * -0.1) then
                     LogMessage("possibly stuck, ressetting")
                     Bot.Character.Humanoid.Health = 0
                     exitCar.OnJump()
@@ -4277,7 +4727,10 @@ function pathFindMove(pos)
             wait()
             if reset then return end
         end
-        wait(0.1)
+        if config.safe then
+            wait(0.1)
+            moveTime += 0.1
+        end
     end
     if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
     Bot.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
@@ -4308,7 +4761,7 @@ function pathMove(pos)
                 Bot.Character.HumanoidRootPart.Velocity = Vector3.new(0,1.005,0)
                 wait()
                 moveTime += 0.03
-                if moveTime > 15 then
+                if moveTime > 30 - (config.GroundSpeed * 1.5) then
                     LogMessage("possibly stuck, ressetting")
                     Bot.Character.Humanoid.Health = 0
                     exitCar.OnJump()
@@ -4316,8 +4769,10 @@ function pathMove(pos)
                 end
                 if reset then return end
             end
-            wait(0.1)
-            moveTime += 0.1
+            if config.safe then
+                wait(0.1)
+                moveTime += 0.1
+            end
         end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
@@ -4333,7 +4788,7 @@ function pathMove(pos)
                 Car.Engine.Velocity = Vector3.new(0,1.005,0)
                 wait()
                 moveTime += 0.03
-                if moveTime > 15 then
+                if moveTime > 30 - (config.GroundSpeed * 1.5) then
                     LogMessage("possibly stuck, ressetting")
                     Bot.Character.Humanoid.Health = 0
                     exitCar.OnJump()
@@ -4341,8 +4796,10 @@ function pathMove(pos)
                 end
                 if reset then return end
             end
-            wait(0.1)
-            moveTime += 0.1
+            if config.safe then
+                wait(0.1)
+                moveTime += 0.1
+            end
         end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
         Car.Engine.CFrame = CFrame.new(pos)
@@ -4482,7 +4939,7 @@ function robLocation()
     if config.PlaneToggled then
         if game.Workspace:FindFirstChild("Plane") and config.teleport then
             if game.Workspace.Plane:FindFirstChild("CargoPlane") then
-                if game.Workspace.Plane.CargoPlane.Position.X > 0 then
+                if game.Workspace.Plane.CargoPlane.Position.X > 0 and game.Workspace.Plane.CargoPlane.Position.Z > -6500 then
                     for k, v in pairs(game.Workspace.Plane.Crates:GetChildren()) do
                         if v:GetChildren()[1].Transparency < 1 then
                             robPlane = true
@@ -4499,7 +4956,7 @@ function robLocation()
         end
     end
 
-    if robPlane then
+    if robPlane and Bot.Team.Name ~= "Prisoner" then
         if not robbedPlane then
             RobbingLocation = true
             LogMessage("robbing cargo plane")
@@ -4614,6 +5071,7 @@ function robLocation()
             if syn then
                 syn.queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
+                    wait(3)
                     local session
                     local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
@@ -4623,22 +5081,23 @@ function robLocation()
                     end
                     _G.CurrentSession = session
                     if readfile and isfile then 
-                        if isfile("ProjectAutoSession.txt") then
+                        if isfile("ProjectAutoKey.txt") then
                             _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
                         end
                     end
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                        local teamHash = 'tomm5a8a'
+                        local teamHash = 'mys8qmif'
                         network:FireServer(teamHash, "Prisoner")
-                        wait(3)
+                        wait(1)
                     until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
                 ]])
             elseif queue_on_teleport then
                 queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
+                    wait(3)
                     local session
                     local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
@@ -4648,23 +5107,23 @@ function robLocation()
                     end
                     _G.CurrentSession = session
                     if readfile and isfile then 
-                        if isfile("ProjectAutoSession.txt") then
+                        if isfile("ProjectAutoKey.txt") then
                             _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
                         end
                     end
-                    wait(3)
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                        local teamHash = 'tomm5a8a'
+                        local teamHash = 'mys8qmif'
                         network:FireServer(teamHash, "Prisoner")
-                        wait(3)
+                        wait(1)
                     until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
                 ]])
             elseif fluxus then
                 fluxus.queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
+                    wait(3)
                     local session
                     local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
@@ -4674,19 +5133,18 @@ function robLocation()
                     end
                     _G.CurrentSession = session
                     if readfile and isfile then 
-                        if isfile("ProjectAutoSession.txt") then
+                        if isfile("ProjectAutoKey.txt") then
                             _G.Key = HttpService:JSONDecode(readfile("ProjectAutoKey.txt"))
                         end
                     end
-                    wait(3)
                     repeat
                         local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-                        local teamHash = 'tomm5a8a'
+                        local teamHash = 'mys8qmif'
                         network:FireServer(teamHash, "Prisoner")
-                        wait(3)
+                        wait(1)
                     until game.Players.localPlayer.PlayerGui.TeamGui.Enabled == false
                     wait(0.5)
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/45ggb3"))()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/piggycacti/g35v2/main/g36aa"))()
                 ]])
             end
             Teleport()
@@ -4699,9 +5157,17 @@ function RobBank()
     if reset then return end
     BotMove(Vector3.new(-1, 500, 865), "bank", config.teleport)
     if reset then return end
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
 
     if not GetBankStatus() then
         RobbingLocation = false
@@ -4720,12 +5186,14 @@ function RobBank()
     pathMove(Vector3.new(40, 20, 924))
     if reset then return end
 
-    local oldPosition = Bot.Character.HumanoidRootPart.Position
-    Bot.Character.HumanoidRootPart.CFrame = CFrame.new(40, 20, 907) 
-    wait(0.5)
-    Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPosition)
-    wait(0.1)
-    pathMove(Vector3.new(40, 20, 924))
+    if config.safe then
+        local oldPosition = Bot.Character.HumanoidRootPart.Position
+        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(40, 20, 907) 
+        wait(0.5)
+        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPosition)
+        wait(0.1)
+        pathMove(Vector3.new(40, 20, 924))
+    end
     if reset then return end
     
     UpdateLog("going to vault")
@@ -4750,14 +5218,16 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        if reset then return end
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        if reset then return end
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
-        pathMove(Vector3.new(1, -7, 959))
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            if reset then return end
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            if reset then return end
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+            pathMove(Vector3.new(1, -7, 959))
+        end
         if reset then return end
 
         repeat 
@@ -4852,12 +5322,14 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
-        pathMove(Vector3.new(202, -7, 897))
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+            pathMove(Vector3.new(202, -7, 897))
+        end
         if reset then return end
 
         repeat 
@@ -4952,12 +5424,14 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
-        pathMove(Vector3.new(83, 61, 920))
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+            pathMove(Vector3.new(83, 61, 920))
+        end
         if reset then return end
 
         repeat 
@@ -5054,11 +5528,13 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+        end
         
         pathMove(Vector3.new(47, 5, 800))
         if reset then return end
@@ -5157,11 +5633,13 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+        end
 
         pathMove(Vector3.new(39, 3, 964))
         if reset then return end
@@ -5262,13 +5740,15 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+            pathMove(Vector3.new(159, -7, 843))
+        end
 
-        pathMove(Vector3.new(159, -7, 843))
         if reset then return end
 
         repeat 
@@ -5365,13 +5845,15 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+            pathMove(Vector3.new(19, 2, 888))
+        end
 
-        pathMove(Vector3.new(19, 2, 888))
         if reset then return end
 
         repeat 
@@ -5460,13 +5942,15 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
-
-        pathMove(Vector3.new(-49, 1, 941))
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+            pathMove(Vector3.new(-49, 1, 941))
+        end
+        
         if reset then return end
 
         repeat 
@@ -5559,13 +6043,15 @@ function RobBank()
 
         UpdateLog("collecting money")
 
-        local oldPos = Bot.Character.HumanoidRootPart.Position
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
-        wait(0.5)
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
-        wait(0.1)
+        if config.safe then
+            local oldPos = Bot.Character.HumanoidRootPart.Position
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Banks:GetChildren()[1].Layout:GetChildren()[1].TriggerDoor.Position)
+            wait(0.5)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+            wait(0.1)
+            pathMove(Vector3.new(49, -7, 956))
+        end
 
-        pathMove(Vector3.new(49, -7, 956))
         if reset then return end
 
         repeat 
@@ -5650,7 +6136,9 @@ function RobBank()
     pathMove(Vector3.new(1, 25, 865))
     if reset then return end
 
-    wait(1)
+    if config.safe then
+        wait(1)
+    end
     RobbingLocation = false
     robbedBank = true
     local bankMoney = string.gsub(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 2, 6), " ", "")
@@ -5716,9 +6204,28 @@ function RobJewel()
     end
     UpdateLog("going to jewelry store")
     BotMove(Vector3.new(155, 500, 1369), "jewelry store", config.teleport)
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
+    
+    if config.teleport then
+        for k, v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
+            if v:FindFirstChild("Engine") then
+                if (v.Engine.Position - Vector3.new(131, 19, 1304)).magnitude < 15 then
+                    v:Destroy()
+                end
+            end
+        end
+    end
+
     if reset then return end
     if not config.teleport and GetRobbingJewel() then
         UpdateLog("entering jewelry store")
@@ -5914,7 +6421,11 @@ function RobJewel()
             if reset then return end
     end
     pathMove(Vector3.new(135, 22, 1343))
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.5)
+    end
 
     UpdateLog("collecting money")
 
@@ -5923,7 +6434,12 @@ function RobJewel()
             RobbingLocation = false
             return
         end
-        pathMove(v)
+        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(v)
+        if config.safe then
+            wait(0.3)
+        else
+            wait(0.1)
+        end
         if reset then return end
         
         if Bot.Character:FindFirstChild("HumanoidRootPart") and (GetBoxPos() - Bot.Character.HumanoidRootPart.Position).magnitude < 5 and ((string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 6) ~= string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 10, 15) and Bot.PlayerGui.RobberyMoneyGui.Enabled) or Bot.PlayerGui.RobberyMoneyGui.Enabled == false) then
@@ -5946,7 +6462,12 @@ function RobJewel()
                 RobbingLocation = false
                 return
             end
-            pathMove(v)
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(v)
+            if config.safe then
+                wait(0.3)
+            else
+                wait(0.1)
+            end
             if reset then return end
 
             if Bot.Character:FindFirstChild("HumanoidRootPart") and (GetBoxPos() - Bot.Character.HumanoidRootPart.Position).magnitude < 5 and ((string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 1, 6) ~= string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 10, 15) and Bot.PlayerGui.RobberyMoneyGui.Enabled) or Bot.PlayerGui.RobberyMoneyGui.Enabled == false) then
@@ -6147,14 +6668,18 @@ function RobJewel()
 
     UpdateLog("waiting")
 
-    wait(5)
+    if config.safe then
+        wait(5)
+    else
+        wait(1)
+    end
 
     UpdateLog("going to crim base")
 
     BotMove(Vector3.new(-300, 500, 1597), "city crim base", false)
 
     if reset then return end
-    wait(3)
+    wait(1)
     RobbingLocation = false
     robbedJewel = true
     local jewelMoney = string.gsub(string.sub(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text, 2, 6), " ", "")
@@ -6171,9 +6696,17 @@ function RobMansion()
     UpdateLog("going to mansion")
     BotMove(Vector3.new(3020, 500, -4524), "mansion", config.teleport)
     if reset then return end
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
 
     if not GetMansionStatus() then 
         RobbingLocation = false
@@ -6206,8 +6739,6 @@ function RobMansion()
         if reset then return end
     until Door.Position.X > 3208
 
-    network:FireServer(hash, "AK47")
-
     UpdateLog("going to boss room")
 
     pathMove(Vector3.new(3202, -200, -4703))
@@ -6231,7 +6762,11 @@ function RobMansion()
 
     UpdateLog("shooting ceo")
     
-    network:FireServer(hash, "AK47")
+    if Bot.Items:FindFirstChild("AK47") then
+        network:FireServer(hash, "AK47")
+    else
+       network:FireServer(hash, "Pistol") 
+    end
     wait(0.5)
 
     local boss = nil
@@ -6242,7 +6777,12 @@ function RobMansion()
     end
 
     pcall(function()
-        toolname = "AK47"
+        local toolname
+        if Bot.Items:FindFirstChild("AK47") then
+            toolname = "AK47"
+        else
+            toolname = "Pistol"
+        end
         if Bot.Backpack:FindFirstChild(toolname) and Bot.Character:FindFirstChild(toolname) == nil then
             local tool = Bot.Backpack:FindFirstChild(toolname)
             Bot.Character.Humanoid:EquipTool(tool)
@@ -6252,8 +6792,11 @@ function RobMansion()
     local args = {
         [1] = true
     }
-
-    game:GetService("Players").LocalPlayer.Folder.AK47.InventoryEquipRemote:FireServer(unpack(args))
+    if Bot.Items:FindFirstChild("AK47") then
+        game:GetService("Players").LocalPlayer.Folder.AK47.InventoryEquipRemote:FireServer(unpack(args))
+    else
+        game:GetService("Players").LocalPlayer.Folder.Pistol.InventoryEquipRemote:FireServer(unpack(args))
+    end
 
     wait(0.5)
     if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
@@ -6266,8 +6809,12 @@ function RobMansion()
     CEOplatform.Position = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -7, 0)
     while boss:FindFirstChild("Humanoid") do
 
-        if not Bot.Folder:FindFirstChild("Ak47") then
-            network:FireServer(hash, "AK47")
+        if not Bot.Folder:FindFirstChild("Ak47") and not Bot.Folder:FindFirstChild("Pistol") then
+            if Bot.Items:FindFirstChild("AK47") then
+                network:FireServer(hash, "AK47")
+            else
+                network:FireServer(hash, "Pistol") 
+            end
             wait(0.5)
         end
         if not Bot.Character:FindFirstChild("AK47") then
@@ -6279,7 +6826,12 @@ function RobMansion()
             wait(0.1)
 
             pcall(function()
-                toolname = "AK47"
+                local toolname
+                if Bot.Items:FindFirstChild("AK47") then
+                    toolname = "AK47"
+                else
+                    toolname = "Pistol"
+                end
                 if Bot.Backpack:FindFirstChild(toolname) and Bot.Character:FindFirstChild(toolname) == nil then
                     local tool = Bot.Backpack:FindFirstChild(toolname)
                     Bot.Character.Humanoid:EquipTool(tool)
@@ -6289,8 +6841,11 @@ function RobMansion()
             local args = {
                 [1] = true
             }
-
-            game:GetService("Players").LocalPlayer.Folder.AK47.InventoryEquipRemote:FireServer(unpack(args))
+            if Bot.Items:FindFirstChild("AK47") then
+                game:GetService("Players").LocalPlayer.Folder.AK47.InventoryEquipRemote:FireServer(unpack(args))
+            else
+                game:GetService("Players").LocalPlayer.Folder.Pistol.InventoryEquipRemote:FireServer(unpack(args))
+            end
 
             wait(0.1)
         end
@@ -6352,7 +6907,9 @@ function RobMansion()
     pathMove(Vector3.new(3104, 57, -4384))
     if reset then return end
 
-    wait(1)
+    if config.safe then
+        wait(1)
+    end
     RobbingLocation = false
     LogMessage("robbed mansion for $16,000")
     ScriptTime.TotalMoneyEarned += 16000
@@ -6365,7 +6922,9 @@ function RobCasino()
     end
     if config.teleport then
         exitCar.OnJump()
-        wait(0.5)
+        if config.safe then
+            wait(0.5)
+        end
         UpdateLog("hacking computers")
         for k, v in pairs(game.Workspace.Casino.Computers:GetChildren()) do
             if not GetCasinoStatus() then
@@ -6396,17 +6955,29 @@ function RobCasino()
             for i = 1, 30, 1 do
                 Bot.Character.HumanoidRootPart:PivotTo(CFrame.new(v.Position + Vector3.new(0, 5, 0)))
                 v.CasinoLootCollect:FireServer()
-                wait(0.01)
+                wait()
             end
         end
         UpdateLog("waiting")
-        wait(10)
+        if config.safe then
+            wait(10)
+        else
+            wait(3)
+        end
     else
         UpdateLog("going to casino")
         BotMove(Vector3.new(-220, 500, -4575), "casino", false)
-        wait(1)
+        if config.safe then
+            wait(1)
+        else
+            wait(0.1)
+        end
         exitCar.OnJump()
-        wait(0.5)
+        if config.safe then
+            wait(0.5)
+        else
+            wait(0.1)
+        end
         if not GetCasinoStatus() then
             RobbingLocation = false
             return
@@ -6420,8 +6991,9 @@ function RobCasino()
         pathMove(Vector3.new(-13, 157, -4741))
         if reset then return end
 
-        wait(0.5)
-
+        if config.safe then
+            wait(0.5)
+        end
         
         UpdateLog("waiting for elevator")
 
@@ -6521,8 +7093,11 @@ function RobCasino()
             end
         end
 
-        wait(1)
-
+        if config.safe then
+            wait(1)
+        else
+            wait(0.5)
+        end
         UpdateLog("going to vault")
 
         pathMove(Vector3.new(26, -77, -4751))
@@ -6919,7 +7494,11 @@ function RobCasino()
             end
         end
 
-        wait(1)
+        if config.safe then
+            wait(1)
+        else
+            wait(0.5)
+        end
 
         UpdateLog("going to elevator")
 
@@ -6980,9 +7559,17 @@ end
 function RobMuseum()
     UpdateLog("going to museum")
     BotMove(Vector3.new(1048, 500, 1242), "museum", config.teleport)
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
 
     if not GetMuseumStatus() then
         RobbingLocation = false
@@ -7016,7 +7603,11 @@ function RobMuseum()
             v.Time = true
             v:Callback(v, true)
             if reset then return end
-            wait(0.5)
+            if config.safe then
+                wait(0.5)
+            else
+                wait(0.1)
+            end
         end
     end
     if reset then return end
@@ -7114,10 +7705,14 @@ function RobMuseum()
 
     if Bot.PlayerGui.RobberyMoneyGui.Enabled then
         UpdateLog("going to volcano")
-        wait(2)
+        if config.safe then
+            wait(2)
+        end
         BotMove(Vector3.new(2275, 500, -2024), "volcano base", false)
     end
-    wait(1)
+    if config.safe then
+        wait(1)
+    end
     RobbingLocation = false
     robbedMuseum = true
     if string.len(Bot.PlayerGui.RobberyMoneyGui.Container.Bottom.Progress.Amount.Text) == 9 then
@@ -7135,9 +7730,17 @@ end
 
 function RobDonut()
     BotMove(Vector3.new(77, 500, -1516), "donut store", false)
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
     pathMove(Vector3.new(96, 20, -1527))
     if reset then return end
     pathMove(Vector3.new(111, 20, -1578))
@@ -7145,7 +7748,9 @@ function RobDonut()
     pathMove(Vector3.new(78, 20, -1589))
     if reset then return end
 
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    end
 
     game:GetService('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
     wait(0.1)
@@ -7166,22 +7771,33 @@ function RobDonut()
     if reset then return end
     pathMove(Vector3.new(92, 20, -1516))
 
-    wait(1)
+    if config.safe then
+        wait(1)
+    end
     RobbingLocation = false
     LogMessage("robbed donut store for $750")
 end
 
 function RobGas()
     BotMove(Vector3.new(-1563, 500, 708), "gas station", false)
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
     pathMove(Vector3.new(-1596, 19, 709))
     if reset then return end
     pathMove(Vector3.new(-1599, 19, 687))
     if reset then return end
-
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    end
 
     game:GetService('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
     wait(0.1)
@@ -7201,7 +7817,9 @@ function RobGas()
     pathMove(Vector3.new(-1567, 19, 705))
     if reset then return end
 
-    wait(1)
+    if config.safe then
+        wait(1)
+    end
     RobbingLocation = false
     LogMessage("robbed gas station for $750")
 end
@@ -7211,9 +7829,17 @@ function RobTrain()
     UpdateLog("going to train")
 
     BotMove(Vector3.new(587, 500, -477), "Train", false)
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
 
     local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
     for i,v in pairs (UI.CircleAction.Specs) do
@@ -7339,7 +7965,9 @@ function RobTrain()
         wait(0.1)
     end
 
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    end
 
     robbedTrain = true
     RobbingLocation = false
@@ -7364,9 +7992,17 @@ function RobTomb()
     
     BotMove(Vector3.new(587, 500, -477), "tomb", config.teleport)
 
-    wait(1)
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
 
     UpdateLog("entering tomb")
 
@@ -7440,7 +8076,9 @@ function RobTomb()
     pathMove(Vector3.new(986, -85, -185))
     if reset then return end
 
-    wait(0.1)
+    if config.safe then
+        wait(0.1)
+    end
 
     if not GetTombStatus() then
         pathMove(Vector3.new(587, 500, -477))
@@ -7490,14 +8128,19 @@ function RobTomb()
 
     UpdateLog("exiting tomb")
 
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    end
+
     for k, v in pairs(game.Workspace:GetChildren()) do
         if v.Name == "Cart" then
             v:Destroy()
         end
     end
 
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    end
 
     if Bot.Character:FindFirstChild("HumanoidRootPart") and (Vector3.new(1206, 14, -1244) - Bot.Character.HumanoidRootPart.Position).magnitude < 5 then
         pathMove(Vector3.new(1200, 20, -1222))
@@ -7527,15 +8170,27 @@ function RobDrop(Drop, pos)
 
     BotMove(pos, "nearest air drop", false)
     if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+    if config.safe then
+        wait(1)
+    else
+        wait(0.1)
+    end
     exitCar.OnJump()
-    wait(1)
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
     if not Drop:FindFirstChild("Root") then 
         RobbingLocation = false
         return 
     end
     Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Drop.Root.Position)
-    wait(0.5)
-
+    if config.safe then
+        wait(0.5)
+    else
+        wait(0.1)
+    end
     UpdateLog("opening airdrop")
 
     local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
@@ -7580,42 +8235,20 @@ function RobDrop(Drop, pos)
 
     repeat
         if not Drop:FindFirstChild("Root") then break end
-        Drop.BriefcasePress:FireServer(ohBoolean1)
-
-        for i,v in pairs (UI.CircleAction.Specs) do
-            if v.Name == "Open Crate" then
-                v.Pressed = true
-                v.PressedAt = os.time()
-            end
-        end
-
-        local ohBoolean1 = true
-
-        if reset then return end
-        wait(0.5)
-        if not Drop:FindFirstChild("Root") then break end
-        if reset then return end
-        local ohBoolean1 = false
-
-        Drop.BriefcaseRelease:FireServer(ohBoolean1)
-
-        Drop.BriefcaseCollect:FireServer()
-
-        for i,v in pairs (UI.CircleAction.Specs) do
-            if v.Name == "Open Crate" then
-                v:Callback(v, true)
-            end
-        end
         wait()
         if reset then return end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
     until not Drop:FindFirstChild("Root")
 
-    wait(0.5)
+    if config.safe then
+        wait(0.5)
+    end
 
     UpdateLog("collecting cash")
     
-    wait(1)
+    if config.safe then
+        wait(1)
+    end
     local MoneyCollected = 0
     wait(0.1)
     local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
@@ -7633,7 +8266,11 @@ function RobDrop(Drop, pos)
         end
     end
 
-    wait(5)
+    if config.safe then
+        wait(5)
+    else
+        wait(1)
+    end
     if reset then return end
     RobbingLocation = false
     LogMessage("robbed air drop for $"..string.sub(tostring(MoneyCollected), 1, 1)..","..string.sub(tostring(MoneyCollected), 2, 4))
@@ -7664,12 +8301,27 @@ end
 
 function RobPlane()
     if config.teleport then
-        exitCar.OnJump()
-        wait(0.5)
+        local Car
+        for k, v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
+            if pcall(function() return v.Seat.PlayerName end) then
+                if v.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name then
+                    Car = v
+                end
+            end
+        end
         UpdateLog("collecting crate")
-        local oldPos = Bot.Character.HumanoidRootPart.Position
+        local oldPos
+        if car == nil then
+            oldPos = Bot.Character.HumanoidRootPart.Position
+        else
+            oldPos = Car.Engine.Position
+        end
         while not Bot.PlayerGui.RobberyMoneyGui.Enabled do
-            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Plane.Crates:GetChildren()[1]:GetChildren()[1].Position)
+            if Car == nil then
+                Bot.Character.HumanoidRootPart.CFrame = CFrame.new(game.Workspace.Plane.Crates:GetChildren()[1]:GetChildren()[1].Position)
+            else
+                Car.Engine.CFrame = CFrame.new(game.Workspace.Plane.Crates:GetChildren()[1]:GetChildren()[1].Position)
+            end
             local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
             for i,v in pairs (UI.CircleAction.Specs) do
                 if v.Name == "Inspect Crate" then
@@ -7682,21 +8334,28 @@ function RobPlane()
             if reset then return end
             wait(0.01)
         end
-        Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        if car == nil then
+            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(oldPos)
+        else
+            Car.Engine.CFrame = CFrame.new(oldPos)
+        end
 
-        wait(1)
+        if config.safe then
+            wait(1)
+        end
 
-        if config.wait then
-            UpdateLog("waiting")
-            wait(config.GroundSpeed)
+        UpdateLog("waiting")
+        if config.safe then
+            wait(10)
+        else
+            wait(5)
         end
 
         if Bot.PlayerGui.RobberyMoneyGui.Enabled then
             if reset then return end
             UpdateLog("going to cargo port")
             BotMove(Vector3.new(-342, 500, 2055), "cargo port", false)
-
-            wait(2)
+            wait(1)
             robbedPlane = true
             LogMessage("robbed cargo plane for $4,000")
             ScriptTime.TotalMoneyEarned += 4000
@@ -7706,9 +8365,17 @@ function RobPlane()
     else
         UpdateLog("going to air port")
         BotMove(Vector3.new(-1298, 500, 2903), "airport", false)
-        wait(1)
+        if config.safe then
+            wait(1)
+        else
+            wait(0.1)
+        end
         exitCar.OnJump()
-        wait(0.5)
+        if config.safe then
+            wait(0.5)
+        else
+            wait(0.1)
+        end
 
         UpdateLog("waiting for plane to land")
 
@@ -7757,7 +8424,9 @@ function RobPlane()
         UpdateLog("going to cargo port")
         BotMove(Vector3.new(-342, 500, 2055), "cargo port", false)
 
-        wait(2)
+        if config.safe then
+            wait(2)
+        end
         robbedPlane = true
         LogMessage("robbed cargo plane for $7,000")
         ScriptTime.TotalMoneyEarned += 7000
@@ -7825,7 +8494,7 @@ coroutine.wrap(function()
             end
             platformed = false
         end
-        wait(1)
+        wait(0.1)
     end
 end)()
 
@@ -7915,12 +8584,21 @@ coroutine.wrap(function()
 
             if shoot then
                 if not shooting then
-                    network:FireServer(hash, "AK47")
-                
-                    wait(1)
+                    if Bot.Items:FindFirstChild("AK47") then
+                        network:FireServer(hash, "AK47")
+                    else
+                        network:FireServer(hash, "Pistol") 
+                    end
+
+                    wait(0.5)
 
                     pcall(function()
-                        toolname = "AK47"
+                        local toolname
+                        if Bot.Items:FindFirstChild("AK47") then
+                            toolname = "AK47"
+                        else
+                            toolname = "Pistol"
+                        end
                         if Bot.Backpack:FindFirstChild(toolname) and Bot.Character:FindFirstChild(toolname) == nil then
                             local tool = Bot.Backpack:FindFirstChild(toolname)
                             Bot.Character.Humanoid:EquipTool(tool)
@@ -7930,8 +8608,11 @@ coroutine.wrap(function()
                     local args = {
                         [1] = true
                     }
-
-                    game:GetService("Players").LocalPlayer.Folder.AK47.InventoryEquipRemote:FireServer(unpack(args))
+                    if Bot.Items:FindFirstChild("AK47") then
+                        game:GetService("Players").LocalPlayer.Folder.AK47.InventoryEquipRemote:FireServer(unpack(args))
+                    else
+                        game:GetService("Players").LocalPlayer.Folder.Pistol.InventoryEquipRemote:FireServer(unpack(args))
+                    end
 
                     wait(0.5)
                 end
@@ -8126,4 +8807,10 @@ if true then
     end
 else
     require(game:GetService("ReplicatedStorage").Module.RayCast).RayIgnoreNonCollideWithIgnoreList = old
+end
+
+for k, v in pairs(game.ReplicatedStorage.Game.ItemConfig:GetChildren()) do
+    if require(v).FireAuto ~= nil then
+        require(v).FireAuto = true
+    end
 end
