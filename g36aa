@@ -4739,7 +4739,6 @@ function pathFindMove(pos)
         end
         if config.safe then
             wait(0.1)
-            moveTime += 0.1
         end
     end
     if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
