@@ -2911,8 +2911,18 @@ if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 24, #(Server.Body))
 end
 
-if false then -- string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER"
+if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you need epic role or above to access beta, join discord to get beta - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    return
+end
+
+if string.sub(Server.Body, 1, 14) == "Blacklisted - " then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you have been blacklisted from ProjectAuto for "..string.sub(Server.Body, 15, #(Server.Body))
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
     game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
