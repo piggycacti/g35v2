@@ -2611,6 +2611,16 @@ if false then -- string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "U
     return
 end
 
+if string.sub(Server.Body, 1, 14) == "Blacklisted - " then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you have been blacklisted from ProjectAuto for "..string.sub(Server.Body, 15, #(Server.Body))
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    return
+end
+
 if Server.Body == "INCORRECT HWID" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect hwid, reset your hwid using our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
