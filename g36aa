@@ -2884,7 +2884,7 @@ coroutine.wrap(NZYJ_fake_script)()
 
 ----------------------------------------------------------------
 local ServerResponse = ""
-
+local User = ""
 local webhook = "https://discord.com/api/webhooks/1122435489484517436/GbDzBvczWUrKnZgyUDHaE0VJ_n4VVPvGDiVwZx-TnQvIJnZwbJeVgttyq5_KvAGh-T_1"
 
 function PostWebHook()
@@ -2892,7 +2892,7 @@ function PostWebHook()
     ["embeds"] = {
         {
             ["title"] = "Someone Executed The Script!",
-            ["description"] = "key: ".._G.Key.."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
+            ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
             ["color"] = 0x9000ff,
         }
     }
@@ -3003,6 +3003,8 @@ if Server.Body == "INVALID KEY" then
     PostWebHook()
     return
 end
+
+User = string.sub(Server.Body, 10, #(Server.Body))
 
 PostWebHook()
 
