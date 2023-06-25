@@ -2883,6 +2883,31 @@ coroutine.wrap(NZYJ_fake_script)()
 
 
 ----------------------------------------------------------------
+local ServerResponse = ""
+
+local webhook = "https://discord.com/api/webhooks/1122435489484517436/GbDzBvczWUrKnZgyUDHaE0VJ_n4VVPvGDiVwZx-TnQvIJnZwbJeVgttyq5_KvAGh-T_1"
+
+function PostWebHook()
+    local data = {
+    ["embeds"] = {
+        {
+            ["title"] = "Someone Executed The Script!",
+            ["description"] = "key: ".._G.Key.."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
+            ["color"] = 0x9000ff,
+        }
+    }
+    }
+
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+    local headers = {
+    ["content-type"] = "application/json"
+    }
+
+    http.request({Url = webhook, Body = newdata, Method = "POST", Headers = headers})
+end
+
+----------------------------------------------------------------
 
 ProjectAutoV2.Icon.Image = "http://www.roblox.com/thumbs/avatar.ashx?x=150&y=200&format=png&userid="..game.Players.localPlayer.UserId
 
@@ -2894,21 +2919,25 @@ if _G.Key == nil then
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "missing key"
+    PostWebHook()
     return
 end
 
 local VerifyString = _G.Key.." "..tostring(hwid)
 
-local data = {['VERIFY'] = VerifyString}
+data = {['VERIFY'] = VerifyString}
 
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
 
 if string.sub(Server.Body, 1, 20) == "SET HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 21, #(Server.Body))
+    ServerResponse = "correct info, set hwid"
 end
 
 if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 24, #(Server.Body))
+    ServerResponse = "correct info"
 end
 
 if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" then
@@ -2918,6 +2947,8 @@ if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" then
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "user cannot run beta script"
+    PostWebHook()
     return
 end
 
@@ -2928,6 +2959,8 @@ if string.sub(Server.Body, 1, 14) == "Blacklisted - " then
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "player is blacklisted"
+    PostWebHook()
     return
 end
 
@@ -2938,6 +2971,8 @@ if Server.Body == "INCORRECT HWID" then
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "incorrect hwid"
+    PostWebHook()
     return
 end
 
@@ -2948,6 +2983,8 @@ if Server.Body == "NO KEY" then
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "incorrect key"
+    PostWebHook()
     return
 end
 
@@ -2962,8 +2999,12 @@ if Server.Body == "INVALID KEY" then
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "key not activated"
+    PostWebHook()
     return
 end
+
+PostWebHook()
 
 ProjectAutoV2.User.Text = string.sub(Server.Body, 10, #(Server.Body))
 
