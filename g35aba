@@ -2630,7 +2630,7 @@ if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
     ServerResponse = "correct info"
 end
 
-if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" then
+if false then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you need epic role or above to access beta, join discord to get beta - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
     game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
