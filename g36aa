@@ -2912,7 +2912,7 @@ end
 ProjectAutoV2.Icon.Image = "http://www.roblox.com/thumbs/avatar.ashx?x=150&y=200&format=png&userid="..game.Players.localPlayer.UserId
 
 
-if _G.Key == nil then
+if _G.Key == nil or _G.Key == "" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "missing key, join our discord for a key - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
     game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
