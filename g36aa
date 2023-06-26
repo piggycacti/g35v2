@@ -3,7 +3,7 @@ local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.co
 versionChecker.version = "0.7 beta"
 versionChecker.checkVersion()
 
-local hwid = nil
+local hwid = ""
 
 local HttpService = game:GetService("HttpService")
 if readfile and isfile then 
