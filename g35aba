@@ -29,6 +29,9 @@ end
 if hwid == nil then
     hwid = decoded["Waterx-Fingerprint"]
 end
+if hwid == nil then
+    hwid = decoded["Comet-Fingerprint"]
+end
 
 local json
 
