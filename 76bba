@@ -2,7 +2,7 @@ local body = http.request({Url = 'http://Pxsta.pythonanywhere.com/get'; Method =
 local decoded = game:GetService('HttpService'):JSONDecode(body)
 
 for k, v in pairs(decoded) do
-    if k ~= "Host" then
+    if k ~= "Host" and k ~= "X-Real-Ip" and k ~= "X-Forwarded-For" then
         print(tostring(k)..": "..tostring(v))
     end
 end
