@@ -28,6 +28,9 @@ end
 if hwid == nil then
     hwid = decoded["Oxy-Fingerprint"]
 end
+if hwid == nil then
+    hwid = decoded["Waterx-Fingerprint"]
+end
 
 local json
 
