@@ -3,7 +3,7 @@ local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.co
 versionChecker.version = "0.6"
 versionChecker.checkVersion()
 
-local hwid = nil
+local hwid = ""
 
 local HttpService = game:GetService("HttpService")
 if readfile and isfile then 
@@ -4665,6 +4665,7 @@ function robLocation()
             if syn then
                 syn.queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
+		    wait(3)
                     local session
                     local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
@@ -4690,6 +4691,7 @@ function robLocation()
             elseif queue_on_teleport then
                 queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
+		    wait(3)
                     local session
                     local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
@@ -4716,6 +4718,7 @@ function robLocation()
             elseif fluxus then
                 fluxus.queue_on_teleport([[
                     repeat wait() until game:IsLoaded()
+		    wait(3)
                     local session
                     local HttpService = game:GetService("HttpService")
                     if readfile and isfile then 
