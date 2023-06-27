@@ -13,24 +13,10 @@ local decoded = game:GetService('HttpService'):JSONDecode(body)
 
 Exploit = decoded["User-Agent"]
 
-hwid = decoded["Sw-Fingerprint"]
-if hwid == nil then
-    hwid = decoded["Syn-Fingerprint"]
-end
-if hwid == nil then
-    hwid = decoded["Krnl-Fingerprint"]
-end
-if hwid == nil then
-    hwid = decoded["Flux-Fingerprint"]
-end
-if hwid == nil then
-    hwid = decoded["Oxy-Fingerprint"]
-end
-if hwid == nil then
-    hwid = decoded["Waterx-Fingerprint"]
-end
-if hwid == nil then
-    hwid = decoded["Comet-Fingerprint"]
+for k, v in pairs(decoded) do
+    if string.sub(k, #(k) - 10, #(k)) == "Fingerprint" then
+        hwid = v
+    end
 end
 
 local json
