@@ -1,3 +1,4 @@
+_G.Key = "96527"
 local hwid = ""
 local Exploit = ""
 
@@ -14,17 +15,17 @@ for k, v in pairs(decoded) do
     end
 end
 ----------------------------------------------------------------
-
 local ServerResponse = ""
 local User = ""
+local Status = ""
 local webhook = "https://discord.com/api/webhooks/1122435489484517436/GbDzBvczWUrKnZgyUDHaE0VJ_n4VVPvGDiVwZx-TnQvIJnZwbJeVgttyq5_KvAGh-T_1"
 
 function PostWebHook()
     local data = {
     ["embeds"] = {
         {
-            ["title"] = "Someone Executed The Special Script!", 
-            ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nExploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
+            ["title"] = "Someone Executed The Script!", 
+            ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nstatus: " + string.lower(Status) + "\nxxploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
             ["color"] = 0x9000ff,
         }
     }
@@ -70,10 +71,12 @@ data = {['VERIFY'] = VerifyString}
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
 
 if string.sub(Server.Body, 1, 20) == "SET HWID - STATUS: " then
+    Status = string.sub(Server.Body, 21, #(Server.Body))
     ServerResponse = "correct info, set hwid"
 end
 
 if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
+    Status = string.sub(Server.Body, 24, #(Server.Body))
     ServerResponse = "correct info"
 end
 
@@ -102,7 +105,6 @@ end
 if Server.Body == "INCORRECT HWID" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect hwid, reset your hwid using our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -137,8 +139,8 @@ if Server.Body == "INVALID KEY" then
     return
 end
 
-if ServerResponse == "" then
-    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "an error occured, join our discord for support - auto.projectbot.top"
+if ServerResponse = "" then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "a error occured, join our discord for support - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
     _G.AutoRobLoaded = false
     wait(5)
