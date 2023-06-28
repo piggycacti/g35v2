@@ -24,7 +24,7 @@ function PostWebHook()
     ["embeds"] = {
         {
             ["title"] = "Someone Executed The Script!", 
-            ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nstatus: "..string.lower(Status).."\nxxploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
+            ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nstatus: "..string.lower(Status).."\nexploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
             ["color"] = 0x9000ff,
         }
     }
