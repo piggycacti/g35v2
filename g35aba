@@ -2865,6 +2865,7 @@ coroutine.wrap(NZYJ_fake_script)()
 ----------------------------------------------------------------
 local ServerResponse = ""
 local User = ""
+local Status = ""
 local webhook = "https://discord.com/api/webhooks/1122435489484517436/GbDzBvczWUrKnZgyUDHaE0VJ_n4VVPvGDiVwZx-TnQvIJnZwbJeVgttyq5_KvAGh-T_1"
 
 
@@ -2874,7 +2875,7 @@ function PostWebHook()
     ["embeds"] = {
         {
             ["title"] = "Someone Executed The Script!", 
-            ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nExploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
+            ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nStatus: " + Status + "\nExploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
             ["color"] = 0x9000ff,
         }
     }
@@ -2925,11 +2926,13 @@ Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST",
 
 if string.sub(Server.Body, 1, 20) == "SET HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 21, #(Server.Body))
+    Status = string.sub(Server.Body, 21, #(Server.Body))
     ServerResponse = "correct info, set hwid"
 end
 
 if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
     ProjectAutoV2.Status.Text = string.sub(Server.Body, 24, #(Server.Body))
+    Status = string.sub(Server.Body, 24, #(Server.Body))
     ServerResponse = "correct info"
 end
 
@@ -2997,8 +3000,8 @@ if Server.Body == "INVALID KEY" then
     return
 end
 
-if ServerResponse == "" then
-    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "an error occured, join our discord for support - auto.projectbot.top"
+if ServerResponse = "" then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "a error occured, join our discord for support - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
     game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
