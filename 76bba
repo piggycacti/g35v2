@@ -44,7 +44,6 @@ end
 if hwid == nil or hwid == "" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "missing hwid, join our discord for support - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -56,7 +55,6 @@ end
 if _G.Key == nil or _G.Key == "" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "missing key, join our discord for a key - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -72,19 +70,16 @@ data = {['VERIFY'] = VerifyString}
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
 
 if string.sub(Server.Body, 1, 20) == "SET HWID - STATUS: " then
-    ProjectAutoV2.Status.Text = string.sub(Server.Body, 21, #(Server.Body))
     ServerResponse = "correct info, set hwid"
 end
 
 if string.sub(Server.Body, 1, 23) == "CORRECT HWID - STATUS: " then
-    ProjectAutoV2.Status.Text = string.sub(Server.Body, 24, #(Server.Body))
     ServerResponse = "correct info"
 end
 
 if string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "USER" or string.upper(string.sub(Server.Body, 24, #(Server.Body))) == "EPIC" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you need donator role or above to access the special script, join discord to donate - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -96,7 +91,6 @@ end
 if string.sub(Server.Body, 1, 14) == "Blacklisted - " then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "you have been blacklisted from ProjectAuto for "..string.sub(Server.Body, 15, #(Server.Body))
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -120,7 +114,6 @@ end
 if Server.Body == "NO KEY" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Incorrect key, join our discord for a key - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -136,7 +129,6 @@ Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST",
 if Server.Body == "INVALID KEY" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "Key not activated, activate key in our discord - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -148,7 +140,6 @@ end
 if ServerResponse == "" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "an error occured, join our discord for support - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
-    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
     _G.AutoRobLoaded = false
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
@@ -950,7 +941,7 @@ local Chats = {
     "only cool people are in dsc.gg/projectauto",
     "you got arrested? SKILL ISSUE",
 }
-_G.Toggled = true
+_G.Toggled = false
 coroutine.wrap(function()
     while _G.Toggled do
         local number = math.random(1, #Chats)
