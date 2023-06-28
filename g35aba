@@ -2997,6 +2997,18 @@ if Server.Body == "INVALID KEY" then
     return
 end
 
+if ServerResponse = "" then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "a error occured, join our discord for support - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "server error"
+    PostWebHook()
+    return
+end
+
 User = string.sub(Server.Body, 10, #(Server.Body))
 
 PostWebHook()
