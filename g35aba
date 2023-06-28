@@ -3000,7 +3000,7 @@ if Server.Body == "INVALID KEY" then
     return
 end
 
-if ServerResponse = "" then
+if ServerResponse == "" then
     game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "a error occured, join our discord for support - auto.projectbot.top"
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
     game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
