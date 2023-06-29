@@ -2874,7 +2874,7 @@ function PostWebHook()
     local data = {
     ["embeds"] = {
         {
-            ["title"] = "Someone Executed The Script!", 
+            ["title"] = "Someone Executed The Auto Rob Script!", 
             ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nstatus: "..string.lower(Status).."\nexploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
             ["color"] = 0x9000ff,
         }
