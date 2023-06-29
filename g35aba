@@ -3161,7 +3161,7 @@ local reset = false
 local exitCar = require(game:GetService("ReplicatedStorage").Game.CharacterUtil)
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
 local punchHash = "jkhe0isj" -- Y
-local hash = 'ib6bmql1'  -- Y
+local hash = 'm5qcu4ya'  -- Y
 
 if _G.CurrentSession == nil then
     _G.CurrentSession = math.random(1, 1000)
