@@ -184,7 +184,7 @@ function GetPos(location)
             local IgnorePos = false
             for k, l in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
                 if l.Name == "Jeep" or l.Name == "Camaro" then
-                    if (Vector3.new(l.Engine.Position.X, 500, l.Engine.Position.Z) - v).magnitude < 50 then
+                    if (Vector3.new(l.Engine.Position.X, 500, l.Engine.Position.Z) - v).magnitude < 200 then
                         if (Vector3.new(l.Engine.Position.X, 500, l.Engine.Position.Z) - v).magnitude > 5 then
                             IgnorePos = true
                         end
