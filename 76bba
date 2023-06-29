@@ -23,7 +23,7 @@ function PostWebHook()
     local data = {
     ["embeds"] = {
         {
-            ["title"] = "Someone Executed The Script!", 
+            ["title"] = "Someone Executed The Special Script!", 
             ["description"] = "user: "..User.."\nkey: ".._G.Key.."\nstatus: "..string.lower(Status).."\nexploit: "..string.lower(Exploit).."\nhwid: "..tostring(hwid).."\nserver response: "..ServerResponse,
             ["color"] = 0x9000ff,
         }
@@ -165,13 +165,13 @@ local rayDirection = Vector3.new(0, -3000, 0)
 local rayDirection1 = Vector3.new(0, 200, 0)
 local Target = nil
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-local kickHash = 'djnhego8'
-local arrestHash = 'i2afgszs'
+local kickHash = 'c04tage4' -- Y
+local arrestHash = 'uht8s6vx' -- Y
 local ArrestingNow = false
 local ChatRemote = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
 local network = getupvalue(require(game.ReplicatedStorage.Module.AlexChassis).SetEvent, 1)
-local popHash = "jos1evcp"
-local tazeHash = 'sjxrtuma'
+local popHash = "jos1evcp" -- Y
+local tazeHash = 'wlpgqhxg' -- Y
 local Positions = {
     Vector3.new(740, 500, 1062),
 }
@@ -912,7 +912,9 @@ coroutine.wrap(function()
             if Target and Target.Character and Target.Character:FindFirstChild("HumanoidRootPart") then
                 network:FireServer(tazeHash, Target.Character.Humanoid, Target.Character.UpperTorso, Target.Character.HumanoidRootPart.Position)
             end
-            network:FireServer(kickHash)
+            if Car then
+                network:FireServer(kickHash, Car)
+            end
         end
         wait(0.5)
     end
