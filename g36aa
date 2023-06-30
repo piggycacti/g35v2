@@ -3765,7 +3765,6 @@ local rayDirection1 = Vector3.new(0, 3000, 0)
 
 local Positions = {
     Vector3.new(740, 500, 1062),
-    Vector3.new(-962, 500, -1476),
     Vector3.new(-1240, 500, -1549),
 }
 
