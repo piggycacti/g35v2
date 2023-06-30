@@ -9271,6 +9271,3 @@ end
 if not Bot.Items:FindFirstChild("AK47") then
     network:FireServer(buyHash, "AK47")
 end
-
-config.teleport = true
-config.safe = false
