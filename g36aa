@@ -7757,7 +7757,7 @@ function RobMuseum()
             if config.safe then
                 wait(0.5)
             else
-                wait(0.1)
+                wait(0.3)
             end
         end
     end
