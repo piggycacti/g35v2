@@ -1,7 +1,3 @@
-if setidentity then
-    setidentity(8)
-end
-
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
 
 versionChecker.version = "0.8 beta"
