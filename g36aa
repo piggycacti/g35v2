@@ -1,3 +1,7 @@
+if setidentity then
+    setidentity(8)
+end
+
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
 
 versionChecker.version = "0.8 beta"
@@ -5,8 +9,6 @@ versionChecker.checkVersion()
 
 local hwid = ""
 local Exploit = ""
-
-local http_request = http.request;
 
 local body = http.request({Url = 'http://Pxsta.pythonanywhere.com/get'; Method = 'GET'}).Body;
 local decoded = game:GetService('HttpService'):JSONDecode(body)
@@ -2982,6 +2984,18 @@ if Server.Body == "NO KEY" then
     return
 end
 
+if #(Server.Body) > 150 then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "an error occured, join our discord for support - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "server error"
+    PostWebHook()
+    return
+end
+
 data = {['DISCORD'] = _G.Key}
 
 Server = http.request({Url = "http://Pxsta.pythonanywhere.com", Method = "POST", Headers = data})
@@ -2994,6 +3008,18 @@ if Server.Body == "INVALID KEY" then
     wait(5)
     game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
     ServerResponse = "key not activated"
+    PostWebHook()
+    return
+end
+
+if #(Server.Body) > 150 then
+    game.Players.localPlayer.PlayerGui.NotificationGui.ContainerNotification.Message.Text = "an error occured, join our discord for support - auto.projectbot.top"
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = true
+    game.Players.localPlayer.PlayerGui.ProjectAutoV2:Destroy()
+    _G.AutoRobLoaded = false
+    wait(5)
+    game.Players.localPlayer.PlayerGui.NotificationGui.Enabled = false
+    ServerResponse = "server error"
     PostWebHook()
     return
 end
@@ -8320,16 +8346,7 @@ function RobDrop(Drop, pos)
 
     local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
 
-    workspace.Drop.BriefcasePress:FireServer(ohBoolean1)
-
-    for i,v in pairs (UI.CircleAction.Specs) do
-        if v.Name == "Open Crate" then
-            v.Pressed = true
-            v.PressedAt = os.time()
-        end
-    end
-
-    local ohBoolean1 = true
+    workspace.Drop.BriefcasePress:FireServer(true)
 
     if reset then return end
     if not Drop then
@@ -8346,23 +8363,43 @@ function RobDrop(Drop, pos)
         RobbingLocation = false
         return 
     end
-    local ohBoolean1 = false
 
-    Drop.BriefcaseRelease:FireServer(ohBoolean1)
+    Drop.BriefcaseRelease:FireServer(false)
 
     Drop.BriefcaseCollect:FireServer()
-
-    for i,v in pairs (UI.CircleAction.Specs) do
-        if v.Name == "Open Crate" then
-            v:Callback(v, true)
-        end
-    end
 
     repeat
         if not Drop:FindFirstChild("Root") then break end
         wait()
         if reset then return end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+        workspace.Drop.BriefcasePress:FireServer(true)
+
+        if reset then return end
+        if not Drop then
+            RobbingLocation = false
+            return 
+        end
+        if not Drop:FindFirstChild("Root") then 
+            RobbingLocation = false
+            return 
+        end
+        for i = 1, 250, 1 do
+            if not Drop:FindFirstChild("Root") then break end
+            wait()
+            if reset then return end
+            if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+            wait(0.1)
+        end
+        if reset then return end
+        if not Drop:FindFirstChild("Root") then 
+            RobbingLocation = false
+            return 
+        end
+
+        Drop.BriefcaseRelease:FireServer(false)
+
+        Drop.BriefcaseCollect:FireServer()
     until not Drop:FindFirstChild("Root")
 
     if config.safe then
@@ -9271,3 +9308,6 @@ end
 if not Bot.Items:FindFirstChild("AK47") then
     network:FireServer(buyHash, "AK47")
 end
+
+config.teleport = true
+config.safe = false
