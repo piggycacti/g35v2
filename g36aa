@@ -1,3 +1,7 @@
+if setidentity then
+    setidentity(8)
+end
+
 local versionChecker = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/versionChecker"))()
 
 versionChecker.version = "0.8 beta"
@@ -3760,8 +3764,9 @@ local rayDirection = Vector3.new(0, -3000, 0)
 local rayDirection1 = Vector3.new(0, 3000, 0)
 
 local Positions = {
-    Vector3.new(740, 500, 1062),
-    Vector3.new(-1240, 500, -1549),
+    Vector3.new(-1234, 500, -1562),
+    Vector3.new(847, 500, -3676),
+    Vector3.new(721, 500, 1110),
 }
 
 function GetTombStatus()
@@ -4098,68 +4103,17 @@ function Teleport()
 end
 
 function GetPos(location)
+    location = Vector3.new(location.X, 500, location.Z)
     local ClosestDistance = nil
     local MinDistance = math.huge
     for k, v in pairs(Positions) do
-        if (v - location).Magnitude + 5 <= MinDistance then
-            local IgnorePos = false
-            for k, l in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
-                if l.Name == "Jeep" or l.Name == "Camaro" then
-                    if (Vector3.new(l.Engine.Position.X, 500, l.Engine.Position.Z) - v).magnitude < 50 then
-                        if (Vector3.new(l.Engine.Position.X, 500, l.Engine.Position.Z) - v).magnitude > 5 then
-                            IgnorePos = true
-                        end
-                    end
-                end
-            end
-            if not IgnorePos then
+        if (v - location).Magnitude > 5 then
+            if (v - location).Magnitude + 5 <= MinDistance then
                 MinDistance = (v - location).Magnitude
                 ClosestDistance = v
             end
         end
     end
-    for k, v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
-        if v.Name == "Jeep" or v.Name == "Camaro" then
-            if v.Seat.PlayerName.Value == "" then
-
-                local rayOrigin = v.Seat.Position + Vector3.new(0, 5, 0)
-                local ray = Ray.new(rayOrigin, rayDirection1)
-                local rain = game:GetService("Workspace"):FindFirstChild("Rain")
-                if rain ~= nil then
-                    local ignoreStuff = {rain.RainDroplets, rain.RainFall}
-                    if platform ~= nil then
-                        table.insert(ignoreStuff, #(ignoreStuff), platform)
-                    end
-                    for k, v in pairs(Bot:GetDescendants()) do
-                        table.insert(ignoreStuff, #(ignoreStuff), v)
-                    end
-                    hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
-                else
-                    local ignoreStuff = {}
-                    if platform ~= nil then
-                        table.insert(ignoreStuff, #(ignoreStuff), platform)
-                    end
-                    for k, v in pairs(Bot:GetDescendants()) do
-                        table.insert(ignoreStuff, #(ignoreStuff), v)
-                    end
-                    hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
-                end
-                
-                if hit == nil then
-                    if (v.Seat.Position - location).Magnitude + 5 <= MinDistance then
-                        MinDistance = (v.Seat.Position - location).Magnitude
-                        ClosestDistance = v.Seat.Position
-                    end
-                end
-            end
-        end
-    end
-    return ClosestDistance
-end
-
-function GetHeliPos(location)
-    local ClosestDistance = nil
-    local MinDistance = math.huge
     for k, v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
         if v.Name == "Heli" then
             if v.Seat.PlayerName.Value == "" then
@@ -4187,9 +4141,10 @@ function GetHeliPos(location)
                     hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
                 end
                 if hit == nil then
-                    if (v.Seat.Position - location).Magnitude + 5 <= MinDistance then
-                        MinDistance = (v.Seat.Position - location).Magnitude
-                        ClosestDistance = v.Seat.Position
+                    local pos = Vector3.new(v.Seat.Position.X, 500, v.Seat.Position.Z)
+                    if (pos - location).Magnitude + 5 <= MinDistance then
+                        MinDistance = (pos - location).Magnitude
+                        ClosestDistance = pos
                     end
                 end
             end
@@ -4198,117 +4153,58 @@ function GetHeliPos(location)
     return ClosestDistance
 end
 
-function BotMove(location, LocationName, teleporting)
-
-    Car = nil
-
-    for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
-        if pcall(function() return v.Seat.PlayerName end) then
-            if v.Seat.PlayerName.Value == Bot.Name then
-                Car = v
-            end
-        end
-    end
-
-    if platform ~= nil then
-        platform:Destroy()
-    end
+function VehicleTeleport(pos, Vehicle)
+    Vehicle.Engine.CFrame = CFrame.new(pos)
 
     wait(0.1)
+    local TeleportBlock = Instance.new("Part")
 
-    if Car == nil and Bot.Team.Name ~= "Prisoner" then
-        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
-        local rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -5, 0)
-        local ray = Ray.new(rayOrigin, rayDirection)
-        local rain = game:GetService("Workspace"):FindFirstChild("Rain")
-        if rain ~= nil then
-            local ignoreStuff = {rain.RainDroplets, rain.RainFall}
-            if platform ~= nil then
-                table.insert(ignoreStuff, #(ignoreStuff), platform)
-            end
-            for k, v in pairs(Bot:GetDescendants()) do
-                table.insert(ignoreStuff, #(ignoreStuff), v)
-            end
-            hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
-        else
-            local ignoreStuff = {}
-            if platform ~= nil then
-                table.insert(ignoreStuff, #(ignoreStuff), platform)
-            end
-            for k, v in pairs(Bot:GetDescendants()) do
-                table.insert(ignoreStuff, #(ignoreStuff), v)
-            end
-            hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
-        end
-        if hit ~= nil then
-            if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
-            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, pos.Y, Bot.Character.HumanoidRootPart.CFrame.Z)
-            if config.safe then
-                wait(0.5)
-            else
-                wait(0.1)
-            end
-        else
-            if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
-            Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, 300, Bot.Character.HumanoidRootPart.CFrame.Z)
-            local rayDirection2 = Vector3.new(0, -1, 0)
-            while hit == nil do
-                if reset then return end
-                rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -2, 0)
-                ray = Ray.new(rayOrigin, rayDirection2)
-                rain = game:GetService("Workspace"):FindFirstChild("Rain")
-                if rain ~= nil then
-                    local ignoreStuff = {rain.RainDroplets, rain.RainFall}
-                    if platform ~= nil then
-                        table.insert(ignoreStuff, #(ignoreStuff), platform)
-                    end
-                    for k, v in pairs(Bot:GetDescendants()) do
-                        table.insert(ignoreStuff, #(ignoreStuff), v)
-                    end
-                    hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
-                else
-                    local ignoreStuff = {}
-                    if platform ~= nil then
-                        table.insert(ignoreStuff, #(ignoreStuff), platform)
-                    end
-                    for k, v in pairs(Bot:GetDescendants()) do
-                        table.insert(ignoreStuff, #(ignoreStuff), v)
-                    end
-                    hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
-                end
-                wait()
-            end
-            if config.safe then
-                wait(0.1)
-            end
-        end
-        if reset then return end
-        Bot.Character.HumanoidRootPart.Velocity = Vector3.new()
+    TeleportBlock.Position = pos
+    TeleportBlock.Name = "TeleportBlock"
+    TeleportBlock.Parent = game.Workspace
+    TeleportBlock.Anchored = true
 
-        local args = {
-        [1] = "Chassis",
-        [2] = "Jeep"
-        }
-        game:GetService("ReplicatedStorage").GarageSpawnVehicle:FireServer(unpack(args))
-    end
+    local Weld = Instance.new("Weld")
 
+    Weld.Name = "TeleportWeld"
+    Weld.Parent = game.workspace
+    Weld.Part0 = TeleportBlock
+    Weld.Part1 = Vehicle.Engine
+
+    wait(1)
+
+    TeleportBlock:Destroy()
+    Weld:Destroy()
+    wait(0.1)
+
+    Vehicle.Engine.CFrame = CFrame.new(pos)
     if config.safe then
-        wait(2)
+        wait(1)
     else
         wait(0.5)
     end
+end
 
-    if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+function BotMove(location, LocationName, teleporting)
+
+    local Heli
+
     for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
         if pcall(function() return v.Seat.PlayerName end) then
             if v.Seat.PlayerName.Value == Bot.Name then
-                Car = v
+                Heli = v
             end
         end
     end
+
+    if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
     if reset then return end
 
-    while Car == nil do
+    if Heli == nil then
+        UpdateLog("Getting Heli")
+    end
+
+    while Heli == nil do
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
         Bot.Character.HumanoidRootPart.CFrame = CFrame.new(Bot.Character.HumanoidRootPart.CFrame.X, 500, Bot.Character.HumanoidRootPart.CFrame.Z)
         if config.safe then
@@ -4316,6 +4212,10 @@ function BotMove(location, LocationName, teleporting)
         end
         if reset then return end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+        repeat
+            wait()
+            if reset then return end
+        until GetPos(Bot.Character.HumanoidRootPart.Position) ~= nil
         move(GetPos(Bot.Character.HumanoidRootPart.Position))
         if reset then return end
 
@@ -4392,7 +4292,7 @@ function BotMove(location, LocationName, teleporting)
         local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
         for i,v in pairs (UI.CircleAction.Specs) do
             if v.Name == "Hijack" then
-                if v.Part.Parent.Name == "Camaro" or v.Part.Parent.Name == "Jeep" then
+                if v.Part.Parent.Name == "Heli" then
                     v.Duration = 0
                     v.Timed = true
                     v:Callback(v, true)
@@ -4407,8 +4307,8 @@ function BotMove(location, LocationName, teleporting)
         for i,v in pairs (UI.CircleAction.Specs) do
             if v.Name == "Enter Driver" then
                 if reset then return end
-                if v.Part.Parent.Name == "Camaro" or v.Part.Parent.Name == "Jeep" then
-                    local rayOrigin = v.Part.Position + Vector3.new(0, 10, 0)
+                if v.Part.Parent.Name == "Heli" then
+                    local rayOrigin = v.Part.Position + Vector3.new(0, 15, 0)
                     local ray = Ray.new(rayOrigin, rayDirection1)
                     local rain = game:GetService("Workspace"):FindFirstChild("Rain")
                     if rain ~= nil then
@@ -4447,7 +4347,7 @@ function BotMove(location, LocationName, teleporting)
         for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
             if pcall(function() return v.Seat.PlayerName end) then
                 if v.Seat.PlayerName.Value == Bot.Name then
-                    Car = v
+                    Heli = v
                 end
             end
         end
@@ -4455,82 +4355,73 @@ function BotMove(location, LocationName, teleporting)
         if reset then return end
     end
 
-    local position = Vector3.new(0, 0, 0)
-    local distance = 100
-
+    
     if teleporting then
-        while (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position - position).magnitude > distance do
-            if LocationName == "museum" then
-                while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
-                    if reset then return end
-                    Car.Engine:PivotTo(CFrame.new(1121, 116, 1296))
-                    wait()
-                end
-                position = Vector3.new(1121, 116, 1296)
-                distance = 500
+        if LocationName == "museum" then
+            while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
+                if reset then return end
+                VehicleTeleport(Vector3.new(1121, 116, 1296), Heli)
+                wait()
             end
-            if LocationName == "bank" then
-                while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
-                    if reset then return end
-                    Car.Engine:PivotTo(CFrame.new(37, 25, 864))
-                    wait()
-                end
-                position = Vector3.new(37, 25, 864)
-            end
-            if LocationName == "mansion" then
-                while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
-                    if reset then return end
-                    Car.Engine:PivotTo(CFrame.new(3197, 63, -4655))
-                    wait()
-                end
-                position = Vector3.new(3197, 63, -4655)
-            end
-            if LocationName == "jewelry store" then
-                while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
-                    if reset then return end
-                    Car.Engine:PivotTo(CFrame.new(131, 19, 1304))
-                    wait()
-                end
-                position = Vector3.new(131, 19, 1304)
-            end
-            if LocationName == "tomb" then
-                while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
-                    if reset then return end
-                    Car.Engine:PivotTo(CFrame.new(544, 27, -501))
-                    wait()
-                end 
-                position = Vector3.new(544, 26, -522)
-            end
-            if LocationName == "casino vault" then
-                while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
-                    if reset then return end
-                    Car.Engine:PivotTo(CFrame.new(250, -74, -4527))
-                    wait()
-                end
-                position = Vector3.new(250, -74, -4527)
-            end
-            if LocationName == "casino security" then
-                while Car.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
-                    if reset then return end
-                    Car.Engine:PivotTo(CFrame.new(-99, 71, -4707))
-                    wait()
-                end
-                position = Vector3.new(-99, 71, -4707)
-            end
-            wait()
-            if reset then return end
         end
+        if LocationName == "bank" then
+            while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
+                if reset then return end
+                VehicleTeleport(Vector3.new(37, 25, 864), Heli)
+                wait()
+            end
+        end
+        if LocationName == "mansion" then
+            while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
+                if reset then return end
+                VehicleTeleport(Vector3.new(3197, 63, -4655), Heli)
+                wait()
+            end
+        end
+        if LocationName == "jewelry store" then
+            while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
+                if reset then return end
+                VehicleTeleport(Vector3.new(131, 19, 1304), Heli)
+                wait()
+            end
+        end
+        if LocationName == "tomb" then
+            while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
+                if reset then return end
+                VehicleTeleport(Vector3.new(544, 27, -501), Heli)
+                wait()
+            end 
+        end
+        if LocationName == "casino vault" then
+            while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
+                if reset then return end
+                VehicleTeleport(Vector3.new(250, -74, -4527), Heli)
+                wait()
+            end
+        end
+        if LocationName == "casino security" then
+            while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
+                if reset then return end
+                VehicleTeleport(Vector3.new(-99, 71, -4707), Heli)
+                wait()
+            end
+        end
+        wait()
         return
     end
     if reset then return end
-    Car.Engine.CFrame = CFrame.new(Car.Engine.CFrame.X, 500, Car.Engine.CFrame.Z)
+    Heli.Engine.CFrame = CFrame.new(Heli.Engine.CFrame.X, 500, Heli.Engine.CFrame.Z)
     if config.safe then
         wait(1)
     end
     if reset then return end
     if LocationName ~= "Train" then
-        while (Vector3.new(Car.Engine.Position.X, 500, Car.Engine.Position.Z) - location).magnitude > 11 do 
-            if reset then return end
+        while (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - location).magnitude > 11 do 
+            while (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - location).magnitude > 101 do 
+                SpeedMove(location)
+                if reset then return end
+                if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+            end
             move(location)
             if reset then return end
             if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
@@ -4544,7 +4435,7 @@ function BotMove(location, LocationName, teleporting)
             end
         end
         if reset then return end
-        if location == nil then return end
+        if location == nil or typeof(location) == Vector3 then return end
         if not location:FindFirstChild("Model") then return end
         local rayOrigin = location.Model.Rob.Gold.Position + Vector3.new(0, 10, 0)
         local rayDirection2 = Vector3.new(0, 300, 0)
@@ -4558,7 +4449,7 @@ function BotMove(location, LocationName, teleporting)
             for k, v in pairs(Bot:GetDescendants()) do
                 table.insert(ignoreStuff, #(ignoreStuff), v)
             end
-            for k, v in pairs(Car:GetDescendants()) do
+            for k, v in pairs(Heli:GetDescendants()) do
                 table.insert(ignoreStuff, #(ignoreStuff), v)
             end
             hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
@@ -4570,15 +4461,18 @@ function BotMove(location, LocationName, teleporting)
             for k, v in pairs(Bot:GetDescendants()) do
                 table.insert(ignoreStuff, #(ignoreStuff), v)
             end
-            for k, v in pairs(Car:GetDescendants()) do
+            for k, v in pairs(Heli:GetDescendants()) do
                 table.insert(ignoreStuff, #(ignoreStuff), v)
             end
             hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
         end
-        while location and location:FindFirstChild("Model") and (hit ~= nil or (Vector3.new(Car.Engine.Position.X, 500, Car.Engine.Position.Z) - Vector3.new(location.Model.Rob.Gold.Position.X, 500, location.Model.Rob.Gold.Position.Z)).magnitude > 11) do 
-            if not location then return end
-            if not location:FindFirstChild("Model") then return end
-            if reset then return end
+        while location and location:FindFirstChild("Model") and (hit ~= nil or (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - Vector3.new(location.Model.Rob.Gold.Position.X, 500, location.Model.Rob.Gold.Position.Z)).magnitude > 11) do
+            while location and location:FindFirstChild("Model") and (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - Vector3.new(location.Model.Rob.Gold.Position.X, 500, location.Model.Rob.Gold.Position.Z)).magnitude > 101 do
+                if not location then return end
+                if not location:FindFirstChild("Model") then return end
+                if reset then return end
+                SpeedMove(Vector3.new(0, 0, 0), location.Model.Rob.Gold)
+            end
             move(Vector3.new(0, 0, 0), location.Model.Rob.Gold)
             if not location then return end
             if not location:FindFirstChild("Model") then return end
@@ -4593,7 +4487,7 @@ function BotMove(location, LocationName, teleporting)
                 for k, v in pairs(Bot:GetDescendants()) do
                     table.insert(ignoreStuff, #(ignoreStuff), v)
                 end
-                for k, v in pairs(Car:GetDescendants()) do
+                for k, v in pairs(Heli:GetDescendants()) do
                     table.insert(ignoreStuff, #(ignoreStuff), v)
                 end
                 hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
@@ -4605,7 +4499,7 @@ function BotMove(location, LocationName, teleporting)
                 for k, v in pairs(Bot:GetDescendants()) do
                     table.insert(ignoreStuff, #(ignoreStuff), v)
                 end
-                for k, v in pairs(Car:GetDescendants()) do
+                for k, v in pairs(Heli:GetDescendants()) do
                     table.insert(ignoreStuff, #(ignoreStuff), v)
                 end
                 hit, pos = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(ray, ignoreStuff)
@@ -4641,11 +4535,12 @@ function BotMove(location, LocationName, teleporting)
     end
     if reset then return end
     if hit ~= nil then
-        Car.Engine.CFrame = CFrame.new(Car.Engine.CFrame.X, pos.Y, Car.Engine.CFrame.Z)
+        Heli.Engine.CFrame = CFrame.new(Heli.Engine.CFrame.X, pos.Y, Heli.Engine.CFrame.Z)
     else
-        Car.Engine.CFrame = CFrame.new(Car.Engine.CFrame.X, 300, Car.Engine.CFrame.Z)
+        Heli.Engine.CFrame = CFrame.new(Heli.Engine.CFrame.X, 300, Heli.Engine.CFrame.Z)
         local rayDirection2 = Vector3.new(0, -1, 0)
         while hit == nil do
+            Heli.Engine.CFrame = CFrame.new(Heli.Engine.CFrame.X, Heli.Engine.CFrame.Y - 5, Heli.Engine.CFrame.Z)
             if reset then return end
             if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
             rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -3, 0)
@@ -4674,7 +4569,7 @@ function BotMove(location, LocationName, teleporting)
         end
     end
 
-    Car.Engine.Velocity = Vector3.new()
+    Heli.Engine.Velocity = Vector3.new()
     
 
     if LocationName == "volcano base" then
@@ -4811,6 +4706,86 @@ function move(pos, object)
             Car.Engine.CFrame = CFrame.new(Vector3.new(object.Position.X, 500, object.Position.Z))
             Car.Engine.Velocity = Vector3.new()
         end
+    end
+end
+
+function SpeedMove(pos, object)
+
+    local Heli = nil
+    for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
+        if pcall(function() return v.Seat.PlayerName end) then
+            if v.Seat.PlayerName.Value == Bot.Name then
+                Heli = v
+            end
+        end
+    end
+
+    Heli.Engine.CFrame = CFrame.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z)
+
+    if config.safe then
+        wait(0.3)
+    else
+        wait(0.1)
+    end
+
+    if not Heli.Preset:FindFirstChild("RopePull") then
+        game:GetService('VirtualInputManager'):SendKeyEvent(true, "G", false, game)
+        wait(0.1)
+        game:GetService('VirtualInputManager'):SendKeyEvent(false, "G", false, game)
+        if config.safe then
+            wait(0.5)
+        else
+            wait(0.3)
+        end
+    end
+
+    local RopePull = Heli.Preset.RopePull
+    local Rope = Heli.Winch.RopeConstraint
+
+    Heli.Preset.RopePull.ReqLink:FireServer(Heli, Vector3.new(0, 0, 0))
+
+    local moveTime = 0
+    if object == nil then
+        pos = Vector3.new(pos.X, 500, pos.Z)
+        if reset then return end
+        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+        Heli.Engine.CFrame = CFrame.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z)
+
+        while (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - pos).magnitude > 100 do
+            RopePull.CFrame = CFrame.new(pos)
+            wait()
+
+            moveTime += 0.03
+            if moveTime > 90 - (config.CarSpeed * -0.1) then
+                LogMessage("possibly stuck, ressetting")
+                Bot.Character.Humanoid.Health = 0
+                exitCar.OnJump()
+                return
+            end
+        end
+        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+        Heli.Engine.CFrame = CFrame.new(pos)
+        Heli.Engine.Velocity = Vector3.new()
+    else
+        
+        if reset then return end
+        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+        Heli.Engine.CFrame = CFrame.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z)
+        while (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - Vector3.new(object.Position.X, 500, object.Position.Z)).magnitude > 100 do
+            RopePull.CFrame = CFrame.new(Vector3.new(object.Position.X, 500, object.Position.Z))
+            wait()
+            moveTime += 0.03
+            if moveTime > 90 - (config.CarSpeed * -0.1) then
+                LogMessage("possibly stuck, ressetting")
+                Bot.Character.Humanoid.Health = 0
+                exitCar.OnJump()
+                return
+            end
+            if reset then return end
+        end
+        if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
+        Heli.Engine.CFrame = CFrame.new(Vector3.new(object.Position.X, 500, object.Position.Z))
+        Heli.Engine.Velocity = Vector3.new()
     end
 end
 
@@ -5331,6 +5306,8 @@ function RobBank()
     UpdateLog("entering bank")
 
     if not config.teleport then
+        pathMove(Vector3.new(-1, 200, 865))
+        if reset then return end
         pathMove(Vector3.new(-1, 25, 865))
         if reset then return end
         pathMove(Vector3.new(37, 25, 864))
@@ -6363,7 +6340,7 @@ function RobJewel()
     else
         wait(0.1)
     end
-    
+
     if config.teleport then
         for k, v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
             if v:FindFirstChild("Engine") then
@@ -6809,23 +6786,31 @@ function RobJewel()
     if reset then return end
     pathMove(Vector3.new(125, 102, 1341))
     if reset then return end
-    pathMove(Vector3.new(112, 119, 1282))
+    pathMove(Vector3.new(113, 119, 1282))
     if reset then return end
     pathMove(Vector3.new(95, 119, 1285))
     if reset then return end
 
     UpdateLog("waiting")
 
-    if config.safe then
-        wait(5)
-    else
-        wait(1)
-    end
+    wait(5)
 
     UpdateLog("going to crim base")
 
     BotMove(Vector3.new(-300, 500, 1597), "city crim base", false)
 
+    local Heli
+    for i,v in pairs(workspace.Vehicles:GetChildren()) do
+        if v.Name == "Heli" then
+            if pcall(function() return v.Seat.PlayerName end) then
+                if v.Seat.PlayerName.Value == Bot.Name then
+                    Heli = v
+                end
+            end
+        end
+    end
+
+    Heli.Engine.CFrame = CFrame.new(-300, 25, 1597)
     if reset then return end
     wait(1)
     RobbingLocation = false
@@ -7086,6 +7071,7 @@ function RobCasino()
             if v.Display.BrickColor == BrickColor.new("Lime green") then
                 break
             end
+            if reset then return end
         end
 
         UpdateLog("collecting cash")
@@ -7103,13 +7089,10 @@ function RobCasino()
                 v.CasinoLootCollect:FireServer()
                 wait()
             end
+            if reset then return end
         end
         UpdateLog("waiting")
-        if config.safe then
-            wait(10)
-        else
-            wait(3)
-        end
+        wait(5)
     else
         UpdateLog("going to casino")
         BotMove(Vector3.new(-220, 500, -4575), "casino", false)
@@ -8342,6 +8325,12 @@ function RobDrop(Drop, pos)
     local UI = require(game:GetService("ReplicatedStorage").Module:WaitForChild("UI"));
 
     workspace.Drop.BriefcasePress:FireServer(true)
+    for i,v in pairs (UI.CircleAction.Specs) do
+        if v.Name == "Open Crate" then
+            v.Pressed = true
+            v.PressedAt = os.time()
+        end
+    end
 
     if reset then return end
     if not Drop then
@@ -8352,7 +8341,9 @@ function RobDrop(Drop, pos)
         RobbingLocation = false
         return 
     end
+
     wait(25)
+    
     if reset then return end
     if not Drop:FindFirstChild("Root") then 
         RobbingLocation = false
@@ -8363,13 +8354,24 @@ function RobDrop(Drop, pos)
 
     Drop.BriefcaseCollect:FireServer()
 
+    for i,v in pairs (UI.CircleAction.Specs) do
+        if v.Name == "Open Crate" then
+            v:Callback(v, true)
+        end
+    end
+
     repeat
         if not Drop:FindFirstChild("Root") then break end
         wait()
         if reset then return end
         if not Bot.Character:FindFirstChild("HumanoidRootPart") then return end
         workspace.Drop.BriefcasePress:FireServer(true)
-
+        for i,v in pairs (UI.CircleAction.Specs) do
+            if v.Name == "Open Crate" then
+                v.Pressed = true
+                v.PressedAt = os.time() 
+            end
+        end
         if reset then return end
         if not Drop then
             RobbingLocation = false
@@ -8395,6 +8397,13 @@ function RobDrop(Drop, pos)
         Drop.BriefcaseRelease:FireServer(false)
 
         Drop.BriefcaseCollect:FireServer()
+
+        for i,v in pairs (UI.CircleAction.Specs) do
+            if v.Name == "Open Crate" then
+                v:Callback(v, true)
+            end
+        end
+        
     until not Drop:FindFirstChild("Root")
 
     if config.safe then
@@ -8438,12 +8447,13 @@ end
 
 function RobBoat()
 
-    
     local Heli
     for i,v in pairs(workspace.Vehicles:GetChildren()) do
-        if pcall(function() return v.Seat.PlayerName end) then
-            if v.Seat.PlayerName.Value == Bot.Name then
-                Heli = v
+        if v.Name == "Heli" then
+            if pcall(function() return v.Seat.PlayerName end) then
+                if v.Seat.PlayerName.Value == Bot.Name then
+                    Heli = v
+                end
             end
         end
     end
@@ -8453,11 +8463,12 @@ function RobBoat()
         UpdateLog("getting heli")
     end
     while Heli == nil do
+        exitCar.OnJump()
         repeat
             wait()
             if reset then return end
-        until GetHeliPos(Bot.Character.HumanoidRootPart.Position) ~= nil
-        move(GetHeliPos(Bot.Character.HumanoidRootPart.Position))
+        until GetPos(Bot.Character.HumanoidRootPart.Position) ~= nil
+        move(GetPos(Bot.Character.HumanoidRootPart.Position))
         if reset then return end
         local rayOrigin = Bot.Character.HumanoidRootPart.Position + Vector3.new(0, -5, 0)
         local ray = Ray.new(rayOrigin, rayDirection)
@@ -8581,9 +8592,11 @@ function RobBoat()
             wait(0.5)
         end
         for i,v in pairs(workspace.Vehicles:GetChildren()) do
-            if pcall(function() return v.Seat.PlayerName end) then
-                if v.Seat.PlayerName.Value == Bot.Name then
-                    Heli = v
+            if v.Name == "Heli" then
+                if pcall(function() return v.Seat.PlayerName end) then
+                    if v.Seat.PlayerName.Value == Bot.Name then
+                        Heli = v
+                    end
                 end
             end
         end
@@ -8696,7 +8709,14 @@ function RobBoat()
 
             UpdateLog("going to cargo boat")
 
-            move(Vector3.new(), Crate.MeshPart)
+            while (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - Vector3.new(Crate.MeshPart.Position.X, 500, Crate.MeshPart.Position.Z)).magnitude > 11 do 
+                while (Vector3.new(Heli.Engine.Position.X, 500, Heli.Engine.Position.Z) - Vector3.new(Crate.MeshPart.Position.X, 500, Crate.MeshPart.Position.Z)).magnitude > 101 do 
+                    SpeedMove(Vector3.new(), Crate.MeshPart)
+                    wait()
+                end
+                move(Vector3.new(), Crate.MeshPart)
+                wait()
+            end
             if reset then return end
 
             if not game.Workspace:FindFirstChild("CargoShip") then 
@@ -8713,6 +8733,8 @@ function RobBoat()
                 wait(0.3)
             end
             if reset then return end
+            RopePull.ReqUnlink:FireServer()
+            wait(0.1)
             RopePull.ReqLink:FireServer(Crate, Vector3.new(0, 0, 0))
             if config.safe then
                 wait(0.5)
@@ -8826,16 +8848,23 @@ function RobPlane()
         end
 
         UpdateLog("waiting")
-        if config.safe then
-            wait(10)
-        else
-            wait(5)
-        end
+        wait(10)
 
         if Bot.PlayerGui.RobberyMoneyGui.Enabled then
             if reset then return end
             UpdateLog("going to cargo port")
             BotMove(Vector3.new(-342, 500, 2055), "cargo port", false)
+            local Heli
+
+            for i,v in pairs(game:GetService("Workspace").Vehicles:GetChildren()) do
+                if pcall(function() return v.Seat.PlayerName end) then
+                    if v.Seat.PlayerName.Value == Bot.Name then
+                        Heli = v
+                    end
+                end
+            end
+
+            Heli.Engine.CFrame = CFrame.new(Heli.Engine.Position.X, 20, Heli.Engine.Position.Z)
             wait(1)
             robbedPlane = true
             LogMessage("robbed cargo plane for $4,000")
@@ -9303,6 +9332,3 @@ end
 if not Bot.Items:FindFirstChild("AK47") then
     network:FireServer(buyHash, "AK47")
 end
-
-config.teleport = true
-config.safe = false
