@@ -4153,38 +4153,6 @@ function GetPos(location)
     return ClosestDistance
 end
 
-function VehicleTeleport(pos, Vehicle)
-    Vehicle.Engine.CFrame = CFrame.new(pos)
-
-    wait(0.1)
-    local TeleportBlock = Instance.new("Part")
-
-    TeleportBlock.Position = pos
-    TeleportBlock.Name = "TeleportBlock"
-    TeleportBlock.Parent = game.Workspace
-    TeleportBlock.Anchored = true
-
-    local Weld = Instance.new("Weld")
-
-    Weld.Name = "TeleportWeld"
-    Weld.Parent = game.workspace
-    Weld.Part0 = TeleportBlock
-    Weld.Part1 = Vehicle.Engine
-
-    wait(1)
-
-    TeleportBlock:Destroy()
-    Weld:Destroy()
-    wait(0.1)
-
-    Vehicle.Engine.CFrame = CFrame.new(pos)
-    if config.safe then
-        wait(1)
-    else
-        wait(0.5)
-    end
-end
-
 function BotMove(location, LocationName, teleporting)
 
     local Heli
@@ -4360,49 +4328,49 @@ function BotMove(location, LocationName, teleporting)
         if LocationName == "museum" then
             while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                 if reset then return end
-                VehicleTeleport(Vector3.new(1121, 116, 1296), Heli)
+                Heli.Engine:PivotTo(Vector3.new(1121, 116, 1296))
                 wait()
             end
         end
         if LocationName == "bank" then
             while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                 if reset then return end
-                VehicleTeleport(Vector3.new(37, 25, 864), Heli)
+                Heli.Engine:PivotTo(Vector3.new(37, 25, 864))
                 wait()
             end
         end
         if LocationName == "mansion" then
             while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                 if reset then return end
-                VehicleTeleport(Vector3.new(3197, 63, -4655), Heli)
+                Heli.Engine:PivotTo(Vector3.new(3197, 63, -4655))
                 wait()
             end
         end
         if LocationName == "jewelry store" then
             while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                 if reset then return end
-                VehicleTeleport(Vector3.new(131, 19, 1304), Heli)
+                Heli.Engine:PivotTo(Vector3.new(131, 19, 1304))
                 wait()
             end
         end
         if LocationName == "tomb" then
             while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                 if reset then return end
-                VehicleTeleport(Vector3.new(544, 27, -501), Heli)
+                Heli.Engine:PivotTo(Vector3.new(544, 27, -501))
                 wait()
             end 
         end
         if LocationName == "casino vault" then
             while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                 if reset then return end
-                VehicleTeleport(Vector3.new(250, -74, -4527), Heli)
+                Heli.Engine:PivotTo(Vector3.new(250, -74, -4527))
                 wait()
             end
         end
         if LocationName == "casino security" then
             while Heli.Seat.PlayerName.Value == game:GetService("Players").LocalPlayer.Name do
                 if reset then return end
-                VehicleTeleport(Vector3.new(-99, 71, -4707), Heli)
+                Heli.Engine:PivotTo(Vector3.new(-99, 71, -4707))
                 wait()
             end
         end
@@ -4412,7 +4380,7 @@ function BotMove(location, LocationName, teleporting)
     if reset then return end
     Heli.Engine.CFrame = CFrame.new(Heli.Engine.CFrame.X, 500, Heli.Engine.CFrame.Z)
     if config.safe then
-        wait(1)
+        wait(0.3)
     end
     if reset then return end
     if LocationName ~= "Train" then
