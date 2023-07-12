@@ -1163,7 +1163,7 @@ G2L["99"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]
 G2L["99"]["TextColor3"] = Color3.fromRGB(201, 201, 201);
 G2L["99"]["Size"] = UDim2.new(0, 120, 0, 16);
 G2L["99"]["Name"] = [[SpeedKeyInput]];
-G2L["99"]["Text"] = [[RightShift]];
+G2L["99"]["Text"] = [[LEFTSHIFT]];
 G2L["99"]["Position"] = UDim2.new(0, 5, 0, 5);
 
 -- StarterGui.pxstaHack.BackGround.PlayerTab.SpeedSection.SpeedKey.SpeedKeyInput.UICorner
@@ -1263,7 +1263,7 @@ G2L["a6"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]
 G2L["a6"]["TextColor3"] = Color3.fromRGB(201, 201, 201);
 G2L["a6"]["Size"] = UDim2.new(0, 120, 0, 16);
 G2L["a6"]["Name"] = [[MenuToggleKey]];
-G2L["a6"]["Text"] = [[RightShift]];
+G2L["a6"]["Text"] = [[RIGHTSHIFT]];
 G2L["a6"]["Position"] = UDim2.new(0, 5, 0, 5);
 
 -- StarterGui.pxstaHack.BackGround.SettingsTab.MenuToggle.MenuToggleKey.UICorner
@@ -1545,7 +1545,7 @@ G2L["c9"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]
 G2L["c9"]["TextColor3"] = Color3.fromRGB(201, 201, 201);
 G2L["c9"]["Size"] = UDim2.new(0, 120, 0, 16);
 G2L["c9"]["Name"] = [[VehicleFlyKeyInput]];
-G2L["c9"]["Text"] = [[RightShift]];
+G2L["c9"]["Text"] = [[LEFTALT]];
 G2L["c9"]["Position"] = UDim2.new(0, 5, 0, 5);
 
 -- StarterGui.pxstaHack.BackGround.VehicleTab.VehicleFlySection.VehicleFlyKey.VehicleFlyKeyInput.UICorner
