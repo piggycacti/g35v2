@@ -176,7 +176,7 @@ G2L["12"]["Name"] = [[PlayerConnectButton]];
 G2L["12"]["Text"] = [[Player Connect]];
 G2L["12"]["Position"] = UDim2.new(0.45446181297302246, 0, 0.5601173043251038, 0);
 
--- StarterGui.pxstaHack.BackGround.Tabs.HeliTeleportButton
+-- StarterGui.pxstaHack.BackGround.Tabs.TowTruckTeleportButton
 G2L["13"] = Instance.new("TextButton", G2L["9"]);
 G2L["13"]["BorderSizePixel"] = 0;
 G2L["13"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
@@ -185,8 +185,8 @@ G2L["13"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]
 G2L["13"]["TextColor3"] = Color3.fromRGB(201, 201, 201);
 G2L["13"]["Size"] = UDim2.new(0, 100, 0, 25);
 G2L["13"]["LayoutOrder"] = 5;
-G2L["13"]["Name"] = [[HeliTeleportButton]];
-G2L["13"]["Text"] = [[Heli Teleport]];
+G2L["13"]["Name"] = [[TowTruckTeleportButton]];
+G2L["13"]["Text"] = [[TowTruck TP]];
 G2L["13"]["Position"] = UDim2.new(0.45446181297302246, 0, 0.5601173043251038, 0);
 
 -- StarterGui.pxstaHack.BackGround.PlayerTab
@@ -4493,7 +4493,7 @@ G2L["245"]["Text"] = [[]];
 G2L["245"]["Name"] = [[Gap]];
 G2L["245"]["BackgroundTransparency"] = 1;
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab
 G2L["246"] = Instance.new("ScrollingFrame", G2L["2"]);
 G2L["246"]["Active"] = true;
 G2L["246"]["BorderSizePixel"] = 0;
@@ -4504,19 +4504,19 @@ G2L["246"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
 G2L["246"]["Size"] = UDim2.new(0, 299, 0, 399);
 G2L["246"]["ScrollBarThickness"] = 5;
 G2L["246"]["Position"] = UDim2.new(0, 101, 0, 51);
-G2L["246"]["Name"] = [[HeliTeleportTab]];
+G2L["246"]["Name"] = [[TowTruckTeleportTab]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.UIListLayout
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.UIListLayout
 G2L["247"] = Instance.new("UIListLayout", G2L["246"]);
 G2L["247"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Center;
 G2L["247"]["Padding"] = UDim.new(0, 10);
 G2L["247"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.ScrollBarTransparency
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.ScrollBarTransparency
 G2L["248"] = Instance.new("LocalScript", G2L["246"]);
 G2L["248"]["Name"] = [[ScrollBarTransparency]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.Gap
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.Gap
 G2L["249"] = Instance.new("TextLabel", G2L["246"]);
 G2L["249"]["BorderSizePixel"] = 0;
 G2L["249"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
@@ -4529,7 +4529,7 @@ G2L["249"]["Text"] = [[]];
 G2L["249"]["Name"] = [[Gap]];
 G2L["249"]["BackgroundTransparency"] = 1;
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.BankButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.BankButton
 G2L["24a"] = Instance.new("TextButton", G2L["246"]);
 G2L["24a"]["TextStrokeTransparency"] = 0;
 G2L["24a"]["ZIndex"] = 2;
@@ -4541,11 +4541,11 @@ G2L["24a"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["24a"]["Name"] = [[BankButton]];
 G2L["24a"]["Text"] = [[Bank]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.BankButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.BankButton.UICorner
 G2L["24b"] = Instance.new("UICorner", G2L["24a"]);
 G2L["24b"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.BankButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.BankButton.Border
 G2L["24c"] = Instance.new("TextLabel", G2L["24a"]);
 G2L["24c"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["24c"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4556,11 +4556,11 @@ G2L["24c"]["Text"] = [[]];
 G2L["24c"]["Name"] = [[Border]];
 G2L["24c"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.BankButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.BankButton.Border.UICorner
 G2L["24d"] = Instance.new("UICorner", G2L["24c"]);
 G2L["24d"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.JewelryButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.JewelryButton
 G2L["24e"] = Instance.new("TextButton", G2L["246"]);
 G2L["24e"]["TextStrokeTransparency"] = 0;
 G2L["24e"]["ZIndex"] = 2;
@@ -4572,11 +4572,11 @@ G2L["24e"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["24e"]["Name"] = [[JewelryButton]];
 G2L["24e"]["Text"] = [[Jewelry Store]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.JewelryButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.JewelryButton.UICorner
 G2L["24f"] = Instance.new("UICorner", G2L["24e"]);
 G2L["24f"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.JewelryButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.JewelryButton.Border
 G2L["250"] = Instance.new("TextLabel", G2L["24e"]);
 G2L["250"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["250"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4587,11 +4587,11 @@ G2L["250"]["Text"] = [[]];
 G2L["250"]["Name"] = [[Border]];
 G2L["250"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.JewelryButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.JewelryButton.Border.UICorner
 G2L["251"] = Instance.new("UICorner", G2L["250"]);
 G2L["251"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MuseumButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MuseumButton
 G2L["252"] = Instance.new("TextButton", G2L["246"]);
 G2L["252"]["TextStrokeTransparency"] = 0;
 G2L["252"]["ZIndex"] = 2;
@@ -4603,11 +4603,11 @@ G2L["252"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["252"]["Name"] = [[MuseumButton]];
 G2L["252"]["Text"] = [[Museum]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MuseumButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MuseumButton.UICorner
 G2L["253"] = Instance.new("UICorner", G2L["252"]);
 G2L["253"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MuseumButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MuseumButton.Border
 G2L["254"] = Instance.new("TextLabel", G2L["252"]);
 G2L["254"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["254"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4618,11 +4618,11 @@ G2L["254"]["Text"] = [[]];
 G2L["254"]["Name"] = [[Border]];
 G2L["254"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MuseumButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MuseumButton.Border.UICorner
 G2L["255"] = Instance.new("UICorner", G2L["254"]);
 G2L["255"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MansionButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MansionButton
 G2L["256"] = Instance.new("TextButton", G2L["246"]);
 G2L["256"]["TextStrokeTransparency"] = 0;
 G2L["256"]["ZIndex"] = 2;
@@ -4634,11 +4634,11 @@ G2L["256"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["256"]["Name"] = [[MansionButton]];
 G2L["256"]["Text"] = [[Mansion]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MansionButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MansionButton.UICorner
 G2L["257"] = Instance.new("UICorner", G2L["256"]);
 G2L["257"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MansionButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MansionButton.Border
 G2L["258"] = Instance.new("TextLabel", G2L["256"]);
 G2L["258"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["258"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4649,11 +4649,11 @@ G2L["258"]["Text"] = [[]];
 G2L["258"]["Name"] = [[Border]];
 G2L["258"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.MansionButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.MansionButton.Border.UICorner
 G2L["259"] = Instance.new("UICorner", G2L["258"]);
 G2L["259"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.TombButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.TombButton
 G2L["25a"] = Instance.new("TextButton", G2L["246"]);
 G2L["25a"]["TextStrokeTransparency"] = 0;
 G2L["25a"]["ZIndex"] = 2;
@@ -4665,11 +4665,11 @@ G2L["25a"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["25a"]["Name"] = [[TombButton]];
 G2L["25a"]["Text"] = [[Tomb]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.TombButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.TombButton.UICorner
 G2L["25b"] = Instance.new("UICorner", G2L["25a"]);
 G2L["25b"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.TombButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.TombButton.Border
 G2L["25c"] = Instance.new("TextLabel", G2L["25a"]);
 G2L["25c"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["25c"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4680,11 +4680,11 @@ G2L["25c"]["Text"] = [[]];
 G2L["25c"]["Name"] = [[Border]];
 G2L["25c"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.TombButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.TombButton.Border.UICorner
 G2L["25d"] = Instance.new("UICorner", G2L["25c"]);
 G2L["25d"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.SecurityButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.SecurityButton
 G2L["25e"] = Instance.new("TextButton", G2L["246"]);
 G2L["25e"]["TextStrokeTransparency"] = 0;
 G2L["25e"]["ZIndex"] = 2;
@@ -4696,11 +4696,11 @@ G2L["25e"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["25e"]["Name"] = [[SecurityButton]];
 G2L["25e"]["Text"] = [[Casino Security]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.SecurityButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.SecurityButton.UICorner
 G2L["25f"] = Instance.new("UICorner", G2L["25e"]);
 G2L["25f"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.SecurityButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.SecurityButton.Border
 G2L["260"] = Instance.new("TextLabel", G2L["25e"]);
 G2L["260"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["260"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4711,11 +4711,11 @@ G2L["260"]["Text"] = [[]];
 G2L["260"]["Name"] = [[Border]];
 G2L["260"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.SecurityButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.SecurityButton.Border.UICorner
 G2L["261"] = Instance.new("UICorner", G2L["260"]);
 G2L["261"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.VaultButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.VaultButton
 G2L["262"] = Instance.new("TextButton", G2L["246"]);
 G2L["262"]["TextStrokeTransparency"] = 0;
 G2L["262"]["ZIndex"] = 2;
@@ -4727,11 +4727,11 @@ G2L["262"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["262"]["Name"] = [[VaultButton]];
 G2L["262"]["Text"] = [[Casino Vault]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.VaultButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.VaultButton.UICorner
 G2L["263"] = Instance.new("UICorner", G2L["262"]);
 G2L["263"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.VaultButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.VaultButton.Border
 G2L["264"] = Instance.new("TextLabel", G2L["262"]);
 G2L["264"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["264"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4742,11 +4742,11 @@ G2L["264"]["Text"] = [[]];
 G2L["264"]["Name"] = [[Border]];
 G2L["264"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.VaultButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.VaultButton.Border.UICorner
 G2L["265"] = Instance.new("UICorner", G2L["264"]);
 G2L["265"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.DeathButton
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.DeathButton
 G2L["266"] = Instance.new("TextButton", G2L["246"]);
 G2L["266"]["TextStrokeTransparency"] = 0;
 G2L["266"]["ZIndex"] = 2;
@@ -4758,11 +4758,11 @@ G2L["266"]["Size"] = UDim2.new(0, 279, 0, 25);
 G2L["266"]["Name"] = [[DeathButton]];
 G2L["266"]["Text"] = [[Death]];
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.DeathButton.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.DeathButton.UICorner
 G2L["267"] = Instance.new("UICorner", G2L["266"]);
 G2L["267"]["CornerRadius"] = UDim.new(0, 5);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.DeathButton.Border
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.DeathButton.Border
 G2L["268"] = Instance.new("TextLabel", G2L["266"]);
 G2L["268"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 86);
 G2L["268"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.SemiBold, Enum.FontStyle.Normal);
@@ -4773,7 +4773,7 @@ G2L["268"]["Text"] = [[]];
 G2L["268"]["Name"] = [[Border]];
 G2L["268"]["Position"] = UDim2.new(0, -1, 0, -1);
 
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.DeathButton.Border.UICorner
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.DeathButton.Border.UICorner
 G2L["269"] = Instance.new("UICorner", G2L["268"]);
 G2L["269"]["CornerRadius"] = UDim.new(0, 5);
 
@@ -5793,7 +5793,7 @@ local script = G2L["244"];
 	end
 end;
 task.spawn(C_244);
--- StarterGui.pxstaHack.BackGround.HeliTeleportTab.ScrollBarTransparency
+-- StarterGui.pxstaHack.BackGround.TowTruckTeleportTab.ScrollBarTransparency
 local function C_248()
 local script = G2L["248"];
 	local Tab = script.Parent
