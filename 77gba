@@ -186,7 +186,7 @@ G2L["13"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 G2L["13"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
 G2L["13"]["Size"] = UDim2.new(0, 299, 0, 399);
 G2L["13"]["ScrollBarThickness"] = 5;
-G2L["13"]["Position"] = UDim2.new(0, 522, 0, 287);
+G2L["13"]["Position"] = UDim2.new(0, 101, 0, 51);
 G2L["13"]["Name"] = [[PlayerTab]];
 
 -- StarterGui.pxstaHack.BackGround.PlayerTab.UIListLayout
@@ -1231,7 +1231,7 @@ G2L["a2"] = Instance.new("Frame", G2L["2"]);
 G2L["a2"]["BorderSizePixel"] = 0;
 G2L["a2"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 G2L["a2"]["Size"] = UDim2.new(0, 299, 0, 399);
-G2L["a2"]["Position"] = UDim2.new(0, 666, 0, 163);
+G2L["a2"]["Position"] = UDim2.new(0, 101, 0, 51);
 G2L["a2"]["Name"] = [[SettingsTab]];
 
 -- StarterGui.pxstaHack.BackGround.SettingsTab.MenuToggle
@@ -1323,7 +1323,7 @@ G2L["ad"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 G2L["ad"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
 G2L["ad"]["Size"] = UDim2.new(0, 299, 0, 399);
 G2L["ad"]["ScrollBarThickness"] = 5;
-G2L["ad"]["Position"] = UDim2.new(0, 532, 0, 324);
+G2L["ad"]["Position"] = UDim2.new(0, 101, 0, 51);
 G2L["ad"]["Name"] = [[VehicleTab]];
 
 -- StarterGui.pxstaHack.BackGround.VehicleTab.UIListLayout
@@ -2273,7 +2273,7 @@ G2L["127"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 G2L["127"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
 G2L["127"]["Size"] = UDim2.new(0, 299, 0, 399);
 G2L["127"]["ScrollBarThickness"] = 5;
-G2L["127"]["Position"] = UDim2.new(0, 592, 0, 69);
+G2L["127"]["Position"] = UDim2.new(0, 101, 0, 51);
 G2L["127"]["Name"] = [[CombatTab]];
 
 -- StarterGui.pxstaHack.BackGround.CombatTab.UIListLayout
@@ -2918,7 +2918,7 @@ G2L["17b"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 G2L["17b"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
 G2L["17b"]["Size"] = UDim2.new(0, 299, 0, 399);
 G2L["17b"]["ScrollBarThickness"] = 5;
-G2L["17b"]["Position"] = UDim2.new(0, 541, 0, 315);
+G2L["17b"]["Position"] = UDim2.new(0, 101, 0, 51);
 G2L["17b"]["Name"] = [[VisualTab]];
 
 -- StarterGui.pxstaHack.BackGround.VisualTab.UIListLayout
@@ -3523,7 +3523,7 @@ G2L["1cd"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 G2L["1cd"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
 G2L["1cd"]["Size"] = UDim2.new(0, 299, 0, 399);
 G2L["1cd"]["ScrollBarThickness"] = 5;
-G2L["1cd"]["Position"] = UDim2.new(0, 695, 0, -86);
+G2L["1cd"]["Position"] = UDim2.new(0, 101, 0, 51);
 G2L["1cd"]["Name"] = [[RobberyTab]];
 
 -- StarterGui.pxstaHack.BackGround.RobberyTab.UIListLayout
@@ -4187,7 +4187,7 @@ G2L["220"]["BackgroundColor3"] = Color3.fromRGB(31, 31, 31);
 G2L["220"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
 G2L["220"]["Size"] = UDim2.new(0, 299, 0, 399);
 G2L["220"]["ScrollBarThickness"] = 5;
-G2L["220"]["Position"] = UDim2.new(0, 735, 0, 235);
+G2L["220"]["Position"] = UDim2.new(0, 101, 0, 51);
 G2L["220"]["Name"] = [[TeleportTab]];
 
 -- StarterGui.pxstaHack.BackGround.TeleportTab.UIListLayout
